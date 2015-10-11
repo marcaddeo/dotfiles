@@ -12,6 +12,9 @@ xcode-select --install
 # Install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+# Tap homebrew/dupes
+brew tap homebrew/dupes
+
 # Get the latest git
 brew install git
 
@@ -21,6 +24,11 @@ echo $(which zsh) | sudo tee -a /etc/shells; chsh -s $(which zsh)
 
 # Install the gnu coreutils so we can use dircolors as gdircolors
 brew install coreutils
+
+## Install applications
+
+# Install homebrew cask
+brew install caskroom/cask/brew-cask
 
 ## Set sensible osx defaults
 

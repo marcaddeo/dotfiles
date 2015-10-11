@@ -14,3 +14,4 @@ ln -sf $DOTFILES/fonts/InconsolataForPowerlinePlusNerdFileTypesMonoPlusFontAweso
 
 # Terminal
 ln -sf $DOTFILES/terminal/com.apple.Terminal.plist $HOME/Library/Preferences
+defaults read com.apple.Terminal
