@@ -6,8 +6,8 @@
 
 ## Install software
 
-# Install Xcode Command Line Tools
-xcode-select --install
+# Authenticate sudo
+sudo -v
 
 # Install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -30,7 +30,7 @@ brew install coreutils
 # Install homebrew cask
 brew install caskroom/cask/brew-cask
 
-## Set sensible osx defaults
+## Set sensible OS X defaults
 
 # Remove the [ mark from the terminal
 defaults write com.apple.Terminal AutoMarkPromptLines -int 0
