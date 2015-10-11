@@ -2,9 +2,9 @@
 DOTFILES="$HOME/dotfiles"
 
 # Zsh
-ln -sf $DOTFILES/.oh-my-zsh $HOME/.oh-my-zsh
-ln -sf $DOTFILES/.zshrc $HOME/.zshrc
+ln -sf $DOTFILES/.oh-my-zsh $HOME
+ln -sf $DOTFILES/.zshrc $HOME
 
 # Git
-ln -sf $DOTFILES/.gitconfig $HOME/.gitconfig
-ln -sf $DOTFILES/.gitignore_global $HOME/.gitignore
+ln -sf $DOTFILES/.gitconfig $HOME
+ln -sf $DOTFILES/.gitignore_global $HOME
