@@ -17,6 +17,9 @@ ln -sf $DOTFILES/fonts/InconsolataForPowerlinePlusNerdFileTypesMonoPlusFontAweso
 ln -sf $DOTFILES/neovim/.nvim $HOME
 ln -sf $DOTFILES/neovim/.nvimrc $HOME
 
+# Tmux
+ln -sf $DOTFILES/tmux/.tmux.conf $HOME
+
 # Terminal
 ln -sf $DOTFILES/terminal/com.apple.Terminal.plist $HOME/Library/Preferences
 defaults read com.apple.Terminal >/dev/null 2>&1
