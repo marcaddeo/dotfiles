@@ -1,0 +1,37 @@
+#!/bin/bash
+## This script is intended to bootstrap a freshly installed copy of OS X to get
+## up and running with my development environment
+##
+## Tested on OS X 10.11 El Capitan
+
+# Install Xcode Command Line Tools
+xcode-select --install
+
+# Install homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Get the latest git
+brew install git
+
+# Clone my dotfiles
+git clone --recursive https://github.com/marcaddeo/dotfiles.git $HOME
+
+$HOME/dotfiles/script/install
+
+# Install Zsh
+brew install zsh
+echo $(which zsh) | sudo tee -a /etc/shells; chsh -s $(which zsh)
+
+# Install the gnu coreutils so we can use dircolors as gdircolors
+brew install coreutils
+
+# Next we need to manually apply the terminal colors
+echo "Please manually apply the terminal colors located in $HOME/dotfiles/Solarized Dark.terminal"
+echo "To do so, open the Terminal Preferences and under the cog at the bottom select \"Import\""
+echo "Once imported, please uncheck the box \"Use bold fonts\" and choose the correct font file"
+echo ""
+echo "The preferred font is Inconsolata at 13 pt"
+read -p "Once complete, hit ENTER"
+
+# Remove the [ mark from the terminal
+defaults write com.apple.Terminal AutoMarkPromptLines -int 0
