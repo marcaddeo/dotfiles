@@ -1,0 +1,4 @@
+neovim/.nvim/swap/*
+neovim/.nvim/undo/*
+neovim/.nvim/temp/*
+neovim/.nvim/plugged/*

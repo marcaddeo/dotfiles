@@ -25,6 +25,14 @@ echo $(which zsh) | sudo tee -a /etc/shells; chsh -s $(which zsh)
 # Install the gnu coreutils so we can use dircolors as gdircolors
 brew install coreutils
 
+# Install pip
+sudo easy_install pip
+
+# Install neovim
+brew tap neovim/neovim
+brew install --HEAD neovim
+sudo pip2 install neovim
+
 ## Install applications
 
 # Install homebrew cask

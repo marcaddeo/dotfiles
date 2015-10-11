@@ -13,6 +13,10 @@ ln -sf $DOTFILES/git/.gitignore $HOME
 ln -sf $DOTFILES/fonts/InconsolataForPowerlinePlusNerdFileTypesMonoPlusFontAwesomePlusOcticonsPlusPomicons.otf \
     $HOME/Library/Fonts
 
+# Neovim
+ln -sf $DOTFILES/neovim/.nvim $HOME
+ln -sf $DOTFILES/neovim/.nvimrc $HOME
+
 # Terminal
 ln -sf $DOTFILES/terminal/com.apple.Terminal.plist $HOME/Library/Preferences
 defaults read com.apple.Terminal >/dev/null 2>&1
