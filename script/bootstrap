@@ -27,6 +27,7 @@ brew install coreutils
 
 # Install fzf
 brew reinstall --HEAD fzf
+yes | /usr/local/opt/fzf/install
 
 # Install pip
 sudo easy_install pip

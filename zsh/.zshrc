@@ -58,6 +58,9 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 source $ZSH/oh-my-zsh.sh
 
+# Load fzf bindings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
