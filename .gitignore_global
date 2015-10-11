@@ -1,0 +1,5 @@
+/.phpcomplete_extended/
+/.vimrc.local
+/tags
+/tags.*
+.DS_Store

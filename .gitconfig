@@ -1,0 +1,13 @@
+[user]
+        name = Marc Addeo
+        email = marcaddeo@gmail.com
+[push]
+        default = simple
+[core]
+        excludesfile = /Users/marc/.gitignore
+        editor = /usr/local/bin/nvim
+[color]
+        ui = always
+        diff = always
+[rebase]
+        autosquash = true
