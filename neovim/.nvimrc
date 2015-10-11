@@ -5,7 +5,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
