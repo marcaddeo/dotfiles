@@ -4,8 +4,8 @@
 
 ### Requirements
 
-Install the Xcode Command Line Tools by doing `xcode-select --install`
-and selecting `Install`
+First, install any OS X updates. Then install the Xcode Command Line Tools with
+`xcode-select --install`.
 
 ### Bootstrapping
 
