@@ -16,6 +16,9 @@ yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/m
 # Tap homebrew/dupes
 brew tap homebrew/dupes
 
+# Tap homebrew/versions
+brew tap homebrew/versions
+
 # Get the latest git
 brew install git
 
