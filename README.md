@@ -19,7 +19,7 @@ bash -c "$(curl -L https://raw.githubusercontent.com/marcaddeo/dotfiles/master/s
 Note: this is only necessary when not using the bootstrap script.
 
 ```bash
-$ git clone git@github.com:marcaddeo/dotfiles.git ~/dotfiles
+$ git clone --recursive git@github.com:marcaddeo/dotfiles.git ~/dotfiles
 $ ~/dotfiles/script/install
 ```
 
