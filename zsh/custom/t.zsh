@@ -15,10 +15,10 @@ function t() {
             echo "Cowardly refusing to auto-commit tasks because the repository is dirty!"
         else
             echo "Pushing to Github..."
-            git checkout master >>/dev/null
-            git add tasks >>/dev/null
-            git commit -m "Update tasks" >>/dev/null
-            git push origin master >>/dev/null
+            git checkout master >/dev/null 2>&1
+            git add tasks >/dev/null 2>&1
+            git commit -m "Update tasks" >/dev/null 2>&1
+            git push origin master >/dev/null 2>&1
         fi
 
         popd >/dev/null
