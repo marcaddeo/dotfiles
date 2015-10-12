@@ -32,5 +32,6 @@ ln -sf $DOTFILES/timetrap/.timetrap.db $HOME
 
 # Terminal
 ln -sf $DOTFILES/terminal/.xterm-256color.ti $HOME
+ln -sf $DOTFILES/terminal/.screen-256color.ti $HOME
 ln -sf $DOTFILES/terminal/com.apple.Terminal.plist $HOME/Library/Preferences
 defaults read com.apple.Terminal >/dev/null 2>&1
