@@ -47,7 +47,7 @@ brew install tmux
 # Install keybase
 brew install keybase
 
-# Create the ~/.gnupg directory if it doesn't exists
+# Create the ~/.gnupg directory if it doesn't exist
 if [[ ! -d $HOME/.gnupg ]]; then
     mkdir $HOME/.gnupg
 fi
@@ -59,6 +59,11 @@ keybase login --no-key-pull
 # Actually pull down my keys in a separate transaction so I can use the proper
 # passphrase
 keybase pull
+
+# Create the ~/.ssh directory if it doesn't exist
+if [[ ! -d $HOME/.ssh ]]; then
+    mkdir $HOME/.ssh
+fi
 
 # Decrypt and copy ssh keys
 keybase decrypt -S marcaddeo -o $HOME/.ssh/id_rsa.github $DOTFILES/ssh/id_rsa.github.asc
