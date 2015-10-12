@@ -82,6 +82,11 @@ git remote add origin git@github.com:marcaddeo/dotfiles.git
 GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa.github" git fetch
 git branch master --set-upstream-to origin/master
 
+# We also want to assume the terminal preferences plist is unchanged because it
+# will change all the time and cause a dirty repo. To revert this to add changes
+# just run `git update-index --no-assume-unchanged terminal/com.apple.Terminal.plist`
+git update-index --assume-unchanged terminal/com.apple.Terminal.plist
+
 popd
 
 # Install timetrap
