@@ -11,7 +11,7 @@ DOTFILES="$HOME/dotfiles"
 sudo -v
 
 # Install homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Tap homebrew/dupes
 brew tap homebrew/dupes
