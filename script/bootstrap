@@ -37,6 +37,9 @@ brew tap neovim/neovim
 brew install --HEAD neovim
 pip2 install --user neovim
 
+# Install tmux
+brew install tmux
+
 ## Install applications
 
 # Install homebrew cask
