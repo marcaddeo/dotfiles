@@ -5,6 +5,5 @@ BCALLY-66 follow up with matt to get more context | priority:3, id:384301a7ea1f7
 BCALLY-68 fix issue where you cant add dishes to certain galleries | priority:2, id:44f57132acb87765bff668fea5599c899ec1ca2f
 BMAS-127 setup staging site | priority:4, id:7e03a766c5ca18ec198770995572a8f966dc55b4
 BLUEALLY-121 setup my dev environment | priority:5, id:7e58b3a485cfa6fc4fa9c3646ad394ebe3850856
-test | id:a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
 fix the typos in the askblueinsurance.com readme | priority:10, id:e61dd5f4bf8e2ab3c447ada98f3c94d0e80aadac
 work on tracking idle time when my computer sleeps | priority:8, id:f24e33d4ec24ea6f6716e8dce47e1ce83492e226
