@@ -70,13 +70,16 @@ keybase decrypt -S marcaddeo -o $HOME/.ssh/id_rsa.github $DOTFILES/ssh/id_rsa.gi
 chmod 600 $HOME/.ssh/id_rsa.github
 ssh-keygen -y -f $HOME/.ssh/id_rsa.github > $HOME/.ssh/id_rsa.github.pub
 
+# Add github to the known hosts
+ssh-keyscan github.com >> $HOME/.ssh/known_hosts
+
 # Switch the dotfiles repository to an ssh origin
 pushd .
 
 cd $DOTFILES
 git remote remove origin
 git remote add origin git@github.com:marcaddeo/dotfiles.git
-yes | git fetch
+GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa.github" git fetch
 git branch master --set-upstream-to origin/master
 
 popd
