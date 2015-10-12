@@ -182,7 +182,7 @@ function install_firefox {
 function install_little_snitch {
     local LITTLE_SNITCH_PATH=$(brew cask list little-snitch | grep -v Staged | cut -d ' ' -f1)
 
-    open "$LITTLE_SNITCH_PATH/Little\ Snitch\ Installer.app"
+    open "$LITTLE_SNITCH_PATH/Little Snitch Installer.app"
 }
 
 # We need to install Chrome and Firefox manually because home brew cask uses a
