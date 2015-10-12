@@ -139,9 +139,7 @@ brew cask install bartender
 brew cask install caffeine
 brew cask install dropbox
 brew cask install duet
-brew cask install firefox
 brew cask install flux
-brew cask install google-chrome
 brew cask install hipchat
 brew cask install istat-menus
 brew cask install jenkins-menu
@@ -158,6 +156,35 @@ brew cask install vagrant
 brew cask install virtualbox
 brew cask install vlc
 brew cask install vmware-fusion
+
+function install_chrome {
+    local TEMP=$TMPDIR$(uuidgen)
+    mkdir -p $TEMP/mount
+    curl https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg > $TEMP/chrome.dmg
+    yes | hdiutil attach -noverify -nobrowse -mountpoint $TEMP/mount $TEMP/chrome.dmg
+    cp -r $TEMP/mount/*.app /Applications
+    hdiutil detach $TEMP/mount
+    rm -r $TEMP
+}
+
+function install_firefox {
+    local TEMP=$TMPDIR$(uuidgen)
+    mkdir -p $TEMP/mount
+    pushd .
+    cd $TEMP
+    wget -r -nH --cut-dirs=6 --no-parent --reject "index.html*" https://ftp.mozilla.org/pub/firefox/releases/latest/mac/en-US/
+    mv "*.dmg" firefox.dmg
+    yes | hdiutil attach -noverify -nobrowse -mountpoint $TEMP/mount $TEMP/firefox.dmg
+    cp -r $TEMP/mount/*.app /Applications
+    hdiutil detach $TEMP/mount
+    rm -r $TEMP
+    popd
+}
+
+# We need to install Chrome and Firefox manually because home brew cask uses a
+# symlink for applications, and 1password doesn't like symlinks.
+install_chrome
+install_firefox
 
 ## Set sensible OS X defaults
 
