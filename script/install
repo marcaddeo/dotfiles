@@ -23,6 +23,9 @@ ln -sf $DOTFILES/tmux/.tmux.conf $HOME
 # T
 ln -sf $DOTFILES/tasks $HOME
 
+# SSH
+ln -sf $DOTFILES/ssh/config $HOME/.ssh
+
 # Terminal
 ln -sf $DOTFILES/terminal/com.apple.Terminal.plist $HOME/Library/Preferences
 defaults read com.apple.Terminal >/dev/null 2>&1

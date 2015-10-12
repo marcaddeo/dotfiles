@@ -3,6 +3,7 @@
 ## up and running with my development environment
 ##
 ## Tested on OS X 10.11 El Capitan
+$DOTFILES="$HOME/dotfiles"
 
 ## Install software
 
@@ -17,6 +18,9 @@ brew tap homebrew/dupes
 
 # Get the latest git
 brew install git
+
+# Clone my dotfiles
+git clone --recursive https://github.com/marcaddeo/dotfiles.git $DOTFILES
 
 # Install Zsh
 brew install zsh
@@ -40,6 +44,33 @@ pip2 install --user neovim
 # Install tmux
 brew install tmux
 
+# Install keybase
+brew install keybase
+
+# Create the ~/.gnupg directory if it doesn't exists
+if [[ -d $HOME/.gnupg ]]; then
+    mkdir $HOME/.gnupg
+fi
+
+# Login to keybase
+keybase login
+keybase pull
+
+# Decrypt and copy ssh keys
+keybase decrypt -S marcaddeo -o $HOME/.ssh/id_rsa.github $DOTFILES/ssh/id_rsa.github.asc
+chmod 600 $HOME/.ssh/id_rsa.github
+ssh-keygen -y -f $HOME/.ssh/id_rsa.github > $HOME/.ssh/id_rsa.github.pub
+
+# Switch the dotfiles repository to an ssh origin
+pushd .
+
+cd $DOTFILES
+git remote remove origin
+git remote add origin git@github.com:marcaddeo/dotfiles.git
+git branch --set-upstream-to=origin/master master
+
+popd
+
 ## Install applications
 
 # Install homebrew cask
@@ -50,10 +81,5 @@ brew install caskroom/cask/brew-cask
 # Remove the [ mark from the terminal
 defaults write com.apple.Terminal AutoMarkPromptLines -int 0
 
-## Clone and install dotfiles
-
-# Clone my dotfiles
-git clone --recursive https://github.com/marcaddeo/dotfiles.git $HOME/dotfiles
-
-# Install dotfiles
-$HOME/dotfiles/script/install
+## Install symlinks
+$DOTFILES/script/install
