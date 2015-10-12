@@ -52,8 +52,12 @@ if [[ -d $HOME/.gnupg ]]; then
     mkdir $HOME/.gnupg
 fi
 
-# Login to keybase
-keybase login
+# Login to keybase but don't pull keys
+# Pulling keys will fail on login, because my key and loging passphrase are
+# different
+keybase login --no-key-pull
+# Actually pull down my keys in a separate transaction so I can use the proper
+# passphrase
 keybase pull
 
 # Decrypt and copy ssh keys
