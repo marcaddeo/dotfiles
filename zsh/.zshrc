@@ -85,3 +85,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# fix terminals to send ctrl-h to neovim correctly
+[[ -f "~/.$TERM.ti" ]] && tic ~/.$TERM.ti
