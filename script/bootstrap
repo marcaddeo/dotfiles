@@ -98,10 +98,66 @@ popd
 # Install timetrap
 sudo gem install timetrap
 
+# Install languages
+brew tap homebrew/homebrew-php
+
+brew install node
+brew install php56
+brew install erlang
+brew install elixir
+
+# Install dependency managers
+brew install composer
+npm install -g brunch
+npm install -g grunt-cli
+npm install -g gulp
+npm install -g bower
+
+# Install dev tools
+brew install wp-cli
+
+# Install better ctags for php
+curl https://raw.githubusercontent.com/shawncplus/phpcomplete.vim/master/misc/ctags-better-php.rb > /usr/local/Library/Formula/ctags-better-php.rb
+brew install ctags-better-phpbrew cask install virtualbox
+brew link --overwrite ctags-better-php
+
+# Install utilities
+brew install tig
+brew install the_silver_searcher
+brew install tree
+brew install wget
+brew install colordiff
+brew install jq
+
 ## Install applications
 
 # Install homebrew cask
 brew install caskroom/cask/brew-cask
+
+# Install my usual applications
+brew cask install 1password
+brew cask install alfred
+brew cask install bartender
+brew cask install caffeine
+brew cask install dropbox
+brew cask install duet
+brew cask install firefox
+brew cask install flux
+brew cask install google-chrome
+brew cask install hipchat
+brew cask install istat-menus
+brew cask install jenkins-menu
+brew cask install little-snitch
+brew cask install moom
+brew csak install sonos
+brew cask install spotify
+brew cask install spotify-notifications
+brew cask install steam
+brew cask install transmit
+brew cask install vagrant
+brew cask install virtualbox
+brew cask install vlc
+brew cask install vmware-fusion
 
 ## Set sensible OS X defaults
 
