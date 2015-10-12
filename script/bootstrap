@@ -144,8 +144,6 @@ brew cask install hipchat
 brew cask install istat-menus
 brew cask install jenkins-menu
 brew cask install little-snitch
-LITTLE_SNITCH_PATH=brew cask list little-snitch | grep -v Staged | cut -d ' ' -f1
-$LITTLE_SNITCH_PATH/Little\ Snitch\ Installer.app
 brew cask install moom
 brew cask install sonos
 brew cask install spotify
@@ -181,10 +179,19 @@ function install_firefox {
     popd
 }
 
+function install_little_snitch {
+    local LITTLE_SNITCH_PATH=$(brew cask list little-snitch | grep -v Staged | cut -d ' ' -f1)
+
+    open "$LITTLE_SNITCH_PATH/Little\ Snitch\ Installer.app"
+}
+
 # We need to install Chrome and Firefox manually because home brew cask uses a
 # symlink for applications, and 1password doesn't like symlinks.
 install_chrome
 install_firefox
+
+# Little snitch has an additional installation step
+install_little_snitch
 
 ## Set sensible OS X defaults
 
