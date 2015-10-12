@@ -52,21 +52,21 @@ printf "${I}''''''''''''''''''''''''''''${R}${COLOR}-/+osyhddmmmmmmddhyso+/-.${I
 printf "\n\n"
 
 function refresh_tmux {
-	tmux refresh-client -S
+    tmux refresh-client -S
 }
 trap refresh_tmux EXIT
 
 function display_time() {
-	local T=$1
-	local D=$((T/60/60/24))
-	local H=$((T/60/60%24))
-	local M=$((T/60%60))
-	local S=$((T%60))
-	[[ $D > 0 ]] && printf '%d days ' $D
-	[[ $H > 0 ]] && printf '%d hours ' $H
-	[[ $M > 0 ]] && printf '%d minutes ' $M
-	[[ $D > 0 || $H > 0 || $M > 0 ]] && printf 'and '
-	printf '%d seconds\n' $S
+    local T=$1
+    local D=$((T/60/60/24))
+    local H=$((T/60/60%24))
+    local M=$((T/60%60))
+    local S=$((T%60))
+    [[ $D > 0 ]] && printf '%d days ' $D
+    [[ $H > 0 ]] && printf '%d hours ' $H
+    [[ $M > 0 ]] && printf '%d minutes ' $M
+    [[ $D > 0 || $H > 0 || $M > 0 ]] && printf 'and '
+    printf '%d seconds\n' $S
 }
 
 NOW=$(date "+%s")
@@ -76,39 +76,39 @@ IDLE_TIME=$(display_time $1)
 
 PS3="> "
 options=(
-	"Keep idle time"
-	"Discard idle time"
-	"Discard idle time and continue"
-	"Add idle time as a new time entry"
+    "Keep idle time"
+    "Discard idle time"
+    "Discard idle time and continue"
+    "Add idle time as a new time entry"
 )
 printf "${ORANGE}You have been idle since$RESET ${BOLD}$IDLE_SINCE$RESET $ORANGE(${GREEN}$IDLE_TIME$RESET$ORANGE)$RESET\n"
 select opt in "${options[@]}"; do
-	case $opt in
-		"Keep idle time")
-			echo "Keeping idle time..."
-			sleep 1
-			exit
-			;;
-		"Discard idle time")
-			echo "Discarding idle time..."
-			sleep 1
-			timetrap out --at "$IDLE_SINCE"
-			exit
-			;;
-		"Discard idle time and continue")
-			echo "Discarding idle time and continuing..."
-			sleep 1
-			timetrap out --at "$IDLE_SINCE"
-			timetrap resume
-			exit
-			;;
-		"Add idle time as a new time entry")
-			echo "Adding idle time as a new time entry..."
-			sleep 1
-			timetrap out --at "$IDLE_SINCE"
-			timetrap in --at "$IDLE_SINCE"
-			exit
-			;;
-		*) echo "Invalid option";;
-	esac
+    case $opt in
+        "Keep idle time")
+            echo "Keeping idle time..."
+            sleep 1
+            exit
+            ;;
+        "Discard idle time")
+            echo "Discarding idle time..."
+            sleep 1
+            timetrap out --at "$IDLE_SINCE"
+            exit
+            ;;
+        "Discard idle time and continue")
+            echo "Discarding idle time and continuing..."
+            sleep 1
+            timetrap out --at "$IDLE_SINCE"
+            timetrap resume
+            exit
+            ;;
+        "Add idle time as a new time entry")
+            echo "Adding idle time as a new time entry..."
+            sleep 1
+            timetrap out --at "$IDLE_SINCE"
+            timetrap in --at "$IDLE_SINCE"
+            exit
+            ;;
+        *) echo "Invalid option";;
+    esac
 done
