@@ -135,7 +135,6 @@ brew install jq
 brew install caskroom/cask/brew-cask
 
 # Install my usual applications
-brew cask install 1password
 brew cask install alfred
 brew cask install bartender
 brew cask install caffeine
