@@ -171,7 +171,7 @@ function install_firefox {
     pushd .
     cd $TEMP
     wget -r -nH --cut-dirs=6 --no-parent --reject "index.html*" https://ftp.mozilla.org/pub/firefox/releases/latest/mac/en-US/
-    mv "*.dmg" firefox.dmg
+    mv "$(ls -1 | grep Firefox)" firefox.dmg
     yes | hdiutil attach -noverify -nobrowse -mountpoint $TEMP/mount $TEMP/firefox.dmg
     cp -r $TEMP/mount/*.app /Applications
     hdiutil detach $TEMP/mount
