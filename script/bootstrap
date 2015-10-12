@@ -84,6 +84,9 @@ git branch master --set-upstream-to origin/master
 
 popd
 
+# Install timetrap
+sudo gem install timetrap
+
 ## Install applications
 
 # Install homebrew cask
