@@ -11,8 +11,8 @@ function t() {
         pushd .
         cd $HOME/dotfiles
 
-        if ! git diff --exit-code --quiet; then
-            echo "Cowardly refusing to auto-commit tasks because the repository is dirty\!"
+        if [[ ! -z $(cd $HOME/dotfiles; git diff --name-only | grep -v tasks/tasks) ]]; then
+            echo "Cowardly refusing to auto-commit tasks because the repository is dirty!"
         else
             git checkout master
             git add tasks/tasks
