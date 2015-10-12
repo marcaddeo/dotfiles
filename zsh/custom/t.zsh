@@ -7,7 +7,7 @@ function t() {
         tmux refresh-client -S
     fi
 
-    if [[ ! -z $(git diff --name-only $HOME/tasks/tasks) ]]; then
+    if [[ ! -z $(cd $HOME/dotfiles; git diff --name-only $HOME/tasks/tasks) ]]; then
         pushd .
         cd $HOME/dotfiles
 
