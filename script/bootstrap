@@ -118,7 +118,7 @@ brew install wp-cli
 
 # Install better ctags for php
 curl https://raw.githubusercontent.com/shawncplus/phpcomplete.vim/master/misc/ctags-better-php.rb > /usr/local/Library/Formula/ctags-better-php.rb
-brew install ctags-better-phpbrew cask install virtualbox
+brew install ctags-better-php
 brew link --overwrite ctags-better-php
 
 # Install utilities
