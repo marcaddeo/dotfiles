@@ -23,5 +23,5 @@ function ti() {
     fi
 }
 
-alias tio="timetrap out"
-alias tid="timetrap display"
+alias tio="ti out"
+alias tid="ti display"
