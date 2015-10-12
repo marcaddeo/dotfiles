@@ -7,16 +7,16 @@ function t() {
         tmux refresh-client -S
     fi
 
-    if [[ ! -z $(cd $HOME/dotfiles; git diff --name-only tasks/tasks) ]]; then
+    if [[ ! -z $(cd $HOME/dotfiles; git diff --name-only tasks/) ]]; then
         pushd . >/dev/null
         cd $HOME/dotfiles
 
-        if [[ ! -z $(cd $HOME/dotfiles; git diff --name-only | grep -v tasks/tasks) ]]; then
+        if [[ ! -z $(cd $HOME/dotfiles; git diff --name-only | grep -v tasks/) ]]; then
             echo "Cowardly refusing to auto-commit tasks because the repository is dirty!"
         else
             echo "Pushing to Github..."
             git checkout master >>/dev/null
-            git add tasks/tasks >>/dev/null
+            git add tasks >>/dev/null
             git commit -m "Update tasks" >>/dev/null
             git push origin master >>/dev/null
         fi
