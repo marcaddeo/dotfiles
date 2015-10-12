@@ -29,6 +29,9 @@ git clone --recursive https://github.com/marcaddeo/dotfiles.git $DOTFILES
 brew install zsh
 echo $(which zsh) | sudo tee -a /etc/shells; chsh -s $(which zsh)
 
+# Install mosh
+brew install mobile-shell
+
 # Install the gnu coreutils so we can use dircolors as gdircolors
 brew install coreutils
 
