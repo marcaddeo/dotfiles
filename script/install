@@ -10,7 +10,7 @@ ln -sf $DOTFILES/git/.gitconfig $HOME
 ln -sf $DOTFILES/git/.gitignore $HOME
 
 # Fonts
-ln -sf $DOTFILES/fonts/InconsolataForPowerlinePlusNerdFileTypesMonoPlusFontAwesomePlusOcticonsPlusPomicons.otf \
+cp $DOTFILES/fonts/InconsolataForPowerlinePlusNerdFileTypesMonoPlusFontAwesomePlusOcticonsPlusPomicons.otf \
     $HOME/Library/Fonts
 
 # Neovim
