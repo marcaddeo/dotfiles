@@ -49,7 +49,7 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git gpg-agent jira sprunge sudo tmux vagrant)
 
 # User configuration
 
@@ -63,3 +63,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Load a custom terminfo file to fix backspace in neovim
 [[ -f "~/.$TERM.ti" ]] && tic ~/.$TERM.ti
+
+# Automatically start tmux
+ZSH_TMUX_AUTOSTART=true
