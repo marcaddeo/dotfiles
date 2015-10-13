@@ -9,6 +9,9 @@ ln -sf $DOTFILES/zsh/.zshrc $HOME
 ln -sf $DOTFILES/git/.gitconfig $HOME
 ln -sf $DOTFILES/git/.gitignore $HOME
 
+# Ag
+ln -sf $DOTGILES/ag/.agignore $HOME
+
 # Fonts
 cp $DOTFILES/fonts/InconsolataForPowerlinePlusNerdFileTypesMonoPlusFontAwesomePlusOcticonsPlusPomicons.otf \
     $HOME/Library/Fonts
