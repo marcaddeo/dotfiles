@@ -42,6 +42,9 @@ ZSH_THEME="my"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
+# Automatically start tmux
+ZSH_TMUX_AUTOSTART=true
+
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$HOME/dotfiles/zsh/custom
 
@@ -63,6 +66,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Load a custom terminfo file to fix backspace in neovim
 [[ -f "~/.$TERM.ti" ]] && tic ~/.$TERM.ti
-
-# Automatically start tmux
-ZSH_TMUX_AUTOSTART=true
