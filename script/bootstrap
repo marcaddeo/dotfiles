@@ -53,10 +53,20 @@ brew install tmux
 # Install keybase
 brew install keybase
 
+# Install gpg-agent
+brew install gpg-agent
+
+# Install pinentry-mac
+brew install pinentry-mac
+
 # Create the ~/.gnupg directory if it doesn't exist
 if [[ ! -d $HOME/.gnupg ]]; then
     mkdir $HOME/.gnupg
 fi
+
+# Early symlinking of gpg configs so we can use them for the coming commands
+ln -sf $DOTFILES/gnupg/gpg.conf $HOME/.gnupg
+ln -sf $DOTFILES/gnupg/gpg-agent.conf $HOME/.gnupg
 
 # Login to keybase but don't pull keys
 # Pulling keys will fail on login, because my key and loging passphrase are

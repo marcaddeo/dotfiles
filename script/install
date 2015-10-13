@@ -26,6 +26,10 @@ ln -sf $DOTFILES/tasks $HOME
 # SSH
 ln -sf $DOTFILES/ssh/config $HOME/.ssh
 
+# Gnupg
+ln -sf $DOTFILES/gnupg/gpg.conf $HOME/.gnupg
+ln -sf $DOTFILES/gnupg/gpg-agent.conf $HOME/.gnupg
+
 # Timetrap
 ln -sf $DOTFILES/timetrap/.timetrap.yml $HOME
 ln -sf $DOTFILES/timetrap/.timetrap.db $HOME
