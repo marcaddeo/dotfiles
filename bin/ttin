@@ -1,5 +1,5 @@
 #!/bin/bash
-T="python $HOME/dotfiles/script/t --task-dir ~/tasks --list tasks"
+T="python $HOME/dotfiles/script/t --task-dir ~/dotfiles/tasks --list tasks"
 PASS_ARGS="$@"
 
 function refresh_tmux {
