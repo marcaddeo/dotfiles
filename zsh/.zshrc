@@ -44,6 +44,8 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Automatically start tmux
 ZSH_TMUX_AUTOSTART=true
+# Don't automatically quit when detaching
+ZSH_TMUX_AUTOQUIT=false
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$HOME/dotfiles/zsh/custom
