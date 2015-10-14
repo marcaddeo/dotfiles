@@ -4,7 +4,6 @@ OWR-255 push changes to production | priority:1, id:34f2a5a7a29cedf00a7f2d38eeec
 BCALLY-66 follow up with matt to get more context | priority:3, id:384301a7ea1f726d34820364c3d15a372a5bedb8
 BCALLY-68 fix issue where you cant add dishes to certain galleries | priority:2, id:44f57132acb87765bff668fea5599c899ec1ca2f
 ABALLY-64 investigate and estimate | id:593ca9756976db1f4f6343c883813c98d06ab2a5
-BCALLY-69 estimate | priority:1, id:74f7bde4aaa8981e0cef046579bca66c6862f544
 BMAS-127 setup staging site | priority:4, id:7e03a766c5ca18ec198770995572a8f966dc55b4
 BLUEALLY-121 setup my dev environment | priority:5, id:7e58b3a485cfa6fc4fa9c3646ad394ebe3850856
 fix the typos in the askblueinsurance.com readme | priority:10, id:e61dd5f4bf8e2ab3c447ada98f3c94d0e80aadac
