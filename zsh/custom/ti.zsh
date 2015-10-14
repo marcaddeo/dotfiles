@@ -25,3 +25,4 @@ function ti() {
 
 alias tio="ti out"
 alias tid="ti display"
+alias tit="ti today"
