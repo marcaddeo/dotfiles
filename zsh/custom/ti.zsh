@@ -27,7 +27,7 @@ function ti() {
 }
 
 function tie {
-    ID=$(timetrap display -v | grep -v "^ " | tail -n+3 | fzf-tmux -d40% --ansi | cut -d ' ' -f1)
+    ID=$(timetrap display -v | grep -v "^ " | tail -n+3 | fzf-tmux -d40% --ansi --tac | cut -d ' ' -f1)
 
     if [[ ! -z $ID ]]; then
         NOTE=$(timetrap display -fjson_all | jq -r ".[] | select(.id==$ID) | .note")
