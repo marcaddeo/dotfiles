@@ -19,7 +19,7 @@ function ti() {
             git push origin master >/dev/null 2>&1
         fi
 
-        popd >/dev/null
+        popd >/dev/null 2>&1
     fi
 }
 
