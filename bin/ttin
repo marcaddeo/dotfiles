@@ -26,18 +26,9 @@ function refresh_and_push {
 }
 trap refresh_and_push EXIT
 
-function pick_task {
-    printf "Which task do you want to work on:\n\n"
-    $T
+ID=$($T | fzf-tmux -d40% --ansi | perl -pe 's~^#\d+\s+- (.*?)\s+-.*~\1~')
+NOTE=$($T -P | grep "^$ID\s\+- " | sed -e "s/^$ID[[:space:]]*- \(.*\)/\1/")
 
-    read -p "> " ID
-    NOTE=$($T -P | grep "^$ID\s\+- " | sed -e "s/^$ID[[:space:]]*- \(.*\)/\1/")
-
-    if [[ ! -z $NOTE ]]; then
-        timetrap in "$NOTE" "$PASS_ARGS"
-    else
-        pick_task
-    fi
-}
-
-pick_task
+if [[ ! -z $NOTE ]]; then
+    timetrap in "$NOTE" "$PASS_ARGS"
+fi
