@@ -33,6 +33,8 @@ ln -sf $DOTFILES/gnupg/gpg-agent.conf $HOME/.gnupg
 # Timetrap
 ln -sf $DOTFILES/timetrap/.timetrap.yml $HOME
 ln -sf $DOTFILES/timetrap/.timetrap.db $HOME
+[[ ! -d $HOME/.timetrap ]] && mkdir $HOME/.timetrap
+ln -sf $DOTFILES/timetrap/formatters $HOME/.timetrap
 
 # Terminal
 ln -sf $DOTFILES/terminal/.xterm-256color.ti $HOME
