@@ -98,10 +98,12 @@ git remote add origin git@github.com:marcaddeo/dotfiles.git
 GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa.github" git fetch
 git branch master --set-upstream-to origin/master
 
-# We also want to assume the terminal preferences plist is unchanged because it
-# will change all the time and cause a dirty repo. To revert this to add changes
-# just run `git update-index --no-assume-unchanged terminal/com.apple.Terminal.plist`
-git update-index --assume-unchanged terminal/com.apple.Terminal.plist
+# We also want to assume the tasks and sheets submodules are unchanged because
+# they will change all the time and cause a dirty repo. To revert this to add changes
+# just run `git update-index --no-assume-unchanged tasks` and 
+# `git update-index --no-assume-unchanged timetrap/sheets`
+git update-index --assume-unchanged tasks
+git update-index --assume-unchanged timetrap/sheets
 
 popd
 
