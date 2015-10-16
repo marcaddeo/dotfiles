@@ -43,6 +43,16 @@ function tie {
     _refresh_and_push
 }
 
+function tik {
+    ID=$(timetrap display -v | grep -v "^ " | tail -n+3 | fzf-tmux -d40% --ansi --tac | cut -d ' ' -f1)
+
+    if [[ ! -z $ID ]]; then
+        timetrap kill --id $ID
+    fi
+
+    _refresh_and_push
+}
+
 alias tio="ti out"
 alias tid="ti display"
 alias tit="ti today"
