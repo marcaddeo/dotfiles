@@ -26,7 +26,7 @@ $ ~/dotfiles/script/install
 ## TODO
 - [ ] Document in the README what is included in these dotfiles
 - [ ] Make my time tracking scripts more DRY
-- [ ] Separate the tasks and timetrap directories into their own repositories and add them as submodules
+- [x] Separate the tasks and timetrap directories into their own repositories and add them as submodules
 - [ ] Figure out how to handle idle time tracking when the computer sleeps
 - [ ] Add "sensible defaults" for OS X in the bootstrap script
 
