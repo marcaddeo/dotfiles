@@ -3,19 +3,15 @@ function _refresh_and_push_timesheetss {
         tmux refresh-client -S
     fi
 
-    if [[ ! -z $(cd $HOME/dotfiles; git diff --name-only timetrap/) ]]; then
+    if [[ ! -z $(cd $HOME/dotfiles/timetrap/sheets; git diff --name-only) ]]; then
         pushd . >/dev/null
-        cd $HOME/dotfiles
+        cd $HOME/dotfiles/timetrap/sheets
 
-        if [[ ! -z $(cd $HOME/dotfiles; git diff --name-only | grep -v timetrap/) ]]; then
-            echo "Cowardly refusing to auto-commit time sheets because the repository is dirty!"
-        else
-            echo "Pushing to Github..."
-            git checkout master >/dev/null 2>&1
-            git add timetrap >/dev/null 2>&1
-            git commit -m "Update time sheets" >/dev/null 2>&1
-            git push origin master >/dev/null 2>&1
-        fi
+        echo "Pushing to Github..."
+        git checkout master >/dev/null 2>&1
+        git add timetrap >/dev/null 2>&1
+        git commit -m "Update time sheets" >/dev/null 2>&1
+        git push origin master >/dev/null 2>&1
 
         popd >/dev/null 2>&1
     fi
