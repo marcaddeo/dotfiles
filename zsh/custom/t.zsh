@@ -17,7 +17,7 @@ function _refresh_and_push_tasks {
 
         echo "Pushing to Github..."
         git checkout master >/dev/null 2>&1
-        git add tasks >/dev/null 2>&1
+        git add . >/dev/null 2>&1
         git commit -m "Update tasks" >/dev/null 2>&1
         git push origin master >/dev/null 2>&1
 
