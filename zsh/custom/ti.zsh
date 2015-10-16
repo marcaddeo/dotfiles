@@ -9,7 +9,7 @@ function _refresh_and_push_timesheetss {
 
         echo "Pushing to Github..."
         git checkout master >/dev/null 2>&1
-        git add timetrap >/dev/null 2>&1
+        git add . >/dev/null 2>&1
         git commit -m "Update time sheets" >/dev/null 2>&1
         git push origin master >/dev/null 2>&1
 
