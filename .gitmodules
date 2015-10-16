@@ -4,3 +4,6 @@
 [submodule "tasks"]
 	path = tasks
 	url = git@github.com:marcaddeo/tasks.git
+[submodule "timetrap/sheets"]
+	path = timetrap/sheets
+	url = git@github.com:marcaddeo/sheets.git
