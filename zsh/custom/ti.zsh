@@ -1,4 +1,4 @@
-function _refresh_and_push {
+function _refresh_and_push_timesheetss {
     if [[ -n "$TMUX" ]]; then
         tmux refresh-client -S
     fi
@@ -23,7 +23,7 @@ function _refresh_and_push {
 
 function ti() {
     timetrap $@
-    _refresh_and_push
+    _refresh_and_push_timesheetss
 }
 
 function tie {
@@ -40,7 +40,7 @@ function tie {
         timetrap edit --id $ID "$NOTE"
     fi
 
-    _refresh_and_push
+    _refresh_and_push_timesheetss
 }
 
 function tik {
@@ -50,7 +50,7 @@ function tik {
         timetrap kill --id $ID
     fi
 
-    _refresh_and_push
+    _refresh_and_push_timesheetss
 }
 
 alias tio="ti out"
