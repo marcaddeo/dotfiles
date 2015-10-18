@@ -53,6 +53,16 @@ function tik {
     _refresh_and_push_timesheetss
 }
 
+function tir() {
+    ID=$(_pick_entry)
+
+    if [[ ! -z $ID ]]; then
+        timetrap resume --id $ID $@
+    fi
+
+    _refresh_and_push_timesheetss
+}
+
 alias tio="ti out"
 alias tid="ti display"
 alias tit="ti today"
