@@ -41,6 +41,11 @@ of unfinished tasks is also shown in my tmux statusline.
 - [ ] Figure out how to handle idle time tracking when the computer sleeps
 - [ ] Add "sensible defaults" for OS X in the bootstrap script
 - [ ] Add more GIFs of the functions
+- [ ] Add Alfred preferences
+- [ ] Add Bartender preferences
+- [ ] Add Caffeine preferences
+- [ ] Add Spotify Notifcations preferences
+- [ ] Look into using [`fasd`]
 
 ## License
 dotfiles is copyright © 2015 Marc Addeo. It is free software, and may be
@@ -49,3 +54,4 @@ redistributed under the terms specified in the [`LICENSE`] file.
 [`LICENSE`]: /LICENSE
 [`t`]: https://github.com/sjl/t
 [`fzf`]: https://github.com/junegunn/fzf
+[`fasd`]: https://github.com/clvv/fasd
