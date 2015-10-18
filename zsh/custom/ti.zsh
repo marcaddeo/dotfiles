@@ -26,7 +26,7 @@ function ti() {
     _refresh_and_push_timesheetss
 }
 
-function tie {
+function tie() {
     ID=$(_pick_entry)
 
     if [[ ! -z $ID ]]; then
@@ -37,7 +37,7 @@ function tie {
 
         NOTE=$(<$TMP)
 
-        timetrap edit --id $ID "$NOTE"
+        timetrap edit --id $ID "$NOTE" $@
     fi
 
     _refresh_and_push_timesheetss
