@@ -9,11 +9,11 @@ function refresh_and_push {
 
     if [[ ! -z $(cd $HOME/dotfiles/timetrap/sheets; git diff --name-only) ]]; then
         pushd . >/dev/null
-        cd $HOME/dotfiles
+        cd $HOME/dotfiles/timetrap
 
         echo "Pushing to Github..."
         git checkout master >/dev/null 2>&1
-        git add timetrap >/dev/null 2>&1
+        git add . >/dev/null 2>&1
         git commit -m "Update time sheets" >/dev/null 2>&1
         git push origin master >/dev/null 2>&1
 
