@@ -17,13 +17,17 @@ function _refresh_and_push_timesheetss {
     fi
 }
 
+function _pick_entry {
+    echo $(timetrap display -v | grep -v "^ " | tail -n+3 | fzf-tmux -d40% --ansi --tac | cut -d ' ' -f1)
+}
+
 function ti() {
     timetrap $@
     _refresh_and_push_timesheetss
 }
 
 function tie {
-    ID=$(timetrap display -v | grep -v "^ " | tail -n+3 | fzf-tmux -d40% --ansi --tac | cut -d ' ' -f1)
+    ID=$(_pick_entry)
 
     if [[ ! -z $ID ]]; then
         NOTE=$(timetrap display -fjson_all | jq -r ".[] | select(.id==$ID) | .note")
@@ -40,7 +44,7 @@ function tie {
 }
 
 function tik {
-    ID=$(timetrap display -v | grep -v "^ " | tail -n+3 | fzf-tmux -d40% --ansi --tac | cut -d ' ' -f1)
+    ID=$(_pick_entry)
 
     if [[ ! -z $ID ]]; then
         timetrap kill --id $ID
