@@ -63,6 +63,10 @@ function tir() {
     _refresh_and_push_timesheetss
 }
 
+function tij() {
+    php $HOME/dotfiles/scripts/timetrap-to-jira/timetrap-to-jira.php $@
+}
+
 alias tio="ti out"
 alias tid="ti display"
 alias tit="ti today"
