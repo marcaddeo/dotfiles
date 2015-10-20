@@ -64,7 +64,7 @@ function tir() {
 }
 
 function tij() {
-    php $HOME/dotfiles/scripts/timetrap-to-jira/timetrap-to-jira.php $@
+    php $HOME/dotfiles/script/timetrap-to-jira/timetrap-to-jira.php $@
 }
 
 alias tio="ti out"
