@@ -2,3 +2,6 @@ Host github.com
     HostName github.com
     IdentityFile ~/.ssh/id_rsa.github
     User git
+
+Host *.hosting.acquia.com
+    IdentityFile ~/.ssh/id_rsa.acquia
