@@ -26,6 +26,18 @@ ln -sf $DOTFILES/tmux/.tmux.conf $HOME
 # SSH
 ln -sf $DOTFILES/ssh/config $HOME/.ssh
 
+# Decrypt and copy ssh keys
+keybase decrypt -S marcaddeo -o $HOME/.ssh/id_rsa.github $DOTFILES/ssh/id_rsa.github.asc
+keybase decrypt -S marcaddeo -o $HOME/.ssh/id_rsa.acquia $DOTFILES/ssh/id_rsa.acquia.asc
+
+# Chmod the keys
+chmod 600 $HOME/.ssh/id_rsa.github
+chmod 600 $HOME/.ssh/id_rsa.acquia
+
+# Generate public keys from the private keys
+ssh-keygen -y -f $HOME/.ssh/id_rsa.github > $HOME/.ssh/id_rsa.github.pub
+ssh-keygen -y -f $HOME/.ssh/id_rsa.acquia > $HOME/.ssh/id_rsa.acquia.pub
+
 # Gnupg
 ln -sf $DOTFILES/gnupg/gpg.conf $HOME/.gnupg
 ln -sf $DOTFILES/gnupg/gpg-agent.conf $HOME/.gnupg
