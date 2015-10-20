@@ -3,3 +3,4 @@ neovim/.nvim/undo/*
 neovim/.nvim/temp/*
 neovim/.nvim/plugged/*
 terminal/com.apple.Terminal.plist
+timetrap/.timetrap-to-jira.json
