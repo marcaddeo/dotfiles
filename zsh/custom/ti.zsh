@@ -72,6 +72,16 @@ function tij() {
     php $HOME/dotfiles/script/timetrap-to-jira/timetrap-to-jira.php $@
 }
 
+function tib() {
+    BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    KEY=$(echo $BRANCH | cut -d '/' -f1)
+    NOTE=$(echo $BRANCH | cut -d '/' -f2- | sed -e 's/-/ /g')
+
+    timetrap in "$KEY $NOTE" $@
+
+    _refresh_and_push_timesheetss
+}
+
 alias tio="ti out"
 alias tid="ti display"
 alias tit="ti today"
