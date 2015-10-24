@@ -26,6 +26,11 @@ function ti() {
     _refresh_and_push_timesheetss
 }
 
+function tii() {
+    timetrap in $@
+    _refresh_and_push_timesheetss
+}
+
 function tie() {
     ID=$(_pick_entry)
 
