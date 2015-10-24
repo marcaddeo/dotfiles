@@ -1,0 +1,19 @@
+#!/bin/bash
+SCRIPT=$HOME/dotfiles/script
+ITUNES=$(osascript $SCRIPT/itunes.scpt)
+SPOTIFY=$(osascript $SCRIPT/spotify.scpt)
+SONOS=$(socos list | grep "Open Space" | cut -d ' ' -f2 | xargs socos current)
+
+if [[ ! -z $ITUNES ]]; then
+    echo $ITUNES
+elif [[ ! -z $SPOTIFY ]]; then
+    echo $SPOTIFY
+elif [[ ! -z $SONOS ]]; then
+    # Using a modified SoCos so that it returns json
+    ARTIST=$(echo $SONOS | jq -r '.artist')
+    TITLE=$(echo $SONOS | jq -r '.title')
+
+    echo "$TITLE by $ARTIST"
+else
+    echo "nothing playing"
+fi

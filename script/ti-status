@@ -29,7 +29,7 @@ if [[ $NOW != *"not running"* ]]; then
         NOTE="$(echo $NOTE | cut -c 1-20) …"
     fi
 
-    echo "#[fg=colour33,bold]$CLOCK #[fg=colour2,nobold]$TIME $NOTE #[default] :: "
+    echo "#[fg=colour33,bold]$CLOCK #[fg=colour2,nobold]$TIME $NOTE #[default]"
 else
-    echo "#[bold]$CLOCK #[fg=colour10,nobold]idle #[default]::"
+    echo "#[bold]$CLOCK #[fg=colour10,nobold]idle #[default]"
 fi
