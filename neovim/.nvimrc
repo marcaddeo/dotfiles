@@ -177,7 +177,9 @@ let g:vdebug_options = {
         \ '/var/www/wp-settings.php' : '/Users/marc/dev/oomph/wp/wp-settings.php',
         \ '/var/www/wp-signup.php' : '/Users/marc/dev/oomph/wp/wp-signup.php',
         \ '/var/www/wp-trackback.php' : '/Users/marc/dev/oomph/wp/wp-trackback.php',
-        \ '/var/www/xmlrpc.php' : '/Users/marc/dev/oomph/wp/xmlrpc.php'
+        \ '/var/www/xmlrpc.php' : '/Users/marc/dev/oomph/wp/xmlrpc.php',
+        \ '/var/www/docroot' : '/Users/marc/dev/oomph/blue365/docroot',
+        \ '/var/www/web' : '/Users/marc/dev/oomph/oomphinc.com/web'
     \}
 \}
 
