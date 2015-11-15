@@ -22,6 +22,8 @@ ln -sf $DOTFILES/neovim/.nvimrc $HOME
 
 # Tmux
 ln -sf $DOTFILES/tmux/.tmux.conf $HOME
+mkdir -p $HOME/.tmux/plugins
+ln -sf $DOTFILES/tmux/tpm $HOME/.tmux/plugins
 
 # SSH
 ln -sf $DOTFILES/ssh/config $HOME/.ssh
