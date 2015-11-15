@@ -85,3 +85,4 @@ function tib() {
 alias tio="ti out"
 alias tid="ti display"
 alias tit="ti today"
+alias tiw="ti week"
