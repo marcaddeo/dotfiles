@@ -17,8 +17,7 @@ cp $DOTFILES/fonts/InconsolataForPowerlinePlusNerdFileTypesMonoPlusFontAwesomePl
     $HOME/Library/Fonts
 
 # Neovim
-ln -sf $DOTFILES/neovim/.nvim $HOME
-ln -sf $DOTFILES/neovim/.nvimrc $HOME
+ln -sf $DOTFILES/nvim $HOME/.config
 
 # Tmux
 ln -sf $DOTFILES/tmux/.tmux.conf $HOME

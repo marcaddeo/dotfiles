@@ -1,4 +1,4 @@
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'bling/vim-airline'
 Plug 'altercation/vim-colors-solarized'
@@ -109,17 +109,17 @@ set showmatch
 set hlsearch
 
 " Set up persistent undo
-silent execute '!mkdir ~/.nvim/undo > /dev/null 2>&1'
-set undodir=~/.nvim/undo//
+silent execute '!mkdir ~/.config/nvim/undo > /dev/null 2>&1'
+set undodir=~/.config/nvim/undo//
 set undofile
 set undolevels=1000
 set undoreload=10000
 
 " Move swap and backup files into their own directory
-silent execute '!mkdir ~/.nvim/backup > /dev/null 2>&1'
-silent execute '!mkdir ~/.nvim/swap > /dev/null 2>&1'
-set backupdir=~/.nvim/backup//
-set directory=~/.nvim/swap//
+silent execute '!mkdir ~/.config/nvim/backup > /dev/null 2>&1'
+silent execute '!mkdir ~/.config/nvim/swap > /dev/null 2>&1'
+set backupdir=~/.config/nvim/backup//
+set directory=~/.config/nvim/swap//
 
 " Ag
 nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>
