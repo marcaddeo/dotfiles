@@ -7,3 +7,6 @@
 [submodule "timetrap/sheets"]
 	path = timetrap/sheets
 	url = git@github.com:marcaddeo/sheets.git
+[submodule "tmux/tpm"]
+	path = tmux/tpm
+	url = https://github.com/tmux-plugins/tpm.git
