@@ -58,7 +58,7 @@ plugins=(git gpg-agent jira sprunge sudo tmux vagrant)
 
 # User configuration
 
-export PATH="$HOME/dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
