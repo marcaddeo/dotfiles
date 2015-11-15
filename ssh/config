@@ -5,3 +5,9 @@ Host github.com
 
 Host *.hosting.acquia.com
     IdentityFile ~/.ssh/id_rsa.acquia
+
+Host littlefinger.science
+    IdentityFile ~/.ssh/id_rsa.littlefinger
+
+Host littlefinger
+    IdentityFile ~/.ssh/id_rsa.littlefinger
