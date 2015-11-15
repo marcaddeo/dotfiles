@@ -28,6 +28,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-haml'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'rizzatti/dash.vim'
 
 call plug#end()
 
@@ -196,3 +197,6 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
     "endif
 "endfunction
 "inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
+
+" Search Dash for the current word under cursor with <leader>d
+nmap <silent> <leader>d <Plug>DashSearch
