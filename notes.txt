@@ -1,0 +1,6 @@
+* install socos
+* i patch socos to output current track as json, should make a patch and put it in my install script
+* revamp so install script has options and what-not
+* add drush and acquia aliases (aliases may need to be encrypted)
+* revisit encryption safe-ness
+* adjust the key press frequency to be much faster
