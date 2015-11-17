@@ -84,9 +84,9 @@ foreach ($entries as $entry) {
 
     printf("%s - %s\n", $timeSpent, $entry['note']);
 
-    if (preg_match('(([A-Z]{2,}-\d+))', $entry['note'], $matches)) {
+    if (preg_match('(([\d\w]{2,}-\d+))', $entry['note'], $matches)) {
         $issueNumber = $matches[1];
-        $note        = trim(preg_replace('(([A-Z]{2,}-\d+))', '', $entry['note']));
+        $note        = trim(preg_replace('(([\d\w]{2,}-\d+))', '', $entry['note']));
 
         printf("Found issue number: %s\n", $issueNumber);
     } else {
