@@ -23,6 +23,7 @@ ln -sf $DOTFILES/nvim $HOME/.config
 ln -sf $DOTFILES/tmux/.tmux.conf $HOME
 mkdir -p $HOME/.tmux/plugins
 ln -sf $DOTFILES/tmux/tpm $HOME/.tmux/plugins
+ln -sf $DOTFILES/tmux/resurrect $HOME/.tmux
 
 # SSH
 ln -sf $DOTFILES/ssh/config $HOME/.ssh

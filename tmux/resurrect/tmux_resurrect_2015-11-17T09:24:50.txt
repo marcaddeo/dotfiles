@@ -1,0 +1,5 @@
+pane	work	0	:main	1	:*	0	:/Users/marc	0	zsh	:
+pane	work	0	:main	1	:*	1	:/Users/marc/dotfiles	0	zsh	:
+pane	work	0	:main	1	:*	2	:/Users/marc	1	mosh-client	:/usr/local/Cellar/mobile-shell/1.2.5/bin/mosh-client marc@direct.marc.cx | 45.55.171.194 60004
+window	work	0	1	:*	8a6e,271x70,0,0{135x70,0,0,0,135x70,136,0[135x35,136,0,2,135x34,136,36,3]}
+state	work	
