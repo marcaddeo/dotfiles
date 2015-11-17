@@ -4,3 +4,6 @@
 * add drush and acquia aliases (aliases may need to be encrypted)
 * revisit encryption safe-ness
 * adjust the key press frequency to be much faster
+* i guess im going dark mode, dark dock and menu bar and istat icons
+* dark github theme and wide github theme
+* dark google theme
