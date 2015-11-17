@@ -10,7 +10,7 @@ ln -sf $DOTFILES/git/.gitconfig $HOME
 ln -sf $DOTFILES/git/.gitignore $HOME
 
 # Ag
-ln -sf $DOTGILES/ag/.agignore $HOME
+ln -sf $DOTFILES/ag/.agignore $HOME
 
 # Fonts
 cp $DOTFILES/fonts/InconsolataForPowerlinePlusNerdFileTypesMonoPlusFontAwesomePlusOcticonsPlusPomicons.otf \
