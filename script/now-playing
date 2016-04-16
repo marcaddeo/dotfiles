@@ -1,13 +1,13 @@
 #!/bin/bash
 SCRIPT=$HOME/dotfiles/script
-MPD_PLAYING=$(mpc | grep playing)
+#MPD_PLAYING=$(mpc | grep playing)
 
-if [[ ! -z $MPD_PLAYING ]]; then
-    echo $(mpc current --format "%title% by %artist%")
-    exit;
-else
+#if [[ ! -z $MPD_PLAYING ]]; then
+    #echo $(mpc current --format "%title% by %artist%")
+    #exit;
+#else
     SPOTIFY=$(osascript $SCRIPT/spotify.scpt)
-fi
+#fi
 
 if [[ ! -z $SPOTIFY ]]; then
     echo $SPOTIFY
