@@ -82,6 +82,10 @@ function tib() {
     _refresh_and_push_timesheetss
 }
 
+function titot() {
+    SECS=$(timetrap display -fjira | grep "$1" | perl -pe 's/.* (\d+:\d+:\d+) .*/\1/' | sed 's/:/*60+/g;s/*60/&&/' | bc | paste -sd+ - | bc) | echo - | awk -v "S=$SECS" '{printf "%02d:%02d:%02d\n", S/(60*60), S%(60*60)/60, S%60}'
+}
+
 alias tio="ti out"
 alias tid="ti display"
 alias tit="ti today"
