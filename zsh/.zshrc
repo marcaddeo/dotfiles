@@ -8,7 +8,7 @@ export ZSH=/Users/marc/.oh-my-zsh
 ZSH_THEME="my"
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
