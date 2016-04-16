@@ -1,0 +1,44 @@
+#!/bin/bash
+SCRIPT=$HOME/dotfiles/script
+
+function widget_should_display {
+  echo true
+}
+
+function get_now_playing {
+  #MPD_PLAYING=$(mpc | grep playing)
+  #if [[ ! -z $MPD_PLAYING ]]; then
+      #echo $(mpc current --format "%title% by %artist%")
+      #return
+  #fi
+
+  SPOTIFY=$(osascript $SCRIPT/spotify.scpt)
+  if [[ ! -z $SPOTIFY ]]; then
+    echo $SPOTIFY
+    return
+  fi
+
+  ITUNES=$(osascript $SCRIPT/itunes.scpt)
+  if [[ ! -z $ITUNES ]]; then
+    echo $ITUNES
+    return
+  fi
+
+  SONOS=$(socos list | grep "Open Space" | cut -d ' ' -f2 | xargs socos current)
+  if [[ ! -z $SONOS ]]; then
+    # Using a modified SoCos so that it returns json
+    ARTIST=$(echo $SONOS | jq -r '.artist')
+    TITLE=$(echo $SONOS | jq -r '.title')
+
+    echo "$TITLE by $ARTIST"
+    return
+  fi
+}
+
+function widget {
+  NOW_PLAYING=$(get_now_playing)
+
+  if [[ ! -z $NOW_PLAYING ]]; then
+    echo "#[fg=colour5]♬ #[default] $NOW_PLAYING"
+  fi
+}
