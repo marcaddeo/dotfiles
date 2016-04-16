@@ -18,7 +18,7 @@ Plug 'joonty/vdebug'
 Plug 'elixir-lang/vim-elixir'
 Plug 'gcmt/wildfire.vim'
 Plug 'Valloric/MatchTagAlways'
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 Plug 'groenewege/vim-less' " Less hilighting
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'shawncplus/phpcomplete.vim'
@@ -29,6 +29,11 @@ Plug 'tpope/vim-haml'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'rizzatti/dash.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'wellle/visual-split.vim'
+Plug 'evidens/vim-twig'
+Plug 'jiangmiao/auto-pairs'
+Plug 'docteurklein/php-getter-setter.vim'
 
 call plug#end()
 
@@ -49,6 +54,7 @@ nnoremap qq :e#<CR>
 " Airline settings
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_detect_paste = 1
 let g:airline_detect_modified = 1
 let g:airline_powerline_fonts = 1
@@ -154,6 +160,7 @@ let g:mta_filetypes = {
 
 let g:vdebug_options = {
     \ 'break_on_open': 1,
+    \ 'ide_key': 'XDEBUG_VIM',
     \ 'server' : '',
     \ 'watch_window_style' : 'compact',
     \ 'marker_default' : '*',
@@ -179,11 +186,15 @@ let g:vdebug_options = {
         \ '/var/www/wp-trackback.php' : '/Users/marc/dev/oomph/wp/wp-trackback.php',
         \ '/var/www/xmlrpc.php' : '/Users/marc/dev/oomph/wp/xmlrpc.php',
         \ '/var/www/docroot' : '/Users/marc/dev/oomph/blue365/docroot',
+        \ '/var/www/blue365deals.dev/docroot' : '/Users/marc/dev/oomph/blue365deals.com/docroot',
+        \ '/vagrant' : '/Users/marc/dev/oomph/blue365deals.com',
+        \ '/usr/share/php/drush' : '/Users/marc/.composer/vendor/drush/drush',
         \ '/var/www/web' : '/Users/marc/dev/oomph/oomphinc.com/web'
     \}
 \}
 
-let g:gutentags_ctags_executable_php = 'ctags -R --fields=+aimS --languages=php'
+let g:gutentags_enabled = 1
+let g:gutentags_ctags_executable_php = 'ctags --fields=+aimSl --languages=php'
 
 " Make enter the same as C-Y in autocompletion menu
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -200,5 +211,20 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "endfunction
 "inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 
-" Search Dash for the current word under cursor with <leader>d
-nmap <silent> <leader>d <Plug>DashSearch
+let g:AutoPairsMultilineClose = 0
+let g:AutoPairsCenterLine = 0
+
+augroup vagrant
+  au!
+  au BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
+
+" Set filetype for Drupal PHP files.
+autocmd BufRead,BufNewFile *.module set filetype=php
+autocmd BufRead,BufNewFile *.install set filetype=php
+autocmd BufRead,BufNewFile *.inc set filetype=php
+autocmd BufRead,BufNewFile *.profile set filetype=php
+autocmd BufRead,BufNewFile *.theme set filetype=php
+autocmd BufRead,BufNewFile *.engine set filetype=php
+autocmd BufRead,BufNewFile *.test set filetype=php
+autocmd BufRead,BufNewFile *.{info,make,build} set filetype=drini
