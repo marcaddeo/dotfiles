@@ -1,0 +1,7 @@
+pane	0	0	:nvim	1	:*	0	:/Users/marc	1	nvim	:nvim /Users/marc/swarm.js
+pane	work	0	:main	1	:*	0	:/Users/marc	0	zsh	:
+pane	work	0	:main	1	:*	1	:/Users/marc/dotfiles	0	zsh	:
+pane	work	0	:main	1	:*	2	:/Users/marc	1	zsh	:
+window	0	0	1	:*	d45e,270x69,0,0,1
+window	work	0	1	:*	f4c4,270x69,0,0{126x69,0,0,11,143x69,127,0[143x32,127,0,12,143x36,127,33,13]}
+state	work	0
