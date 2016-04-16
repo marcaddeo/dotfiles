@@ -1,6 +1,7 @@
 [user]
   name = Marc Addeo
   email = marcaddeo@gmail.com
+  signingkey = 96105359
 [push]
   default = simple
 [core]
