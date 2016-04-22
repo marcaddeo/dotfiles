@@ -44,6 +44,9 @@ call plug#end()
 
 let mapleader = "\<space>"
 
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
 syntax enable
 set background=dark
 colorscheme solarized
