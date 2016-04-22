@@ -35,11 +35,12 @@ Plug 'joonty/vdebug'
 
 " Testing
 Plug 'tpope/vim-commentary'
+Plug 'benekastah/neomake'
 
 " Plugins to find replacements for
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 "Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 
 " Rarely used plugins, should look into removal
 Plug 'wellle/visual-split.vim'
@@ -170,6 +171,9 @@ let g:AutoPairsCenterLine = 0
 " Tagbar Settings
 let g:tagbar_width = 55
 
+" Neomake Settings
+let g:neomake_open_list = 2
+
 " Mappings
 " Disable arrow keys
 nnoremap <up> <nop>
@@ -245,3 +249,6 @@ autocmd BufRead,BufNewFile *.theme set filetype=php
 autocmd BufRead,BufNewFile *.engine set filetype=php
 autocmd BufRead,BufNewFile *.test set filetype=php
 autocmd BufRead,BufNewFile *.{info,make,build} set filetype=drini
+
+" Run Neomake on every write
+autocmd! BufWritePost * Neomake
