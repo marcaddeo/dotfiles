@@ -1,32 +1,43 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'bling/vim-airline'
+" Enhancement Plugins
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+
+" Appearance Plugins
 Plug 'altercation/vim-colors-solarized'
 Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-repeat'
-Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/syntastic'
-Plug 'joonty/vdebug'
-Plug 'elixir-lang/vim-elixir'
-Plug 'gcmt/wildfire.vim'
-Plug 'Valloric/MatchTagAlways'
-Plug 'groenewege/vim-less' " Less hilighting
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'shawncplus/phpcomplete.vim'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'tpope/vim-fugitive'
-Plug 'kchmck/vim-coffee-script'
-Plug 'tpope/vim-haml'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'wellle/visual-split.vim'
-Plug 'evidens/vim-twig'
-Plug 'jiangmiao/auto-pairs'
+Plug 'bling/vim-airline'
+
+" Language Specific Plugins
 Plug 'docteurklein/php-getter-setter.vim'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'elixir-lang/vim-elixir'
+Plug 'groenewege/vim-less' " Less hilighting
+Plug 'evidens/vim-twig'
+Plug 'tpope/vim-haml'
+
+" Misc Plugins
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'Valloric/MatchTagAlways'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-fugitive'
+Plug 'godlygeek/tabular'
+Plug 'joonty/vdebug'
+
+" Plugins to find replacements for
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+
+" Rarely used plugins, should look into removal
+Plug 'wellle/visual-split.vim'
+Plug 'gcmt/wildfire.vim'
 
 call plug#end()
 
