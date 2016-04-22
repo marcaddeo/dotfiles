@@ -208,8 +208,11 @@ vnoremap K y:Ag! "\b<c-r>"\b"<cr>
 nnoremap \ :Ag<space>
 
 " Fzf
-nnoremap <leader>f :Files<cr>
+nnoremap <leader>o :Files<cr>
+nnoremap <leader>f :Files %:p:h<cr>
+nnoremap <leader>m :History<cr>
 nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>/ :BLines<cr>
 
 " Yank to the system clipboard
 vmap <leader>y "+y
