@@ -181,7 +181,7 @@ vnoremap / /\v
 " Toggle the last used buffer
 nnoremap qq :e#<cr>
 
-" Quickly cycle through buffers with Tab and S-Tab
+" Quickly cycle through buffers
 nnoremap <tab> :bnext<cr>
 nnoremap <s-tab> :bprevious<cr>
 
@@ -190,16 +190,16 @@ nnoremap <s-tab> :bprevious<cr>
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-" Clear search with <leader><space>
+" Clear highlighted search
 nnoremap <leader><space> :noh<cr>
 
-" Quickly set indentation with these mappings
+" Quickly set indentation
 nnoremap <silent> <leader>2 :set tabstop=2 shiftwidth=2 softtabstop=2<cr>
 nnoremap <silent> <leader>4 :set tabstop=4 shiftwidth=4 softtabstop=4<cr>
 nnoremap <silent> <leader>e :set expandtab<cr>
 nnoremap <silent> <leader>ne :set noexpandtab<cr>
 
-" Map gb to select the last pasted text, visually
+" Visually select the last pasted text
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Ag
