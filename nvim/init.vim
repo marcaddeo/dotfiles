@@ -179,11 +179,11 @@ nnoremap / /\v
 vnoremap / /\v
 
 " Toggle the last used buffer
-nnoremap qq :e#<CR>
+nnoremap qq :e#<cr>
 
 " Quickly cycle through buffers with Tab and S-Tab
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+nnoremap <tab> :bnext<cr>
+nnoremap <s-tab> :bprevious<cr>
 
 " Remap to gj/gk only if there is no count so that we can still use
 " relativenumber
@@ -194,25 +194,25 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 nnoremap <leader><space> :noh<cr>
 
 " Quickly set indentation with these mappings
-nnoremap <silent> <Leader>2 :set tabstop=2 shiftwidth=2 softtabstop=2<CR>
-nnoremap <silent> <Leader>4 :set tabstop=4 shiftwidth=4 softtabstop=4<CR>
-nnoremap <silent> <Leader>e :set expandtab<CR>
-nnoremap <silent> <Leader>ne :set noexpandtab<CR>
+nnoremap <silent> <leader>2 :set tabstop=2 shiftwidth=2 softtabstop=2<cr>
+nnoremap <silent> <leader>4 :set tabstop=4 shiftwidth=4 softtabstop=4<cr>
+nnoremap <silent> <leader>e :set expandtab<cr>
+nnoremap <silent> <leader>ne :set noexpandtab<cr>
 
 " Map gb to select the last pasted text, visually
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Ag
-nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>
-vnoremap K y:Ag! "\b<C-R>"\b"<CR>
-nnoremap \ :Ag<SPACE>
+nnoremap K :Ag! "\b<c-r><c-w>\b"<cr>
+vnoremap K y:Ag! "\b<c-r>"\b"<cr>
+nnoremap \ :Ag<space>
 
 " Fzf
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>b :Buffers<cr>
 
-" Make enter the same as C-Y in autocompletion menu
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Make enter the same as c-y in autocompletion menu
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
 
 " Autocommands
 augroup vagrant
