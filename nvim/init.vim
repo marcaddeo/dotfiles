@@ -42,7 +42,7 @@ Plug 'gcmt/wildfire.vim'
 
 call plug#end()
 
-let mapleader = ","
+let mapleader = "\<space>"
 
 syntax enable
 set background=dark
