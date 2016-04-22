@@ -44,7 +44,6 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 
 " Rarely used plugins, should look into removal
 Plug 'wellle/visual-split.vim'
-Plug 'gcmt/wildfire.vim'
 
 call plug#end()
 
