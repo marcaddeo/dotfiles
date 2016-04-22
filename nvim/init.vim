@@ -179,7 +179,7 @@ nnoremap / /\v
 vnoremap / /\v
 
 " Toggle the last used buffer
-nnoremap qq :e#<cr>
+nnoremap qq :b#<cr>
 
 " Quickly cycle through buffers
 nnoremap <tab> :bnext<cr>
