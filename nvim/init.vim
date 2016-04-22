@@ -33,9 +33,12 @@ Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'joonty/vdebug'
 
+" Testing
+Plug 'tpope/vim-commentary'
+
 " Plugins to find replacements for
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 
 " Rarely used plugins, should look into removal
