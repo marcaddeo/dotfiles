@@ -8,6 +8,7 @@ Plug 'junegunn/fzf'
 
 " Appearance Plugins
 Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'bling/vim-airline'
 
