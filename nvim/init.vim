@@ -31,6 +31,7 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'godlygeek/tabular'
+Plug 'majutsushi/tagbar'
 Plug 'joonty/vdebug'
 
 " Plugins to find replacements for
@@ -163,6 +164,9 @@ let g:gutentags_ctags_executable_php = 'ctags --fields=+aimSl --languages=php'
 let g:AutoPairsMultilineClose = 0
 let g:AutoPairsCenterLine = 0
 
+" Tagbar Settings
+let g:tagbar_width = 55
+
 " Mappings
 " Disable arrow keys
 nnoremap <up> <nop>
@@ -213,6 +217,9 @@ nnoremap <leader>f :Files %:p:h<cr>
 nnoremap <leader>m :History<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>/ :BLines<cr>
+
+" Tagbar
+nnoremap <leader>t :TagbarOpenAutoClose<cr>
 
 " Yank to the system clipboard
 vmap <leader>y "+y
