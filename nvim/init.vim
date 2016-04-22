@@ -1,3 +1,4 @@
+" Plugins
 call plug#begin('~/.config/nvim/plugged')
 
 " Enhancement Plugins
@@ -42,69 +43,15 @@ Plug 'gcmt/wildfire.vim'
 
 call plug#end()
 
+" Settings
+" General Settings
 let mapleader = "\<space>"
-
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
-
-syntax enable
-set background=dark
-colorscheme solarized
-
-" Toggle the last used buffer
-nnoremap qq :e#<CR>
-
-" Airline settings
-let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_detect_paste = 1
-let g:airline_detect_modified = 1
-let g:airline_powerline_fonts = 1
-
-" Disable arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
-" Remap to gj/gk only if there is no count so that we can still use
-" relativenumber
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
-
-" Clear search with <leader><space>
-nnoremap <leader><space> :noh<cr>
-
-" Show invisible characters with pretty symbols
-set list
-set listchars=tab:▸\ ,eol:¬
-
-" Set our tab widths
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set noexpandtab
-
-nnoremap <silent> <Leader>2 :set tabstop=2 shiftwidth=2 softtabstop=2<CR>
-nnoremap <silent> <Leader>4 :set tabstop=4 shiftwidth=4 softtabstop=4<CR>
-nnoremap <silent> <Leader>e :set expandtab<CR>
-nnoremap <silent> <Leader>ne :set noexpandtab<CR>
-
-" Map gb to select the last pasted text, visually
-nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
-
+"
 " More natural split positioning
 set splitbelow
 set splitright
 
 " Sane Searching
-nnoremap / /\v
-vnoremap / /\v
 set ignorecase
 set smartcase
 set gdefault
@@ -112,7 +59,17 @@ set incsearch
 set showmatch
 set hlsearch
 
-" Set up persistent undo
+" Show invisible characters with pretty symbols
+set list
+set listchars=tab:▸\ ,eol:¬
+
+" Indentation Settings
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set noexpandtab
+"
+" Persistent undo
 silent execute '!mkdir ~/.config/nvim/undo > /dev/null 2>&1'
 set undodir=~/.config/nvim/undo//
 set undofile
@@ -124,12 +81,7 @@ silent execute '!mkdir ~/.config/nvim/backup > /dev/null 2>&1'
 silent execute '!mkdir ~/.config/nvim/swap > /dev/null 2>&1'
 set backupdir=~/.config/nvim/backup//
 set directory=~/.config/nvim/swap//
-
-" Ag
-nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>
-vnoremap K y:Ag! "\b<C-R>"\b"<CR>
-nnoremap \ :Ag<SPACE>
-
+"
 " The scrolloff (scroll offset) option determines the minimum number of screen
 " lines that you would like above and below the cursor.
 set scrolloff=3
@@ -141,13 +93,24 @@ set colorcolumn=80
 set number
 set relativenumber
 
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>b :Buffers<CR>
+" Appearance Settings
+syntax enable
+set background=dark
+colorscheme solarized
 
-" Syntastic
+" Plugin Settings
+" Airline settings
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_detect_paste = 1
+let g:airline_detect_modified = 1
+let g:airline_powerline_fonts = 1
+
+" Syntastic Settings
 let g:syntastic_php_checkers = ['php']
 
-" Match Tag Always settings
+" Match Tag Always Settings
 let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
@@ -156,6 +119,7 @@ let g:mta_filetypes = {
     \ 'twig' : 1,
     \}
 
+" VDebug Settings
 let g:vdebug_options = {
     \ 'break_on_open': 1,
     \ 'ide_key': 'XDEBUG_VIM',
@@ -191,15 +155,66 @@ let g:vdebug_options = {
     \}
 \}
 
+" Gutentags Settings
 let g:gutentags_enabled = 1
 let g:gutentags_ctags_executable_php = 'ctags --fields=+aimSl --languages=php'
+
+" Autopairs Settings
+let g:AutoPairsMultilineClose = 0
+let g:AutoPairsCenterLine = 0
+
+" Mappings
+" Disable arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Sane Searching
+nnoremap / /\v
+vnoremap / /\v
+
+" Toggle the last used buffer
+nnoremap qq :e#<CR>
+
+" Quickly cycle through buffers with Tab and S-Tab
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
+" Remap to gj/gk only if there is no count so that we can still use
+" relativenumber
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+
+" Clear search with <leader><space>
+nnoremap <leader><space> :noh<cr>
+
+" Quickly set indentation with these mappings
+nnoremap <silent> <Leader>2 :set tabstop=2 shiftwidth=2 softtabstop=2<CR>
+nnoremap <silent> <Leader>4 :set tabstop=4 shiftwidth=4 softtabstop=4<CR>
+nnoremap <silent> <Leader>e :set expandtab<CR>
+nnoremap <silent> <Leader>ne :set noexpandtab<CR>
+
+" Map gb to select the last pasted text, visually
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" Ag
+nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>
+vnoremap K y:Ag! "\b<C-R>"\b"<CR>
+nnoremap \ :Ag<SPACE>
+
+" Fzf
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
 
 " Make enter the same as C-Y in autocompletion menu
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-let g:AutoPairsMultilineClose = 0
-let g:AutoPairsCenterLine = 0
-
+" Autocommands
 augroup vagrant
   au!
   au BufRead,BufNewFile Vagrantfile set filetype=ruby
