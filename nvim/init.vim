@@ -211,6 +211,9 @@ nnoremap \ :Ag<space>
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>b :Buffers<cr>
 
+" Yank to the system clipboard
+vmap <leader>y "+y
+
 " Make enter the same as c-y in autocompletion menu
 inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
 
