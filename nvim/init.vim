@@ -47,11 +47,6 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-augroup reload_vimrc
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END
-
 " Toggle the last used buffer
 nnoremap qq :e#<CR>
 
@@ -80,11 +75,6 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Clear search with <leader><space>
 nnoremap <leader><space> :noh<cr>
-
-" Vimfiler
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_ignore_pattern = ['^\.git$', '^\.DS_Store$', '^\.vagrant$']
-nnoremap <silent> <Leader>x :VimFilerExplorer<CR>
 
 " Show invisible characters with pretty symbols
 set list
@@ -202,18 +192,6 @@ let g:gutentags_ctags_executable_php = 'ctags --fields=+aimSl --languages=php'
 
 " Make enter the same as C-Y in autocompletion menu
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-"let g:UltiSnipsExpandTrigger = "<nop>"
-"let g:ulti_expand_or_jump_res = 0
-"function ExpandSnippetOrCarriageReturn()
-    "let snippet = UltiSnips#ExpandSnippetOrJump()
-    "if g:ulti_expand_or_jump_res > 0
-        "return snippet
-    "else
-        "return "\<CR>"
-    "endif
-"endfunction
-"inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 
 let g:AutoPairsMultilineClose = 0
 let g:AutoPairsCenterLine = 0
