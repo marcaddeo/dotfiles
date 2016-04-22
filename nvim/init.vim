@@ -23,7 +23,6 @@ Plug 'evidens/vim-twig'
 Plug 'tpope/vim-haml'
 
 " Misc Plugins
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ludovicchabant/vim-gutentags'
@@ -35,6 +34,7 @@ Plug 'majutsushi/tagbar'
 Plug 'joonty/vdebug'
 
 " Plugins to find replacements for
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 
