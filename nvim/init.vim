@@ -256,6 +256,10 @@ vmap <leader>y "+y
 " Make enter the same as c-y in autocompletion menu
 inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
 
+" Quickly edit and source my vimrc
+nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " Autocommands
 augroup vagrant
   au!
