@@ -36,6 +36,7 @@ Plug 'joonty/vdebug'
 " Testing
 Plug 'tpope/vim-commentary'
 Plug 'benekastah/neomake'
+Plug 'rbgrouleff/bclose.vim'
 
 " Plugins to find replacements for
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -224,6 +225,12 @@ nnoremap <leader>m :History<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>/ :BLines<cr>
 
+" Ranger
+nnoremap <leader>ro :call OpenRanger(getcwd())<cr>
+" This needs work. Need to figure out how to get path completion here
+nnoremap <leader>re :OpenRanger<space>
+nnoremap <leader>rf :call OpenRanger(expand('%:p:h'))<cr>
+
 " Tagbar
 nnoremap <leader>t :TagbarOpenAutoClose<cr>
 
@@ -251,3 +258,23 @@ autocmd BufRead,BufNewFile *.{info,make,build} set filetype=drini
 
 " Run Neomake on every write
 autocmd! BufWritePost * Neomake
+
+" Funcitons
+function! OpenRanger(directory)
+  let rangerCallback = { 'name': 'ranger' }
+  function! rangerCallback.on_exit(id, code)
+    Bclose!
+    try
+      if filereadable('/tmp/chosenfile')
+        exec system('sed -ie "s/ /\\\ /g" /tmp/chosenfile')
+        exec 'argadd ' . system('cat /tmp/chosenfile | tr "\\n" " "')
+        exec 'edit ' . system('head -n1 /tmp/chosenfile')
+        call system('rm /tmp/chosenfile')
+      endif
+    endtry
+  endfunction
+  enew
+  call termopen('ranger --choosefiles=/tmp/chosenfile ' . a:directory, rangerCallback)
+  startinsert
+endfunction
+command! -nargs=* OpenRanger call OpenRanger('<args>')
