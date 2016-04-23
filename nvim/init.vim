@@ -178,10 +178,10 @@ let g:neomake_open_list = 2
 let g:fzf_colors = {
   \ 'fg': ['fg', 'Normal'],
   \ 'bg': ['bg', 'Normal'],
-  \ 'hl': ['fg', 'Comment'],
-  \ 'fg+': ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'hl': ['fg', 'Identifier'],
+  \ 'fg+': ['fg', 'Comment'],
   \ 'bg+': ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+': ['fg', 'Statement'],
+  \ 'hl+': ['fg', 'Todo'],
   \ 'info': ['fg', 'PreProc'],
   \ 'prompt': ['fg', 'Conditional'],
   \ 'pointer': ['fg', 'Exception'],
