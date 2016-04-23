@@ -51,6 +51,9 @@ call plug#end()
 " Settings
 " General Settings
 let mapleader = "\<space>"
+
+" Load local configuration
+set exrc
 "
 " More natural split positioning
 set splitbelow
