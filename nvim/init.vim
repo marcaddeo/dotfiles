@@ -18,7 +18,7 @@ Plug 'docteurklein/php-getter-setter.vim'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'elixir-lang/vim-elixir'
-Plug 'groenewege/vim-less' " Less hilighting
+Plug 'groenewege/vim-less'
 Plug 'evidens/vim-twig'
 Plug 'tpope/vim-haml'
 
