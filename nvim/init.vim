@@ -155,9 +155,6 @@ let g:vdebug_options = {
         \ '/var/www/wp-signup.php' : '/Users/marc/dev/oomph/wp/wp-signup.php',
         \ '/var/www/wp-trackback.php' : '/Users/marc/dev/oomph/wp/wp-trackback.php',
         \ '/var/www/xmlrpc.php' : '/Users/marc/dev/oomph/wp/xmlrpc.php',
-        \ '/var/www/docroot' : '/Users/marc/dev/oomph/blue365/docroot',
-        \ '/var/www/blue365deals.dev/docroot' : '/Users/marc/dev/oomph/blue365deals.com/docroot',
-        \ '/vagrant' : '/Users/marc/dev/oomph/blue365deals.com',
         \ '/usr/share/php/drush' : '/Users/marc/.composer/vendor/drush/drush',
         \ '/var/www/web' : '/Users/marc/dev/oomph/oomphinc.com/web'
     \}
