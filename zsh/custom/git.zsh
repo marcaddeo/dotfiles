@@ -11,3 +11,16 @@ function gcd {
         echo "Could not find a \`development\` or \`develop\` branch"
     fi
 }
+
+function gaf() {
+    GIT_ROOT=$(git rev-parse --show-toplevel)
+    FILES_TO_ADD=$(git status --porcelain | grep -v '^[AMD]' | sed s/^...// | fzf -m)
+
+    if [[ ! -z $FILES_TO_ADD ]]; then
+        for FILE in $FILES_TO_ADD; do
+            git add $@ "$GIT_ROOT/$FILE"
+        done
+    else
+        echo "Nothing to add"
+    fi
+}
