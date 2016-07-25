@@ -1,0 +1,31 @@
+#!/bin/bash
+
+function widget_should_display {
+  echo true
+}
+
+function widget {
+  WORKED=$(timetrap week -fjira | tail -n1 | awk '{print $2}' | cut -d ":" -f 1,2)
+  HOURS=$(echo $WORKED | cut -d ":" -f 1)
+  MINUTES=$(echo $WORKED | cut -d ":" -f 2)
+
+  case $MINUTES in
+    "15")
+      MINUTES=".25"
+      ;;
+    "30")
+      MINUTES=".5"
+      ;;
+    "45")
+      MINUTES=".75"
+      ;;
+    *)
+      MINUTES=""
+      ;;
+  esac
+
+  WORKED="${HOURS}${MINUTES}/40"
+
+  echo "#[fg=colour2,nobold]$WORKED"
+}
+
