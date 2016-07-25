@@ -190,6 +190,8 @@ let g:fzf_colors = {
   \ 'header': ['fg', 'Comment']
 \}
 
+autocmd! VimEnter * command! -nargs=* -complete=file Ag :call fzf#vim#ag_raw(<q-args>)
+
 " YCM Settings
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_seed_identifiers_with_syntax = 1
