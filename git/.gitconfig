@@ -12,3 +12,7 @@
   diff = always
 [rebase]
   autosquash = true
+[commit]
+	gpgsign = true
+[diff]
+	compactionHeuristic = true
