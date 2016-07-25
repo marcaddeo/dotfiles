@@ -1,0 +1,60 @@
+# Define modifiers
+define hyper cmd+ctrl+alt+shift
+define mod1 alt
+define mod2 alt+shift
+
+# Active prefix mode
+kwmc bindsym ctrl-s mode activate prefix
+
+# Quit kwm
+kwmc bindsym prefix-q quit
+
+# Reload kwmrc
+kwmc bindsym prefix-r config reload
+
+# Spawn a terminal
+kwmc bindsym mod1-return exec open -na /Users/marc/Applications/iTerm2.app
+
+# Spawn qutebrowser
+kwmc bindsym mod1-` exec bash /Users/marc/dotfiles/script/start-qutebrowser.sh
+
+# Zoom window fullscreen
+kwmc bindsym mod1-f window -z fullscreen
+
+# Zoom window halfscreen
+kwmc bindsym mod1-z window -z parent
+
+# Change window focus within a display
+kwmc bindsym mod1-h window -f west
+kwmc bindsym mod1-l window -f east
+kwmc bindsym mod1-j window -f south
+kwmc bindsym mod1-k window -f north
+
+# Cycle window focus within a display
+kwmc bindsym mod1-n window -f next
+kwmc bindsym mod1-p window -f prev
+kwmc bindsym mod1-tab window -f next
+kwmc bindsym mod1+shift-tab window -f prev
+
+# Move focused window within a display
+kwmc bindsym mod2-h window -s west
+kwmc bindsym mod2-j window -s south
+kwmc bindsym mod2-k window -s north
+kwmc bindsym mod2-l window -s east
+
+# Change focus to different displays
+kwmc bindsym mod1-1 display -f 0
+kwmc bindsym mod1-2 display -f 1
+kwmc bindsym mod1-3 display -f 2
+
+# Move a window to a different display
+kwmc bindsym mod2-1 window -m display 0
+kwmc bindsym mod2-2 window -m display 1
+kwmc bindsym mod2-3 window -m display 2
+
+# Modify the width of a window
+kwmc bindsym mod1-up window -c expand 0.05
+kwmc bindsym mod1-down window -c reduce 0.05
+
+# Rotate windows in display by 90 degrees
+kwmc bindsym mod1-r tree rotate 90

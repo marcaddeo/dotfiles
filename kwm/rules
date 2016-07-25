@@ -1,0 +1,6 @@
+kwmc rule owner="Photoshop" properties={float="true"}
+kwmc rule owner="Pixelmator" properties={float="true"}
+kwmc rule owner="Sonos" properties={float="true"}
+kwmc rule owner="VOX" properties={float="true"}
+kwmc rule owner="iTerm2" properties={role="AXDialog"}
+kwmc rule owner="Python" properties={role="AXWindow"}
