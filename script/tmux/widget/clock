@@ -1,9 +1,0 @@
-#!/bin/bash
-
-function widget_should_display {
-  echo true
-}
-
-function widget {
-  echo $(date +"%a %m-%d-%y %I:%M:%S")
-}
