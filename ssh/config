@@ -12,6 +12,8 @@ Host *.hosting.acquia.com
     IdentityFile ~/.ssh/id_rsa.acquia
 
 Host lf.marc.cx
+    ServerAliveInterval 60
+    TCPKeepAlive no
     IdentityFile ~/.ssh/id_rsa.littlefinger
 
 Host jenkins.oomphcloud.com
@@ -26,3 +28,17 @@ Host git.oomphcloud.com git.dev.oomphcloud.com dev.oomphcloud.com sta.oomphcloud
 Host 127.0.0.1
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
+
+Host d8.oomphcloud.com
+    HostName d8.oomphcloud.com
+    IdentityFile ~/.ssh/id_rsa.oomphcloud
+    User maddeo
+
+Host *.askblue *.bcbs *.blue365
+    ServerAliveInterval 120
+    TCPKeepAlive no
+    IdentityFile ~/.ssh/id_rsa.bcbscloud
+    User maddeo
+
+Host git.drupal.org
+    IdentityFile ~/.ssh/id_rsa.drupal
