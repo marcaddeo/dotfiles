@@ -68,6 +68,25 @@ function tir() {
     _refresh_and_push_timesheetss
 }
 
+function tire() {
+    ID=$(_pick_entry)
+
+    if [[ ! -z $ID ]]; then
+        timetrap resume --id $ID $@
+
+        NOTE=$(timetrap display -fjson_all | jq -r ".[] | select(.id==$ID) | .note")
+        TMP=$(mktemp -t "ti-$ID")
+
+        echo $NOTE > $TMP && ${EDITOR:-vim} $TMP
+
+        NOTE=$(<$TMP)
+
+        timetrap edit "$NOTE" $@
+    fi
+
+    _refresh_and_push_timesheetss
+}
+
 function tij() {
     php $HOME/dotfiles/script/timetrap-to-jira/timetrap-to-jira.php $@
 }
