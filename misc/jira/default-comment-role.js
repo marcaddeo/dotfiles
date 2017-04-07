@@ -1,29 +1,23 @@
-jQuery.noConflict();
+(function ($) {
+  var defaultRoleName = "role:10001";
 
-var defaultRoleName = "role:10001";
-var roleSelected = false;
+  function changeCommentLevel() {
+    var $form = $(this).closest('form');
 
-function changeCommentLevel() {
-  if (roleSelected) {
-    return;
+    if ($(this).val() !== "") {
+      return;
+    }
+
+    var commentLevelSelect = $('.security-level select#commentLevel option[value=\'' + defaultRoleName + '\']', $form);
+
+    if (commentLevelSelect) {
+      var labelText = commentLevelSelect.first().text();
+      $("select#commentLevel", $form).val(defaultRoleName);
+      $("#commentLevel-multi-select a.drop span.icon", $form).removeClass("icon-unlocked").addClass("icon-locked");
+      var htmlEscapedLabel = AJS.$("<div/>").text(labelText).html();
+      $(".security-level span.current-level", $form).html(AJS.format(AJS.params.securityLevelViewableRestrictedTo, htmlEscapedLabel));
+    }
   }
 
-  if (jQuery('#comment').val() != "") {
-    roleSelected = true;
-    return;
-  }
-
-  var commentLevelSelect = jQuery('.security-level select#commentLevel option[value=\'' + defaultRoleName + '\']');
-
-  if (commentLevelSelect) {
-    var labelText = commentLevelSelect.first().text();
-    jQuery("select#commentLevel").val(defaultRoleName);
-    jQuery("#commentLevel-multi-select a.drop span.icon").removeClass("icon-unlocked").addClass("icon-locked");
-    var htmlEscapedLabel = AJS.$("<div/>").text(labelText).html();
-    jQuery(".security-level span.current-level").html(AJS.format(AJS.params.securityLevelViewableRestrictedTo, htmlEscapedLabel));
-    roleSelected = true;
-  }
-
-}
-
-jQuery('#comment').live('focus', changeCommentLevel);
+  $(document).on('focus', '#comment', changeCommentLevel);
+})(jQuery);
