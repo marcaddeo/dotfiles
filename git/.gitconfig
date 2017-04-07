@@ -14,5 +14,6 @@
   autosquash = true
 [commit]
 	gpgsign = true
+	verbose = true
 [diff]
 	compactionHeuristic = true
