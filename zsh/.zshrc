@@ -62,6 +62,9 @@ export PATH="$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/bin:/usr/b
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+source "$HOME/.console/console.rc" 2>/dev/null
+
+eval $(docker-machine env default)
 
 # Load fzf bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
