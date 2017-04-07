@@ -4,3 +4,4 @@ tags
 tags.*
 .gutctags
 .DS_Store
+*.retry
