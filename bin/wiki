@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+export SCRIPT_VERSION="0.0.1"
+
+docopts() {
+  local version
+  local usage
+
+  version="wiki $SCRIPT_VERSION"
+  define usage <<USAGE
+Usage:
+  wiki new [options] <path>
+  wiki note [options]
+  wiki -h | --help
+  wiki --version
+
+Options:
+  -n, --no-tmux  Just open a Neovim session.
+  -h, --help     Show this screen.
+  --version      Show version info.
+USAGE
+
+  eval "$(/usr/local/bin/docopts -h "$usage" -V "$version" : "$@")"
+}
+
+define() {
+  IFS=$'\n' read -r -d '' "${1}" || true
+}
+
+new() {
+  declare path="$1"
+
+  echo "$path"
+}
+
+edit_wiki() {
+  declare path="$1" nvim_arguments="$2" no_tmux="$3"
+
+  local nvim_command
+  nvim_command="nvim $nvim_arguments $path"
+
+  if [[ "$no_tmux" == true ]]; then
+    pushd ~/dotfiles/wiki > /dev/null
+    bash -c "$nvim_command"
+    popd > /dev/null
+  else
+    tmux new-window -c ~/dotfiles/wiki -n "Notes" "$nvim_command"
+  fi
+}
+
+note() {
+  declare no_tmux="$1"
+
+  local note
+  local timecmd
+
+  note="notes/$(date +"%Y-%m-%d.md")"
+  timecmd="-c \"silent r !date +'\%n\# \%H:\%M\%n'\""
+
+  edit_wiki "$note" "-n \"+normal G\" $timecmd +startinsert" "$no_tmux"
+}
+
+main() {
+  docopts "$@"
+
+  case "$1" in
+    new)
+      new "$path" "$no_tmux"
+      ;;
+
+    note)
+      note "$no_tmux"
+      ;;
+  esac
+}
+
+main "$@"
