@@ -28,12 +28,6 @@ define() {
   IFS=$'\n' read -r -d '' "${1}" || true
 }
 
-new() {
-  declare path="$1"
-
-  echo "$path"
-}
-
 edit_wiki() {
   declare path="$1" nvim_arguments="$2" no_tmux="$3"
 
@@ -41,12 +35,26 @@ edit_wiki() {
   nvim_command="nvim $nvim_arguments $path"
 
   if [[ "$no_tmux" == true ]]; then
-    pushd ~/dotfiles/wiki > /dev/null
     bash -c "$nvim_command"
-    popd > /dev/null
   else
     tmux new-window -c ~/dotfiles/wiki -n "Notes" "$nvim_command"
   fi
+}
+
+new() {
+  declare path="$1" no_tmux="$2"
+
+  # If the path contains a /, first attempt to make the directory structure
+  if [[ "$path" == *"/"* ]]; then
+    mkdir -p "$(dirname "$path")"
+  fi
+
+  # Ensure the file always ends in .md
+  if [[ "$path" != *".md" ]]; then
+    path="$path.md"
+  fi
+
+  edit_wiki "$path" "-n +startinsert" "$no_tmux"
 }
 
 note() {
@@ -64,6 +72,8 @@ note() {
 main() {
   docopts "$@"
 
+  pushd ~/dotfiles/wiki > /dev/null
+
   case "$1" in
     new)
       new "$path" "$no_tmux"
@@ -73,6 +83,8 @@ main() {
       note "$no_tmux"
       ;;
   esac
+
+  popd > /dev/null
 }
 
 main "$@"
