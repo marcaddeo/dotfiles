@@ -309,4 +309,5 @@ endfunction
 command! -nargs=* OpenRanger call OpenRanger('<args>')
 
 autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal tw=79
 autocmd FileType gitcommit setlocal spell
