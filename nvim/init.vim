@@ -311,3 +311,7 @@ command! -nargs=* OpenRanger call OpenRanger('<args>')
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal tw=79
 autocmd FileType gitcommit setlocal spell
+
+autocmd BufWritePost ~/dotfiles/wiki/* call jobstart(['bash', '-c', '~/dotfiles/wiki/bin/commit ' . expand('%')], {})
+
+nnoremap <leader>wt :silent r !date +'\%n\# \%H:\%M\%n'<cr>i
