@@ -1,0 +1,15 @@
+pane	0	0	:zsh	1	:*	0	:/Users/marc	1	zsh	:
+pane	work	0	:main	1	:*	0	:/Users/marc	0	zsh	:
+pane	work	0	:main	1	:*	1	:/Users/marc/dotfiles	0	zsh	:
+pane	work	0	:main	1	:*	2	:/Users/marc/dotfiles/wiki	1	zsh	:
+pane	work	1	:opf	0	:	0	:/Users/marc/dev/oomph/opf	1	zsh	:
+pane	work	2	:blue365	0	:	0	:/Users/marc/dev/oomph/blue365	1	zsh	:
+pane	work	3	:bcbscom	0	:	0	:/Users/marc/dev/oomph/bcbs.com	1	zsh	:
+pane	work	4	:askblue	0	:-	0	:/Users/marc/dev/oomph/askblue2016	1	zsh	:
+window	0	0	1	:*	d7be,177x88,0,0,1
+window	work	0	1	:*	e34f,177x88,0,0{80x88,0,0,2,96x88,81,0[96x44,81,0,3,96x43,81,45,30]}
+window	work	1	0	:	d7c2,177x88,0,0,5
+window	work	2	0	:	d7c3,177x88,0,0,6
+window	work	3	0	:	6c10,177x88,0,0,11
+window	work	4	0	:-	ec16,177x88,0,0,27
+state	work	
