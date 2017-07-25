@@ -25,7 +25,7 @@ Plug 'tpope/vim-haml'
 " Misc Plugins
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'Valloric/MatchTagAlways'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
@@ -37,6 +37,10 @@ Plug 'joonty/vdebug'
 Plug 'tpope/vim-commentary'
 Plug 'benekastah/neomake'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'smerrill/vcl-vim-plugin'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'rust-lang/rust.vim'
 
 " Plugins to find replacements for
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -269,6 +273,12 @@ inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" Close a buffer without closing the window
+nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
+
+" Create an edit file under cursor
+nnoremap <leader>gf :e <cfile><cr>
+
 " Autocommands
 augroup vagrant
   au!
@@ -315,3 +325,8 @@ autocmd FileType gitcommit setlocal spell
 autocmd BufWritePost ~/dotfiles/wiki/* call jobstart(['bash', '-c', '~/dotfiles/wiki/bin/commit ' . expand('%')], {})
 
 nnoremap <leader>wt :silent r !date +'\%n\# \%H:\%M\%n'<cr>i
+
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_no_extensions_in_markdown = 1
+let g:vim_markdown_folding_disabled = 1
