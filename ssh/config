@@ -40,5 +40,11 @@ Host *.askblue *.bcbs *.blue365
     IdentityFile ~/.ssh/id_rsa.bcbscloud
     User maddeo
 
+Host 930elmp01.blackmesh.com 930elmp02.blackmesh.com
+    ServerAliveInterval 120
+    TCPKeepAlive no
+    IdentityFile ~/.ssh/id_rsa.pepco
+    User maddeo
+
 Host git.drupal.org
     IdentityFile ~/.ssh/id_rsa.drupal
