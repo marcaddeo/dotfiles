@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+DATABASE_USER="${DATABASE_USER:-root}"
+
+main() {
+  declare ssh_host="$1" database="$2" outfile="$3"
+
+  if [[ -z "$ssh_host" ]] || [[ -z "$database" ]]; then
+    echo "ERROR: You must supply the ssh_host and database name."
+    exit 1
+  fi
+
+  if [[ -z "$outfile" ]]; then
+    outfile="$database.sql"
+  fi
+
+  # shellcheck disable=SC2029
+  ssh "$ssh_host" "mysqldump -u $DATABASE_USER -p $database | gzip -c" | gunzip > "$outfile"
+}
+
+main "$@"
