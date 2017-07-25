@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-export SCRIPT_VERSION="0.0.1"
+export SCRIPT_VERSION="0.0.2"
 
 docopts() {
   local version
@@ -10,6 +10,8 @@ docopts() {
   version="wiki $SCRIPT_VERSION"
   define usage <<USAGE
 Usage:
+  wiki start
+  wiki commit <file>
   wiki new [options] <path>
   wiki note [options]
   wiki -h | --help
@@ -38,6 +40,25 @@ edit_wiki() {
     bash -c "$nvim_command"
   else
     tmux new-window -c ~/dotfiles/wiki -n "Notes" "$nvim_command"
+  fi
+}
+
+start() {
+  /usr/local/bin/gollum \
+    --host=127.0.0.1 \
+    --user-icons=gravatar \
+    --emoji \
+    --no-edit \
+    --config=config.rb
+}
+
+commit() {
+  declare file="$1"
+
+  if [[ "$file" =~ \.md$ ]]; then
+    git add "$file"
+    git commit -q -m "Update $(echo "$file" | rev | cut -d. -f2 | rev)"
+    git push -q
   fi
 }
 
@@ -75,6 +96,12 @@ main() {
   pushd ~/dotfiles/wiki > /dev/null
 
   case "$1" in
+    start)
+      start
+      ;;
+    commit)
+      commit "$file"
+      ;;
     new)
       new "$path" "$no_tmux"
       ;;
