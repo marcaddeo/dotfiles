@@ -19,3 +19,7 @@
 	compactionHeuristic = true
 [alias]
 	stash-rename = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git stash store -m \"$2\" $rev; }; _"
+[merge]
+	tool = nvim
+[mergetool "nvim"]
+	cmd = nvim \"+Gdiff\" $MERGED
