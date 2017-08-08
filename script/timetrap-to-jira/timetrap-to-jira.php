@@ -84,6 +84,9 @@ foreach ($entries as $entry) {
 
     printf("%s - %s\n", $timeSpent, $entry['note']);
 
+    $timeSpentSeconds = $hours * 3600;
+    $timeSpentSeconds += $minutes * 60;
+
     if (preg_match('(([\d\w]{2,}-\d+))', $entry['note'], $matches)) {
         $issueNumber = $matches[1];
         $note        = trim(preg_replace('(([\d\w]{2,}-\d+))', '', $entry['note']));
@@ -99,11 +102,17 @@ foreach ($entries as $entry) {
     while (true) {
         $result = $api->api(
             chobie\Jira\Api::REQUEST_POST,
-            sprintf('/rest/api/2/issue/%s/worklog', $issueNumber),
+            '/rest/tempo-timesheets/3/worklogs',
             [
+                'issue' => [
+                    'key' => $issueNumber,
+                ],
+                'author' => [
+                    'name' => $config['username'],
+                ],
                 'comment'   => $note,
-                'started'   => preg_replace('(\.(\d{3})\d+)', '.\1', $start->format('Y-m-d\TH:i:s.uO')),
-                'timeSpent' => $timeSpent,
+                'dateStarted'   => preg_replace('(\.(\d{3})\d+)', '.\1', $start->format('Y-m-d\TH:i:s.u')),
+                'timeSpentSeconds' => $timeSpentSeconds,
             ]
         )->getResult();
 
