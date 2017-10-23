@@ -295,6 +295,9 @@ autocmd BufRead,BufNewFile *.engine set filetype=php
 autocmd BufRead,BufNewFile *.test set filetype=php
 autocmd BufRead,BufNewFile *.{info,make,build} set filetype=drini
 
+" Detect YAML files with ---
+autocmd BufNewFile,BufRead * if match(getline(1), "---") >= 0 | set filetype=yaml | endif
+
 " Run Neomake on every write
 autocmd! BufWritePost * Neomake
 
