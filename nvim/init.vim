@@ -21,6 +21,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'groenewege/vim-less'
 Plug 'evidens/vim-twig'
 Plug 'tpope/vim-haml'
+Plug 'derekwyatt/vim-scala'
 
 " Misc Plugins
 Plug 'christoomey/vim-tmux-navigator'
