@@ -45,10 +45,11 @@ edit_wiki() {
 
 start() {
   /usr/local/bin/gollum \
-    --host=127.0.0.1 \
+    --host=0.0.0.0 \
     --user-icons=gravatar \
     --emoji \
     --no-edit \
+    --js \
     --config=config.rb
 }
 
