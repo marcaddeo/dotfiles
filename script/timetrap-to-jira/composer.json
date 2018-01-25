@@ -1,6 +1,6 @@
 {
     "require": {
-        "chobie/jira-api-restclient": "2.0.*@dev",
+        "chobie/jira-api-restclient": "dev-master#661e028fa3e96451202307259c4695d25df1a393",
         "zendframework/zend-config": "~2.3",
         "zendframework/zend-console": "~2.3",
         "zendframework/zend-json": "~2.3",
