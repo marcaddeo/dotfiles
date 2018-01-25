@@ -43,7 +43,7 @@ DISABLE_AUTO_TITLE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 # Automatically start tmux
-ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=false
 # Don't automatically quit when detaching
 ZSH_TMUX_AUTOQUIT=false
 
