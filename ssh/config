@@ -34,6 +34,19 @@ Host d8.oomphcloud.com
     IdentityFile ~/.ssh/id_rsa.oomphcloud
     User maddeo
 
+Host staging.blue365-root
+    HostName staging.blue365
+    ServerAliveInterval 120
+    TCPKeepAlive no
+    IdentityFile ~/.ssh/id_rsa.root@bcbs-bm
+    User root
+
+Host *.askblue *.bcbs *.blue365
+    ServerAliveInterval 120
+    TCPKeepAlive no
+    IdentityFile ~/.ssh/id_rsa.bcbscloud
+    User maddeo
+
 Host *.askblue *.bcbs *.blue365
     ServerAliveInterval 120
     TCPKeepAlive no
@@ -48,3 +61,13 @@ Host 930elmp01.blackmesh.com 930elmp02.blackmesh.com
 
 Host git.drupal.org
     IdentityFile ~/.ssh/id_rsa.drupal
+
+Host heroku.com
+    IdentityFile ~/.ssh/id_rsa.heroku
+
+# Blue365v3
+Host *.*.blue365deals.com
+    ServerAliveInterval 120
+    TCPKeepAlive no
+    IdentityFile ~/.ssh/id_rsa.bcbscloud
+    User maddeo

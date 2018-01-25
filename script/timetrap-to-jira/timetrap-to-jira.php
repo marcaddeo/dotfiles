@@ -23,7 +23,16 @@ $db = new Zend\Db\Adapter\Adapter([
 if ($argc === 1) {
     $date = new DateTimeImmutable();
 } else {
-    $date = new DateTimeImmutable(trim($argv[1]));
+    switch (trim($argv[1])) {
+        case 'y':
+        case 'yest':
+        case 'yesterday':
+            $date = new DateTimeImmutable('-1 day');
+            break;
+        default:
+            $date = new DateTimeImmutable(trim($argv[1]));
+            break;
+    }
 }
 
 $entries = $db->query('SELECT * FROM entries WHERE ? BETWEEN DATE(start) AND DATE(end) ORDER BY start', [

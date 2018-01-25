@@ -42,6 +42,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'smerrill/vcl-vim-plugin'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 
 " Plugins to find replacements for
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }

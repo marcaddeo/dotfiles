@@ -64,10 +64,10 @@ export PATH="$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/bin:/usr/b
 source $ZSH/oh-my-zsh.sh
 source "$HOME/.console/console.rc" 2>/dev/null
 
-eval $(docker-machine env default)
 
 # Load fzf bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load a custom terminfo file to fix backspace in neovim
 [[ -f "~/.$TERM.ti" ]] && tic ~/.$TERM.ti
+source /Users/marc/.cargo/env
