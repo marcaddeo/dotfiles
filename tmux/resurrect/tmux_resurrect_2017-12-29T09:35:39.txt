@@ -1,0 +1,15 @@
+pane	0	0	:zsh	1	:*	0	:/Users/marc	1	zsh	:
+pane	work	0	:main	1	:*	0	:/Users/marc	0	zsh	:
+pane	work	0	:main	1	:*	1	:/Users/marc/dotfiles	0	zsh	:
+pane	work	0	:main	1	:*	2	:/Users/marc/dotfiles/wiki	1	bash	:bash /Users/marc/.tmux/plugins/tmux-resurrect/scripts/save.sh
+pane	work	2	:bcbscom	0	:	0	:/Users/marc/dev/oomph/bcbs.com	1	zsh	:
+pane	work	3	:blue365	0	:	0	:/Users/marc/dev/oomph/blue365	1	zsh	:
+pane	work	5	:hank	0	:	0	:/Users/marc/dev/rust/hank	1	zsh	:
+pane	work	6	:moo	0	:-	0	:/Users/marc/dev/rust/myth-of-orient	1	nvim	:nvim
+window	0	0	1	:*	8d7e,223x112,0,0,1
+window	work	0	1	:*	ca44,223x112,0,0{102x112,0,0,2,120x112,103,0[120x53,103,0,3,120x58,103,54,4]}
+window	work	2	0	:	8d83,223x112,0,0,6
+window	work	3	0	:	8d84,223x112,0,0,7
+window	work	5	0	:	46f2,223x112,0,0,32
+window	work	6	0	:-	46fb,223x112,0,0,79
+state	work	0
