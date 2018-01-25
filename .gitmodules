@@ -12,4 +12,4 @@
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "vpn"]
 	path = vpn
-	url = ./vpn
+	url = git@github.com:marcaddeo/vpn.git
