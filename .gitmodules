@@ -10,3 +10,6 @@
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "vpn"]
+	path = vpn
+	url = ./vpn
