@@ -107,6 +107,7 @@ set cursorline
 set colorcolumn=80
 set number
 set relativenumber
+set mouse=a
 
 " Appearance Settings
 syntax enable
@@ -141,30 +142,7 @@ let g:vdebug_options = {
     \ 'server' : '',
     \ 'watch_window_style' : 'compact',
     \ 'marker_default' : '*',
-    \ 'path_maps' : {
-        \ '/theme/cle' : '/Users/marc/dev/oomph/ccl-leading-effectively/cle',
-        \ '/app' : '/Users/marc/dev/oomph/Boston-Chefs',
-        \ '/app/boston-chefs' : '/Users/marc/dev/oomph/Boston-Chefs/boston-chefs',
-        \ '/var/www/index.php' : '/Users/marc/dev/oomph/wp/index.php',
-        \ '/var/www/wp-activate.php' : '/Users/marc/dev/oomph/wp/wp-activate.php',
-        \ '/var/www/wp-admin' : '/Users/marc/dev/oomph/wp/wp-admin',
-        \ '/var/www/wp-blog-header.php' : '/Users/marc/dev/oomph/wp/wp-blog-header.php',
-        \ '/var/www/wp-comments-post.php' : '/Users/marc/dev/oomph/wp/wp-comments-post.php',
-        \ '/var/www/wp-config-sample.php' : '/Users/marc/dev/oomph/wp/wp-config-sample.php',
-        \ '/var/www/wp-content' : '/Users/marc/dev/oomph/wp/wp-content',
-        \ '/var/www/wp-cron.php' : '/Users/marc/dev/oomph/wp/wp-cron.php',
-        \ '/var/www/wp-includes' : '/Users/marc/dev/oomph/wp/wp-includes',
-        \ '/var/www/wp-links-opml.php' : '/Users/marc/dev/oomph/wp/wp-links-opml.php',
-        \ '/var/www/wp-load.php' : '/Users/marc/dev/oomph/wp/wp-load.php',
-        \ '/var/www/wp-login.php' : '/Users/marc/dev/oomph/wp/wp-login.php',
-        \ '/var/www/wp-mail.php' : '/Users/marc/dev/oomph/wp/wp-mail.php',
-        \ '/var/www/wp-settings.php' : '/Users/marc/dev/oomph/wp/wp-settings.php',
-        \ '/var/www/wp-signup.php' : '/Users/marc/dev/oomph/wp/wp-signup.php',
-        \ '/var/www/wp-trackback.php' : '/Users/marc/dev/oomph/wp/wp-trackback.php',
-        \ '/var/www/xmlrpc.php' : '/Users/marc/dev/oomph/wp/xmlrpc.php',
-        \ '/usr/share/php/drush' : '/Users/marc/.composer/vendor/drush/drush',
-        \ '/var/www/web' : '/Users/marc/dev/oomph/oomphinc.com/web'
-    \}
+    \ 'path_maps' : { }
 \}
 
 " Gutentags Settings
@@ -276,7 +254,7 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Close a buffer without closing the window
-nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
+nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " Create an edit file under cursor
 nnoremap <leader>gf :e <cfile><cr>
@@ -298,7 +276,7 @@ autocmd BufRead,BufNewFile *.test set filetype=php
 autocmd BufRead,BufNewFile *.{info,make,build} set filetype=drini
 
 " Detect YAML files with ---
-autocmd BufNewFile,BufRead * if match(getline(1), "---") >= 0 | set filetype=yaml | endif
+autocmd BufNewFile,BufRead * if match(getline(1), "---") >= 0 && expand('%:e') != "md" | set filetype=yaml | endif
 
 " Run Neomake on every write
 autocmd! BufWritePost * Neomake
