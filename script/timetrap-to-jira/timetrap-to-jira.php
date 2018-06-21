@@ -41,12 +41,6 @@ $entries = $db->query('SELECT * FROM entries WHERE ? BETWEEN DATE(start) AND DAT
 
 $console = Zend\Console\Console::getInstance();
 
-$api = new chobie\Jira\Api(
-    $config['host'],
-    new chobie\Jira\Api\Authentication\Basic($config['username'], $config['password']),
-    new chobie\Jira\Api\Client\PHPClient()
-);
-
 echo "Transfering times to JIRA…\n";
 $console->writeLine(str_repeat('-', 79), Zend\Console\ColorInterface::YELLOW);
 
@@ -109,21 +103,19 @@ foreach ($entries as $entry) {
     }
 
     while (true) {
-        $result = $api->api(
-            chobie\Jira\Api::REQUEST_POST,
-            '/rest/tempo-timesheets/3/worklogs',
-            [
-                'issue' => [
-                    'key' => $issueNumber,
-                ],
-                'author' => [
-                    'name' => $config['username'],
-                ],
-                'comment'   => $note,
-                'dateStarted'   => preg_replace('(\.(\d{3})\d+)', '.\1', $start->format('Y-m-d\TH:i:s.u')),
+        $client = new GuzzleHttp\Client();
+        $response = $client->post($config['host'] . '/2/worklogs', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $config['tempo_token'],
+            ],
+            'json' => [
+                'issueKey' => $issueNumber,
+                'authorUsername' => $config['username'],
+                'description' => $note,
+                'startDate' => preg_replace('(\.(\d{3})\d+)', '.\1', $start->format('Y-m-d')),
                 'timeSpentSeconds' => $timeSpentSeconds,
-            ]
-        )->getResult();
+            ],
+        ]);
 
         if (isset($result['errorMessages'][0])) {
             $console->writeLine($result['errorMessages'][0], Zend\Console\ColorInterface::RED);
