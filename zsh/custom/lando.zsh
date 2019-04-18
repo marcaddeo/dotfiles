@@ -1,6 +1,6 @@
 ## Helper functions
 function _is_lando_project() {
-    local landos="$(jq -rM '.[].dir' ~/.lando/cache/registry)"
+    local landos="$(lando list --format=json | jq -rM 'del(._global_) | .[][0].src[0][:-11]')"
 
     for lando in ${(f)landos}; do
         [[ "$(pwd)" = "$lando"* ]] && return
