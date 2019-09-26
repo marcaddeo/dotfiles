@@ -1,4 +1,4 @@
-alias work="cd ~/dev/oomph"
+alias work="cd ~/Code"
 alias dotfiles="cd ~/dotfiles"
 
 # Ignore .retry ansible files

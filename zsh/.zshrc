@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/marc/.oh-my-zsh
+export ZSH=/Users/marc.addeo/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -54,7 +54,7 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gpg-agent jira sprunge sudo tmux vagrant)
+plugins=(git jira sprunge sudo tmux vagrant)
 
 # User configuration
 
@@ -70,4 +70,3 @@ source "$HOME/.console/console.rc" 2>/dev/null
 
 # Load a custom terminfo file to fix backspace in neovim
 [[ -f "~/.$TERM.ti" ]] && tic ~/.$TERM.ti
-source /Users/marc/.cargo/env

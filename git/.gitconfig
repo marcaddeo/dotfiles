@@ -1,7 +1,7 @@
 [user]
   name = Marc Addeo
   email = marcaddeo@gmail.com
-  signingkey = 96105359
+  ; signingkey = 96105359
 [push]
   default = simple
 [core]
@@ -13,7 +13,7 @@
 [rebase]
   autosquash = true
 [commit]
-	gpgsign = true
+	; gpgsign = true
 	verbose = true
 [diff]
 	compactionHeuristic = true

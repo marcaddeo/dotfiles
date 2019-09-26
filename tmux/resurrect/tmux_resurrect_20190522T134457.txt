@@ -1,0 +1,14 @@
+pane	0	0	:zsh	1	:*	0	:/Users/marc.addeo	1	zsh	:
+pane	acquia	0	:main	1	:*	0	:/Users/marc.addeo	1	zsh	:
+pane	acquia	1	:acquia.com	0	:Z	0	:/Users/marc.addeo/Code/acom	0	zsh	:
+pane	acquia	1	:acquia.com	0	:Z	1	:/Users/marc.addeo/Code/acom	1	zsh	:
+pane	acquia	2	:engage.acquia.com	0	:-	0	:/Users/marc.addeo	1	zsh	:
+pane	acquia	3	:dev.acquia.com	0	:	0	:/Users/marc.addeo	1	zsh	:
+pane	acquia	4	:drupal.com	0	:	0	:/Users/marc.addeo	1	zsh	:
+window	0	0	1	:*	b9bd,177x90,0,0,0
+window	acquia	0	1	:*	b9be,177x90,0,0,1
+window	acquia	1	0	:Z	2764,177x90,0,0[177x53,0,0,2,177x36,0,54,3]
+window	acquia	2	0	:-	b9c4,177x90,0,0,7
+window	acquia	3	0	:	b9c5,177x90,0,0,8
+window	acquia	4	0	:	b9c6,177x90,0,0,9
+state	acquia	0
