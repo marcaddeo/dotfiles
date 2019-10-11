@@ -1,0 +1,17 @@
+pane	acquia	0	:main	1	:*	0	:/Users/marc.addeo/dotfiles	1	zsh	:
+pane	acquia	1	:acquia.com	0	:-	0	:/Users/marc.addeo/Code/acom	0	zsh	:
+pane	acquia	1	:acquia.com	0	:-	1	:/Users/marc.addeo/Code/acom	1	zsh	:
+pane	acquia	2	:engage.acquia.com	0	:	0	:/Users/marc.addeo/Code/engaged8	1	zsh	:
+pane	acquia	2	:engage.acquia.com	0	:	1	:/Users/marc.addeo/Code/engaged8	0	zsh	:
+pane	acquia	3	:dev.acquia.com	0	:	0	:/Users/marc.addeo/Code/devacquiad8	0	zsh	:
+pane	acquia	3	:dev.acquia.com	0	:	1	:/Users/marc.addeo/Code/devacquiad8	1	zsh	:
+pane	acquia	4	:drupal.com	0	:	0	:/Users/marc.addeo/Code/drupalcom	0	zsh	:
+pane	acquia	4	:drupal.com	0	:	1	:/Users/marc.addeo/Code/drupalcom	1	zsh	:
+pane	acquia	5	:zsh	0	:	0	:/Users/marc.addeo/Code/engage_acquia_remote	1	zsh	:
+window	acquia	0	1	:*	b9bf,177x90,0,0,2
+window	acquia	1	0	:-	f566,177x90,0,0[177x55,0,0,3,177x34,0,56,4]
+window	acquia	2	0	:	56ec,177x90,0,0[177x67,0,0,5,177x22,0,68,6]
+window	acquia	3	0	:	f550,177x90,0,0[177x55,0,0,7,177x34,0,56,8]
+window	acquia	4	0	:	13ff,177x90,0,0[177x53,0,0,9,177x36,0,54,10]
+window	acquia	5	0	:	5d10,177x90,0,0,11
+state	acquia	
