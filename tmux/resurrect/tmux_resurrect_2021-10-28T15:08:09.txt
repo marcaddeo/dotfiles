@@ -1,0 +1,10 @@
+pane	0	0	:zsh	1	:*	0	:/Users/marc	1	zsh	:
+pane	home	0	:infrastructure	1	:*	0	:/Users/marc/dev/infrastructure	1	zsh	:
+pane	work	0	:main	0	:-	0	:/Users/marc	1	zsh	:
+pane	work	1	:stacker.com	1	:*	0	:/Users/marc/dev/stacker/thestacker.com	0	nvim	:nvim
+pane	work	1	:stacker.com	1	:*	1	:/Users/marc/dev/stacker/thestacker.com	1	zsh	:
+window	0	0	1	:*	c59e,267x74,0,0,1
+window	home	0	1	:*	c59f,267x74,0,0,2
+window	work	0	0	:-	c5a2,267x74,0,0,5
+window	work	1	1	:*	4929,267x74,0,0[267x54,0,0,6,267x19,0,55,7]
+state	home	work

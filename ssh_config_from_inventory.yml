@@ -1,0 +1,8 @@
+---
+- name: Test
+  hosts: localhost
+  tasks:
+    - name: Create ansible_inventory_hosts file
+      template:
+        src: ansible_inventory_hosts.j2
+        dest: ~/.ssh/ansible_inventory_hosts

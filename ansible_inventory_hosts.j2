@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+
+{% for host in groups.all %}
+Host {{ host }}
+    HostName {{ hostvars[host]["ansible_host"] }}
+    ServerAliveInterval 120
+    TCPKeepAlive no
+    User {{ hostvars[host]["ansible_user"] }}
+
+{% endfor %}
+# {{ ansible_managed }}

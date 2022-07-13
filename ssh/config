@@ -1,3 +1,9 @@
+Include ~/.ssh/blue365-config
+Host gitlab.com
+    HostName gitlab.com
+    IdentityFile ~/.ssh/id_rsa.gitlab
+    User git
+
 Host github.com
     HostName github.com
     IdentityFile ~/.ssh/id_rsa.github
@@ -22,8 +28,8 @@ Host jenkins.oomphcloud.com
 Host 198.8.88.241 198.8.88.245
     IdentityFile ~/.ssh/id_rsa.toobnetwork
 
-Host git.oomphcloud.com git.dev.oomphcloud.com dev.oomphcloud.com sta.oomphcloud.com
-    IdentityFile ~/.ssh/id_rsa.oomphcloud
+# Host git.oomphcloud.com git.dev.oomphcloud.com dev.oomphcloud.com sta.oomphcloud.com
+#     IdentityFile ~/.ssh/id_rsa.oomphcloud
 
 Host 127.0.0.1
     StrictHostKeyChecking no
@@ -34,18 +40,19 @@ Host d8.oomphcloud.com
     IdentityFile ~/.ssh/id_rsa.oomphcloud
     User maddeo
 
-Host staging.blue365-root
-    HostName staging.blue365
+# Host staging.blue365-root
+Host *.askblue *.bcbs *.blue365
+    # HostName staging.blue365
     ServerAliveInterval 120
     TCPKeepAlive no
     IdentityFile ~/.ssh/id_rsa.root@bcbs-bm
     User root
 
-Host *.askblue *.bcbs *.blue365
-    ServerAliveInterval 120
-    TCPKeepAlive no
-    IdentityFile ~/.ssh/id_rsa.bcbscloud
-    User maddeo
+# Host *.askblue *.bcbs *.blue365
+#     ServerAliveInterval 120
+#     TCPKeepAlive no
+#     IdentityFile ~/.ssh/id_rsa.bcbscloud
+#     User maddeo
 
 Host *.askblue *.bcbs *.blue365
     ServerAliveInterval 120
@@ -66,8 +73,34 @@ Host heroku.com
     IdentityFile ~/.ssh/id_rsa.heroku
 
 # Blue365v3
-Host *.*.blue365deals.com
+Host lmp01.dev.blue365deals.com
     ServerAliveInterval 120
     TCPKeepAlive no
     IdentityFile ~/.ssh/id_rsa.bcbscloud
     User maddeo
+
+# Blue365v3
+Host *.*.blue365deals.com
+    ServerAliveInterval 120
+    TCPKeepAlive no
+    IdentityFile ~/.ssh/id_rsa.ansible@bcbscloud
+    User ansible
+
+Host dev.oomphcloud.com
+	User composerwp
+	IdentityFile ~/.ssh/id_rsa.travis@dev.oomphcloud.com
+
+Host monsterandme.net
+    ServerAliveInterval 120
+    TCPKeepAlive no
+    IdentityFile ~/.ssh/id_rsa.ansible@monsterandme.net
+    User ansible
+
+Host dev.kindpilates.com
+    ServerAliveInterval 120
+    TCPKeepAlive no
+    IdentityFile ~/.ssh/id_rsa.ansible@kindpilates.com
+    User ansible
+
+Host svn-23659.prod.hosting.acquia.com bcbsrihippaad8stg.ssh.prod.acquia-sites.com
+	IdentityFile ~/.ssh/bcbsri

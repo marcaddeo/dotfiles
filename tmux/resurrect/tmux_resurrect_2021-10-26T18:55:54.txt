@@ -1,0 +1,12 @@
+pane	0	0	:zsh	1	:*	0	:/Users/marc	1	zsh	:
+pane	home	0	:infrastructure	1	:*Z	0	:/Users/marc/dev/infrastructure/provisioning	0	nvim	:nvim
+pane	home	0	:infrastructure	1	:*Z	1	:/Users/marc/dev/infrastructure/provisioning	0	ssh	:ssh -i host_keys/id_rsa.ansible@addeo.net ansible@10.1.15.65
+pane	home	0	:infrastructure	1	:*Z	2	:/Users/marc/dev/infrastructure/provisioning/bootstrap	1	zsh	:
+pane	work	0	:main	0	:-	0	:/Users/marc	1	zsh	:
+pane	work	1	:stacker.com	1	:*	0	:/Users/marc/dev/stacker/thestacker.com	0	nvim	:nvim
+pane	work	1	:stacker.com	1	:*	1	:/Users/marc/dev/stacker/thestacker.com	1	zsh	:
+window	0	0	1	:*	b9be,177x90,0,0,1
+window	home	0	1	:*Z	0d3e,177x90,0,0[177x67,0,0,2,177x22,0,68{82x22,0,68,19,94x22,83,68,7}]
+window	work	0	0	:-	b9c0,177x90,0,0,3
+window	work	1	1	:*	13e9,177x90,0,0[177x62,0,0,4,177x27,0,63,5]
+state	home	

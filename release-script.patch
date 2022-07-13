@@ -1,0 +1,19 @@
+167a168,177
+> 
+>   local release_changes=$(awk -v version="$version" '$0 ~ version"] "{flag=1;print;next}/## \[[[:digit:]]/{flag=0}flag' CHANGELOG.md)
+>   local release_link=$(awk -v version="$version" '$1 ~ version {sub(version"$", "release/"version, $0); print}' CHANGELOG.md)
+>   local temp_pull_request="$(mktemp "$TMPDIR$(uuidgen).pull-request.md")"
+> 
+>   echo -e "Prepare CHANGELOG for $version release\n" > "$temp_pull_request"
+>   echo -e "$release_changes\n" >> "$temp_pull_request"
+>   echo "$release_link" >> "$temp_pull_request"
+> 
+>   hub pull-request --browse --file="$temp_pull_request"
+180c190
+<     version="$(("$release_site" + 1)).0.0"
+---
+>     version="$(($release_site + 1)).0.0"
+182c192
+<     version="$release_site.$(("$release_major" + 1)).0"
+---
+>     version="$release_site.$(($release_major + 1)).0"

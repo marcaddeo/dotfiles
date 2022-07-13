@@ -44,6 +44,8 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'arouene/vim-ansible-vault'
+Plug 'koryschneider/vim-trim'
 
 " Plugins to find replacements for
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -137,8 +139,9 @@ let g:mta_filetypes = {
 
 " VDebug Settings
 let g:vdebug_options = {
+    \ 'port': 9003,
     \ 'break_on_open': 1,
-    \ 'ide_key': 'XDEBUG_VIM',
+    \ 'ide_key': 'vim',
     \ 'server' : '',
     \ 'watch_window_style' : 'compact',
     \ 'marker_default' : '*',
@@ -183,6 +186,10 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_key_invoke_completion = '<c-o>'
+
+" Ansible Vault Settings
+let g:ansible_vault_password_file = '.vault-id'
+let g:ansible_vault_no_unquote = 0
 
 " Mappings
 " Disable arrow keys
@@ -243,6 +250,10 @@ nnoremap <leader>rf :RangerCurrentDirectory<cr>
 " Tagbar
 nnoremap <leader>t :TagbarOpenAutoClose<cr>
 
+" Ansible Vault
+nnoremap <Leader>av :AnsibleVault<CR>
+nnoremap <Leader>au :AnsibleUnvault<CR>
+
 " Yank to the system clipboard
 vmap <leader>y "+y
 
@@ -264,6 +275,8 @@ augroup vagrant
   au!
   au BufRead,BufNewFile Vagrantfile set filetype=ruby
 augroup END
+
+autocmd filetype crontab setlocal nobackup nowritebackup
 
 " Set filetype for Drupal PHP files.
 autocmd BufRead,BufNewFile *.module set filetype=php

@@ -1,6 +1,6 @@
 ## Helper functions
 function _is_lando_project() {
-    local landos="$(jq -rM '.[].dir' ~/.lando/cache/registry)"
+    local landos="$(lando list --format=json | jq -rM '.[].src[0]?[:-11]')"
 
     for lando in ${(f)landos}; do
         [[ "$(pwd)" = "$lando"* ]] && return
@@ -63,6 +63,7 @@ function _lando_zsh_buffer_alter() {
         phpcs
         npm
         gulp
+        yarn
     )
 
     for command in "$lando_commands[@]"; do

@@ -54,11 +54,11 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gpg-agent jira sprunge sudo tmux vagrant)
+plugins=(git gpg-agent jira sprunge sudo tmux ssh-agent)
 
 # User configuration
 
-export PATH="$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -71,3 +71,15 @@ source "$HOME/.console/console.rc" 2>/dev/null
 # Load a custom terminfo file to fix backspace in neovim
 [[ -f "~/.$TERM.ti" ]] && tic ~/.$TERM.ti
 source /Users/marc/.cargo/env
+
+export HOMEBREW_GITHUB_TOKEN="7c5cd9ce62c06106acde6bd9187bffc3d83dcabd"
+
+eval $(gdircolors $HOME/dotfiles/misc/dircolors.solarized.ansi-dark)
+
+# added by travis gem
+[ -f /Users/marc/.travis/travis.sh ] && source /Users/marc/.travis/travis.sh
+
+# BEGIN SNIPPET: Platform.sh CLI configuration
+HOME=${HOME:-'/Users/marc'}
+export PATH="$HOME/"'.platformsh/bin':"$PATH"
+if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET

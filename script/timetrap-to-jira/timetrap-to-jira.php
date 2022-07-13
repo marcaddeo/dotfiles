@@ -102,6 +102,11 @@ foreach ($entries as $entry) {
         $issueNumber = trim($console->readLine());
     }
 
+    if (strpos($issueNumber, 'OTT') === 0) {
+        printf("Skipping OTT time...\n");
+        continue;
+    }
+
     while (true) {
         $client = new GuzzleHttp\Client();
         $response = $client->post($config['host'] . '/2/worklogs', [

@@ -10,7 +10,7 @@ function _refresh_and_push_timesheetss {
         echo "Pushing to Github..."
         git checkout master >/dev/null 2>&1
         git add . >/dev/null 2>&1
-        git commit -m "Update time sheets" >/dev/null 2>&1
+        git commit --no-gpg-sign -m "Update time sheets" >/dev/null 2>&1
         git push origin master >/dev/null 2>&1
 
         popd >/dev/null 2>&1
@@ -102,7 +102,8 @@ function tib() {
 }
 
 function titot() {
-    SECS=$(timetrap display -fjira | grep "$1" | perl -pe 's/.* (\d+:\d+:\d+) .*/\1/' | sed 's/:/*60+/g;s/*60/&&/' | bc | paste -sd+ - | bc) | echo - | awk -v "S=$SECS" '{printf "%02d:%02d:%02d\n", S/(60*60), S%(60*60)/60, S%60}'
+    SECS=$(timetrap display -fjira "${@:2}" | grep "$1" | perl -pe 's/.* (\d+:\d+:\d+) .*/\1/' | sed 's/:/*60+/g;s/*60/&&/' | bc | paste -sd+ - | bc)
+    echo - | awk -v "S=$SECS" '{printf "%02d:%02d:%02d\n", S/(60*60), S%(60*60)/60, S%60}'
 }
 
 alias tio="ti out"

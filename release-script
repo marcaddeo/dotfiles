@@ -1,0 +1,320 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2155
+set -eo pipefail
+
+create_release_branch() {
+  declare version="$1"
+
+  echo "Creating release branch for version $version..."
+
+  git checkout master
+  git pull
+  git checkout -b "release/$version"
+  git push -u origin "release/$version"
+}
+
+get_latest_release() {
+  git fetch --tags
+  git tag --sort="version:refname" | tail -1
+}
+
+get_release_lock_file() {
+  local bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  local git_dir="$(realpath "$bin_dir/../.git")"
+
+  echo "$git_dir/RELEASE.lock"
+}
+
+has_release_lock() {
+  [[ -f "$(get_release_lock_file)" ]]
+}
+
+create_release_lock() {
+  declare version="$1"
+
+  echo "$version" > "$(get_release_lock_file)"
+}
+
+clear_release_lock() {
+  rm "$(get_release_lock_file)"
+}
+
+get_active_release_version() {
+  cat "$(get_release_lock_file)"
+}
+
+# @TODO maybe split this function up
+curate_changelog() {
+  declare version="$1"
+
+  echo "Beginning CHANGELOG curation..."
+
+  local date="$(date "+%Y-%m-%d")"
+  local unreleased_changes="$(awk '/## \[Unreleased\]/{flag=1;next}/## \[[[:digit:]]/{flag=0}flag' CHANGELOG.md)"
+  local temp_changelog="$(mktemp "$TMPDIR$(uuidgen).CHANGELOG.md")"
+
+  local curation_template
+  define curation_template <<MARKDOWN
+<!-- CHANGELOG curation for release $version
+
+Make any final changes to the to-be-released CHANGELOG entry here. When you are
+satisfied with your changes, save and quit.
+
+Any empty CHANGELOG sections will be automatically removed.
+
+Do not edit above this line. HTML comments (including this) will be removed.
+--------------------------------------------------------------------------------
+-->
+
+MARKDOWN
+
+  # Open the users $EDITOR with the unreleased changes for curating
+  echo "$curation_template" > "$temp_changelog"
+  echo "$unreleased_changes" >> "$temp_changelog"
+  ${EDITOR:-vim} "$temp_changelog"
+
+  # Ensure user didn't delete all the file contents
+  if [[ ! -s "$temp_changelog" ]]; then
+    echo "ERROR: Curated change set is empty. Aborting..."
+    exit 1
+  fi
+
+  # Strip out HTML comments
+  # shellcheck disable=SC2005
+  echo "$(awk '/<!--/ {off=1} /-->/ {off=2} /([\s\S]*)/ {if (off==0) print; if (off==2) off=0}' "$temp_changelog")" > "$temp_changelog"
+
+  # Ensure stripping out HTML comments didn't empty the file
+  if [[ ! -s "$temp_changelog" ]]; then
+    echo "ERROR: Curated change set is empty after removing HTML comments. Aborting..."
+    exit 1
+  fi
+
+  # Remove empty sections
+  perl -0777 -pi -e 's/### \w+\n([\s\n]+|$)//sg' "$temp_changelog"
+
+  # Ensure we didn't strip everything out
+  if [[ ! -s "$temp_changelog" ]]; then
+    echo "ERROR: Curated change set is empty after removing empty sections. Aborting..."
+    exit 1
+  fi
+
+  # Ensure there's always an empty line at the end of the file
+  [[ ! -z "$(tail -1 "$temp_changelog")" ]] && echo >> "$temp_changelog"
+
+  # Add the curated changes back to the CHANGELOG
+  local new_changelog="$(awk -v temp_changelog="$temp_changelog" '
+    /## \[Unreleased\]/ {print; system("cat " temp_changelog); changes=1; next}
+    /## \[[[:digit:]]/ {changes=0}
+    changes {next}
+    {print}
+  ' CHANGELOG.md)"
+
+  echo "$new_changelog" > CHANGELOG.md
+
+  # Update the Unreleased header to the new release
+  sed -i '' -e "s/## \[Unreleased\]/## \[$version\] - $date/" CHANGELOG.md
+
+  local unreleased_template
+  define unreleased_template <<'MARKDOWN'
+## [Unreleased]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+MARKDOWN
+
+  # Write the unreleased template to the temp_changelog so we can read it into
+  # the actual CHANGELOG
+  echo "$unreleased_template" > "$temp_changelog"
+  sed -i '' -e "/## \[$version\] - $date/ {
+    h
+    r $temp_changelog
+    g
+    N
+  }" CHANGELOG.md
+
+  # Ensure there's a space after the new Unreleased section
+  perl -pi -e "s/(## \[$version\] - $date)/\n\1/" CHANGELOG.md
+
+  # Add a comparison link for the previous...current version
+  perl -pi -e "s~(\[Unreleased\]: (.*\.{3}).*$)~\$1\n[$version]: \${2}$version~" \
+    CHANGELOG.md
+
+  # Update the [Unreleased] comparison link for the current version
+  perl -pi -e "s~^(\[Unreleased\]: .*)/.*\.\.\.HEAD$~\${1}/$version...HEAD~" \
+    CHANGELOG.md
+
+  git add CHANGELOG.md
+  git commit -m "Prepare CHANGELOG for $version release"
+  git push
+
+  echo "CHANGELOG successfully curated!
+
+Next, if there is any other preparation that is necessary for this release,
+such as pulling configuration down from production, this is the time to do it.
+
+Once the release is prepared, go on GitHub and create a pull request against
+\"master\" with the \"release/$version\" branch.
+
+After the pull request has been reviewed, approved, and merged, run
+\"bin/release finish\" to finish the release process."
+
+  local release_changes=$(awk -v version="$version" '$0 ~ version"] "{flag=1;print;next}/## \[[[:digit:]]/{flag=0}flag' CHANGELOG.md)
+  local release_link=$(awk -v version="$version" '$1 ~ version {sub(version"$", "release/"version, $0); print}' CHANGELOG.md)
+  local temp_pull_request="$(mktemp "$TMPDIR$(uuidgen).pull-request.md")"
+
+  echo -e "Prepare CHANGELOG for $version release\n" > "$temp_pull_request"
+  echo -e "$release_changes\n" >> "$temp_pull_request"
+  echo "$release_link" >> "$temp_pull_request"
+
+  hub pull-request --browse --file="$temp_pull_request"
+}
+
+start() {
+  declare next="$1" minor="$2" major="$3" site="$4" version="$5"
+
+  local version
+  local release="$(get_latest_release)"
+  local release_site="$(echo "$release" | cut -d '.' -f1)"
+  local release_major="$(echo "$release" | cut -d '.' -f2)"
+  local release_minor="$(echo "$release" | cut -d '.' -f3)"
+
+  if [[ "$site" == "true" ]]; then
+    version="$(($release_site + 1)).0.0"
+  elif [[ "$major" == "true" ]]; then
+    version="$release_site.$(($release_major + 1)).0"
+  elif [[ -z $version ]]; then
+    version="$release_site.$release_major.$(($release_minor + 1))"
+  fi
+
+  if has_release_lock; then
+    echo "ERROR: A release is already in progress!"
+    echo
+    echo "You can cancel it by running \"bin/release cancel\""
+
+    exit 1
+  fi
+
+  echo "Starting release process for version $version..."
+
+  create_release_lock "$version"
+  create_release_branch "$version"
+  curate_changelog "$version"
+}
+
+finish() {
+  declare no_sign_tag="$1"
+
+  if ! has_release_lock; then
+    echo "ERROR: No release in progress. Aborting..."
+
+    exit 1
+  fi
+
+  local flag="-s"
+  local version="$(get_active_release_version)"
+  local changeset="$(awk "/## \[$version\].*/{flag=1;next}/## \[[[:digit:]]/{flag=0}flag" CHANGELOG.md)"
+
+  # Allow the user to disable signing the tag
+  if [[ "$no_sign_tag" == "true" ]]; then
+    flag="-a"
+  fi
+
+  git checkout master
+  git pull
+  git tag --cleanup=verbatim "$flag" "$version" -F- <<MESSAGE
+Release version $version
+
+$changeset
+MESSAGE
+
+  git push --follow-tags
+
+  rm "$(get_release_lock_file)"
+  echo "Successfully tagged version $version release."
+}
+
+cancel() {
+  if ! has_release_lock; then
+    echo "ERROR: No release in progress. Aborting..."
+
+    exit 1
+  fi
+
+  local active_release="$(get_active_release_version)"
+
+  echo "Canceling release for $active_release"
+  echo "This will remove the release/$active_release branch and any changes will be lost"
+
+  while true; do
+    read -rp "Do you wish to proceed? [y/n] " yn
+
+    case "$yn" in
+      [Yy]* )
+        git checkout master
+        git push -d origin "release/$active_release"
+        git branch -D "release/$active_release"
+        rm "$(get_release_lock_file)"
+        break
+        ;;
+      *) exit;;
+    esac
+  done
+}
+
+docopts() {
+  local bin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  local docopts="$bin_dir/docopts"
+  local version="$0 $SCRIPT_VERSION"
+
+  local usage
+  define usage <<USAGE
+Usage:
+  $0 start [(next|minor|major|site|<semantic_version>)]
+  $0 finish [--no-sign-tag]
+  $0 cancel
+  $0 -h | --help
+  $0 -v | --version
+
+Options:
+  -h --help     Show this screen.
+  -v --version  Show version.
+USAGE
+
+  eval "$("$docopts" -h "$usage" -V "$version" : "$@")"
+}
+
+define() {
+  IFS=$'\n' read -r -d '' "${1}" || true
+}
+
+main() {
+  local start
+  local finish
+  local cancel
+  local semantic_version
+
+  docopts "$@"
+
+  if ! git diff-index --quiet HEAD --ignore-submodules --; then
+    echo "ERROR: Repository is dirty, exiting..."
+    exit 1
+  fi
+
+  if [[ "$start" == "true" ]]; then
+    start "$next" "$minor" "$major" "$site" "$semantic_version"
+  elif [[ "$finish" == "true" ]]; then
+    finish "$no_sign_tag"
+  elif [[ "$cancel" == "true" ]]; then
+    cancel
+  fi
+}
+
+main "$@"

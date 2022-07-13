@@ -1,25 +1,28 @@
 [user]
   name = Marc Addeo
   email = marcaddeo@gmail.com
-  signingkey = 96105359
+#  signingkey = 96105359
 [push]
   default = simple
 [core]
   excludesfile = /Users/marc/.gitignore
   editor = /usr/local/bin/nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
-  ui = always
+	ui = true
   diff = always
 [rebase]
   autosquash = true
 [commit]
-	gpgsign = true
+#	gpgsign = true
 	verbose = true
 [diff]
 	compactionHeuristic = true
 [alias]
 	stash-rename = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git stash store -m \"$2\" $rev; }; _"
 	tags = "tag --sort=\"version:refname\""
+	cleans = !git ls-files --others --exclude-from=.git/info/exclude -z | xargs -0 rm -v
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 [merge]
 	tool = nvim
 [mergetool "nvim"]
