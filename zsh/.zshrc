@@ -1,3 +1,4 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/marc/.oh-my-zsh
 
@@ -58,8 +59,10 @@ plugins=(git gpg-agent jira sprunge sudo tmux ssh-agent)
 
 # User configuration
 
-export PATH="$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$(python3 -m site --user-base)/bin:$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 source $ZSH/oh-my-zsh.sh
 source "$HOME/.console/console.rc" 2>/dev/null
@@ -83,3 +86,7 @@ eval $(gdircolors $HOME/dotfiles/misc/dircolors.solarized.ansi-dark)
 HOME=${HOME:-'/Users/marc'}
 export PATH="$HOME/"'.platformsh/bin':"$PATH"
 if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion

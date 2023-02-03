@@ -6,7 +6,7 @@
   default = simple
 [core]
   excludesfile = /Users/marc/.gitignore
-  editor = /usr/local/bin/nvim
+  editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	ui = true
@@ -27,3 +27,5 @@
 	tool = nvim
 [mergetool "nvim"]
 	cmd = nvim \"+Gdiff\" $MERGED
+[init]
+	defaultBranch = master

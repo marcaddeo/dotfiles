@@ -86,3 +86,10 @@ function _lando_zsh_buffer_alter() {
     zle .accept-line
 }
 zle -N accept-line _lando_zsh_buffer_alter
+
+## Open Lando instances database in Querious
+function qq() {
+    if _is_lando_project; then
+        open -u "$(lando info --format=json | jq -r '.[] | select(.service == "database") | "querious://connect/new?host=\(.external_connection.host)&port=\(.external_connection.port)&user=\(.creds.user)&password=\(.creds.password)&database=\(.creds.database)"')"
+    fi
+}

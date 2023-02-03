@@ -19,9 +19,19 @@ Plug 'shawncplus/phpcomplete.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'elixir-lang/vim-elixir'
 Plug 'groenewege/vim-less'
-Plug 'evidens/vim-twig'
+" Plug 'evidens/vim-twig'
+Plug 'lumiliet/vim-twig'
 Plug 'tpope/vim-haml'
 Plug 'derekwyatt/vim-scala'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte'
+Plug 'terrastruct/d2-vim'
+" PHP Namespace support
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'ccaglak/namespace.nvim'
+" End PHP Namespace support stuff
 
 " Misc Plugins
 Plug 'christoomey/vim-tmux-navigator'
@@ -33,6 +43,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'joonty/vdebug'
+Plug 'mzlogin/vim-markdown-toc'
 
 " Testing
 Plug 'tpope/vim-commentary'
@@ -47,6 +58,8 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'arouene/vim-ansible-vault'
 Plug 'koryschneider/vim-trim'
 
+Plug '~/dotfiles/nvim/php-namespace-resolver.nvim'
+
 " Plugins to find replacements for
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 "Plug 'scrooloose/nerdcommenter'
@@ -56,6 +69,8 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'wellle/visual-split.vim'
 
 call plug#end()
+
+lua require("php_namespace_resolver").setup({})
 
 " Settings
 " General Settings
@@ -161,6 +176,18 @@ let g:tagbar_width = 55
 
 " Neomake Settings
 let g:neomake_open_list = 2
+let g:neomake_html_twig_enabled_makers = []
+let g:neomake_jinja_html_twig_enabled_makers = []
+let g:neomake_svelte_check_maker = {
+  \ 'exe': 'svelte-check',
+  \ 'args': ['--output', 'machine'],
+  \ 'append_file': 0,
+  \ 'errorformat':
+    \ '%E\\d%\\+ ERROR \"%f\" %l:%c \"%m\",' .
+    \ '%W%\\d%\\+ WARNING \"%f\" %l:%c \"%m\",' .
+    \ '%-G%.%#',
+\}
+let g:neomake_svelte_enabled_makers = ['svelte_check']
 
 " Fzf Settings
 let g:fzf_colors = {
@@ -236,6 +263,7 @@ vnoremap K y:Ag! "\b<c-r>"\b"<cr>
 nnoremap \ :Ag<space>
 
 " Fzf
+let $FZF_DEFAULT_COMMAND = "find . -type f -not -path '*/\.git/*\'"
 nnoremap <leader>o :Files<cr>
 nnoremap <leader>f :Files %:p:h<cr>
 nnoremap <leader>m :History<cr>
@@ -243,6 +271,7 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>/ :BLines<cr>
 
 " Ranger
+let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 let g:ranger_map_keys = 0
 nnoremap <leader>ro :RangerWorkingDirectory<cr>
 nnoremap <leader>rf :RangerCurrentDirectory<cr>
@@ -256,6 +285,11 @@ nnoremap <Leader>au :AnsibleUnvault<CR>
 
 " Yank to the system clipboard
 vmap <leader>y "+y
+
+" PHP Namespace Resolver
+nnoremap <leader>uu :GetClass<CR>
+nnoremap <leader>ua :GetAllClasses<CR>
+nnoremap <leader>us :SortClass<CR>
 
 " Make enter the same as c-y in autocompletion menu
 inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
@@ -298,12 +332,20 @@ autocmd! BufWritePost * Neomake
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal tw=79
 
+" Rust settings
+let g:rustc_path = "~/.cargo/bin/rustc"
+
 " Spell check git commits
 autocmd FileType gitcommit setlocal spell
 
 autocmd BufWritePost ~/dotfiles/wiki/* call jobstart(['bash', '-c', '~/dotfiles/wiki/bin/commit ' . expand('%')], {})
 
 nnoremap <leader>wt :silent r !date +'\%n\# \%H:\%M\%n'<cr>i
+
+augroup PHP
+    autocmd!
+    autocmd FileType php setlocal iskeyword-=$
+augroup END
 
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 2
