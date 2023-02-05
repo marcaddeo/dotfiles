@@ -797,7 +797,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 
-vim.opt.syntax = "enable"
+-- vim.opt.syntax = "enable"
 vim.opt.background = "dark"
 
 vim.opt.termguicolors = true
