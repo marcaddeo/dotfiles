@@ -494,15 +494,15 @@ require("lazy").setup({
     config = function()
       require("bufferline").setup({
         options = {
-            diagnostics = "nvim_lsp",
-            offsets = {
-                {
-                    filetype = "NvimTree",
-                    text = "File Explorer",
-                    text_align = "center",
-                    separator = true,
-                }
-            },
+          diagnostics = "nvim_lsp",
+          offsets = {
+            {
+              filetype = "NvimTree",
+              text = "File Explorer",
+              text_align = "center",
+              separator = true,
+            }
+          },
         }
       })
     end,
@@ -532,6 +532,16 @@ require("lazy").setup({
 
         if not real_file and not no_name then
           return
+        end
+
+        local disabled_filetypes = {
+          "gitcommit",
+        }
+
+        for _, disabled_type in ipairs(disabled_filetypes) do
+          if vim.bo[data.buf].filetype == disabled_type then
+            return
+          end
         end
 
         -- open the tree, find the file but don't focus it
