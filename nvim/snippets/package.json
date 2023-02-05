@@ -8,6 +8,14 @@
       {
         "language": "php",
         "path": "./php.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./drupal-javascript.json"
+      },
+      {
+        "language": "twig",
+        "path": "./drupal-twig.json"
       }
     ]
   }

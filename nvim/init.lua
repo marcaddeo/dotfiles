@@ -40,7 +40,30 @@ require("lazy").setup({
     build = ":TSUpdate",
     event = "BufReadPost",
     opts = {
-      autotag = { enable = true, },
+      autotag = {
+        enable = true,
+        filetypes = {
+          "html",
+          "javascript",
+          "typescript",
+          "javascriptreact",
+          "typescriptreact",
+          "svelte",
+          "vue",
+          "tsx",
+          "jsx",
+          "rescript",
+          "xml",
+          "php",
+          "markdown",
+          "glimmer",
+          "handlebars",
+          "hbs",
+          "htmldjango",
+          "html.twig",
+          "twig"
+        },
+      },
       endwise = { enable = true, },
       highlight = {
         enable = true,
@@ -51,12 +74,27 @@ require("lazy").setup({
       },
       context_commentstring = { enable = true, enable_autocmd = false },
       ensure_installed = {
+        "awk",
         "bash",
+        "comment",
+        "css",
+        "dockerfile",
+        "elixir",
+        "erlang",
+        "git_rebase",
+        "gitattributes",
+        "gitcommit",
+        "gitignore",
+        "go",
+        "graphql",
         "help",
         "html",
         "javascript",
         "json",
+        "json5",
+        "jq",
         "lua",
+        "make",
         "markdown",
         "markdown_inline",
         "php",
@@ -64,10 +102,16 @@ require("lazy").setup({
         "python",
         "query",
         "regex",
+        "ruby",
         "rust",
+        "sql",
+        "svelte",
+        "toml",
         "tsx",
         "typescript",
+        "twig",
         "vim",
+        "vue",
         "yaml",
       },
     },
@@ -251,7 +295,7 @@ require("lazy").setup({
               cmp.select_next_item()
             -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
             -- they way you will only jump inside the snippet region
-            elseif luasnip.expand_or_jumpable() then
+            elseif luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
             elseif has_words_before() then
               cmp.complete()
@@ -636,6 +680,9 @@ require("lazy").setup({
       "tobyS/vmustache",
     },
   },
+
+  "othree/html5.vim",
+  "lumiliet/vim-twig",
 
   -----------------------------------------------------------------------------
   -- Misc Plugins

@@ -4,7 +4,7 @@
     "body": [
       "/**",
       " * {@inheritdoc}",
-      "*/"
+      " */"
     ],
     "description": "@inheritdoc doc comment"
   }
