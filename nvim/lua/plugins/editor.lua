@@ -73,7 +73,13 @@ return {
     config = function()
       local telescope = require("telescope")
 
-      telescope.setup({})
+      telescope.setup({
+        defaults = {
+          file_ignore_patterns = {
+            ".git/COMMIT_EDITMSG",
+          },
+        },
+      })
       telescope.load_extension("fzf")
       telescope.load_extension("notify")
       telescope.load_extension("noice")
