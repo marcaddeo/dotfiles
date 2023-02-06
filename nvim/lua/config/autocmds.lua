@@ -18,7 +18,7 @@ autocmd BufRead,BufNewFile *.test set filetype=php
 autocmd BufRead,BufNewFile *.{info,make,build} set filetype=drini
 
 " Detect YAML files with ---
-autocmd BufNewFile,BufRead * if match(getline(1), "---") >= 0 && expand("%:e") != "md" | set filetype=yaml | endif
+autocmd BufNewFile,BufRead * if match(getline(1), "^---$") >= 0 && expand("%:e") != "md" | set filetype=yaml | endif
 
 " Markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
