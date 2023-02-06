@@ -56,11 +56,6 @@ return {
     end,
   },
 
-  -- {
-  --   "karb94/neoscroll.nvim",
-  --   config = true,
-  -- },
-
   {
     "winston0410/range-highlight.nvim",
     config = true,
@@ -77,6 +72,7 @@ return {
     config = function()
       require("lualine").setup({
         options = {
+          globalstatus = true,
           disabled_filetypes = {
             statusline = {
               "alpha",
@@ -84,6 +80,7 @@ return {
             },
           },
         },
+        extensions = { "nvim-tree" },
       })
       require("nvim-web-devicons").setup()
     end,
@@ -105,6 +102,7 @@ return {
               text = "File Explorer",
               text_align = "center",
               separator = true,
+              highlight = "Directory"
             }
           },
         }
