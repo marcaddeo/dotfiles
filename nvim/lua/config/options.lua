@@ -18,7 +18,7 @@ vim.g.mapleader = " "
 vim.opt.completeopt = "menuone,noselect"
 
 -- Ensure the gutter is always open and 2 columns wide
-vim.opt.signcolumn = "yes:2"
+vim.opt.signcolumn = "yes"
 
 -- Load local configuration
 vim.opt.exrc = true
@@ -40,6 +40,10 @@ vim.opt.list = true
 vim.opt.listchars = {
   tab = "▸ ",
   eol = "¬",
+}
+-- Hide end of buffer characters
+vim.opt.fillchars = {
+  eob = " ",
 }
 
 -- Indentation Settings
