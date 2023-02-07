@@ -14,6 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     { import = "plugins" },
+    { import = "plugins.lang.ansible" },
+    { import = "plugins.lang.html" },
+    { import = "plugins.lang.php" },
+    { import = "plugins.lang.twig" },
   },
   defaults = {
     lazy = false,
