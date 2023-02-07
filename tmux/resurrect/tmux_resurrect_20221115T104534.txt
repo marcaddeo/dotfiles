@@ -1,0 +1,30 @@
+pane	home	0	0	:-	0	Marcs-MacBook-Pro.local	:/Users/marc	1	zsh	:
+pane	home	1	1	:*	0	Marcs-MacBook-Pro.local	:/Users/marc/dev/infrastructure	1	zsh	:
+pane	work	0	1	:*	0	Marcs-MacBook-Pro.local	:/Users/marc	1	zsh	:
+pane	work	1	0	:	0	Marcs-MacBook-Pro.local	:/Users/marc/dev/mythicdigital.io	1	zsh	:
+pane	work	1	0	:	1	Marcs-MacBook-Pro.local	:/Users/marc/dev/mythicdigital.io	0	zsh	:
+pane	work	2	0	:	0	Marcs-MacBook-Pro.local	:/Users/marc/dev/avalanche.state.co.us	1	zsh	:nvim
+pane	work	2	0	:	1	Marcs-MacBook-Pro.local	:/Users/marc/dev/avalanche.state.co.us	0	zsh	:
+pane	work	3	0	:-	0	Marcs-MacBook-Pro.local	:/Users/marc/dev/wa-cares-fund	1	zsh	:
+pane	work	3	0	:-	1	Marcs-MacBook-Pro.local	:/Users/marc/dev/wa-cares-fund	0	zsh	:
+pane	work	4	0	:	0	Marcs-MacBook-Pro.local	:/Users/marc/dev/marc.cx	0	zsh	:
+pane	work	4	0	:	1	Marcs-MacBook-Pro.local	:/Users/marc/dev/marc.cx	1	zsh	:
+pane	work	4	0	:	2	Marcs-MacBook-Pro.local	:/Users/marc/dev/marc.cx	0	zsh	:
+pane	work	4	0	:	3	Marcs-MacBook-Pro.local	:/Users/marc/dev/marc.cx	0	zsh	:
+pane	work	5	0	:	0	Marcs-MacBook-Pro.local	:/Users/marc/dev/clockify-transfer	1	nvim	:nvim
+pane	work	5	0	:	1	Marcs-MacBook-Pro.local	:/Users/marc/dev/clockify-transfer	0	zsh	:
+pane	work	6	0	:	0	Marcs-MacBook-Pro.local	:/Users/marc/dev/neuro-id.com	0	zsh	:
+pane	work	6	0	:	1	Marcs-MacBook-Pro.local	:/Users/marc/dev/neuro-id.com	1	zsh	:
+pane	work	7	0	:	0	Marcs-MacBook-Pro.local	:/Users/marc/dev/prolearn.mit.edu	1	zsh	:
+pane	work	7	0	:	1	Marcs-MacBook-Pro.local	:/Users/marc/dev/prolearn.mit.edu	0	zsh	:
+window	home	0	:main	0	:-	8ede,420x103,0,0,1	off
+window	home	1	:infrastructure	1	:*	8edf,420x103,0,0,2	off
+window	work	0	:main	1	:*	8ee0,420x103,0,0,3	off
+window	work	1	:mythic	0	:	3f87,420x103,0,0[420x87,0,0,4,420x15,0,88,5]	off
+window	work	2	:caic	0	:	2942,420x103,0,0[420x85,0,0,49,420x17,0,86,71]	off
+window	work	3	:wcf	0	:-	d5bd,420x103,0,0[420x90,0,0,72,420x12,0,91,74]	:
+window	work	4	:marc.cx	0	:	4fea,420x103,0,0[420x77,0,0,13,420x25,0,78{147x25,0,78,14,133x25,148,78,15,138x25,282,78,16}]	off
+window	work	5	:clockify-transfer	0	:	8e7c,420x103,0,0[420x79,0,0,24,420x23,0,80,25]	off
+window	work	6	:nid	0	:	d5c1,420x103,0,0[420x90,0,0,18,420x12,0,91,19]	off
+window	work	7	:prolearn	0	:	3ab6,420x103,0,0[420x86,0,0,10,420x16,0,87,11]	off
+state	work	home
