@@ -1,3 +1,4 @@
+ulimit -n 10000
 eval "$(/opt/homebrew/bin/brew shellenv)"
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/marc/.oh-my-zsh
