@@ -102,6 +102,7 @@ function expand_class()
   })
 end
 nmap("<leader>ce", ":lua expand_class()<cr>", { desc = "Expand PHP class to the FQCN, prefixed with \\", silent = true })
+nmap("<leader>ic", "<cmd>PhpActor import_class<cr>", { desc = "Import PHP class under cursor", silent = true})
 
 -- PDV
 nmap("<leader>d", "<cmd>call pdv#DocumentCurrentLine()<cr>", { desc = "Add a PHPDoc for the current line", silent = true })

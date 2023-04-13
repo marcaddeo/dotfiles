@@ -73,7 +73,13 @@ return {
         root_dir = utils.root_pattern("composer.json", "package.json", "Makefile", ".git"), -- Add composer
         diagnostics_format = "#{m} (#{c}) [#{s}]",
         sources = {
-          null_ls.builtins.completion.spell,
+          -- @TODO spell results show up before actual buffer results for completion, and is super annoying
+          -- ideally this would be priortizable, but there's no way to suggest that because it is treated
+          -- as a single source in nvim-cmp. ideally we'd just add an nvim-cmp spell check source separate
+          -- from null-ls.
+          --
+          -- null_ls.builtins.completion.spell,
+          null_ls.builtins.diagnostics.shellcheck,
           null_ls.builtins.diagnostics.eslint,
           null_ls.builtins.diagnostics.phpcs.with({
             prefer_local = "vendor/bin",

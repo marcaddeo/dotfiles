@@ -1,4 +1,6 @@
 return {
+  "JoosepAlviste/nvim-ts-context-commentstring",
+
   {
     "nvim-treesitter/nvim-treesitter",
     version = false,
@@ -32,9 +34,12 @@ return {
       endwise = { enable = true },
       highlight = {
         enable = true,
+        -- Twig highlighting doesn't support html.twig properly, so for now
+        -- i'm just disable it
+        disable = { "twig" },
       },
       indent = { enable = true },
-      context_commentstring = { enable = true, enable_autocmd = false },
+      context_commentstring = { enable = true },
       ensure_installed = {
         "awk",
         "bash",
@@ -84,6 +89,9 @@ return {
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
+
+      local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
+      ft_to_parser["html.twig"] = "twig"
     end,
   },
 }

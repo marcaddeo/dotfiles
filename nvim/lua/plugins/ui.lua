@@ -33,7 +33,7 @@ return {
     "folke/noice.nvim",
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      { "rcarriga/nvim-notify", opts = { background_colour = "#002b36" } },
     },
     config = function()
       require("noice").setup({

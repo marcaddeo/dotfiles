@@ -2,7 +2,37 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     config = function()
-      require("nvim-tree").setup()
+      local function copy_file_to(node)
+        local file_src = node['absolute_path']
+        -- The args of input are {prompt}, {default}, {completion}
+        -- Read in the new file path using the existing file's path as the baseline.
+        local file_out = vim.fn.input("COPY TO: ", file_src, "file")
+
+        if file_out == nil or file_out == "" then
+          return
+        end
+
+        -- Create any parent dirs as required
+        local dir = vim.fn.fnamemodify(file_out, ":h")
+        vim.fn.system { 'mkdir', '-p', dir }
+        -- Copy the file
+        vim.fn.system { 'cp', '-R', file_src, file_out }
+      end
+
+      require("nvim-tree").setup({
+        actions = {
+          open_file = {
+            resize_window = false,
+          },
+        },
+        view = {
+          mappings = {
+            list = {
+              { key = "z", action = "Copy file to", action_cb = copy_file_to },
+            },
+          },
+        },
+      })
 
       local function open_nvim_tree(data)
         -- buffer is a real file on the disk
@@ -44,9 +74,42 @@ return {
       "nvim-lua/plenary.nvim",
     },
     config = function()
+      -- Default keywords
+      -- @see https://github.com/folke/todo-comments.nvim/blob/main/lua/todo-comments/config.lua
+      local default_keywords = {
+        FIX = {
+          icon = " ", -- icon used for the sign, and in search results
+          color = "error", -- can be a hex color, or a named color (see below)
+          alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+          -- signs = false, -- configure signs for some keywords individually
+        },
+        TODO = { icon = " ", color = "info" },
+        HACK = { icon = " ", color = "warning" },
+        WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+        PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+        NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+        TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+      }
+
+      -- Custom keywords
+      local keywords = {
+        SEE = {
+          icon = "",
+          color = "info",
+        },
+      }
+
+      keywords = vim.tbl_deep_extend("force", {}, default_keywords, keywords)
+      -- Add lowercase versions of each keyword
+      for key, val in pairs(keywords) do
+        keywords[key:lower()] = val
+      end
+
       require("todo-comments").setup({
+        keywords = keywords,
         highlight = {
           pattern = [[.*[@\\]{1}<(KEYWORDS)\s*|.*<(KEYWORDS)\s*:]],
+          keyword = "bg",
         },
         search = {
           pattern = [[[\\\\@]*\b(KEYWORDS)(\s|:)]],
@@ -63,6 +126,7 @@ return {
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
+    lazy = false,
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -74,9 +138,22 @@ return {
       local telescope = require("telescope")
 
       telescope.setup({
+        extensions = {
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",
+          },
+        },
         defaults = {
           file_ignore_patterns = {
             ".git/COMMIT_EDITMSG",
+          },
+        },
+        pickers = {
+          find_files = {
+            no_ignore = true,
           },
         },
       })
@@ -93,6 +170,7 @@ return {
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "tpope/vim-sleuth",
+  "tpope/vim-abolish",
   "godlygeek/tabular",
   {
     "numtostr/BufOnly.nvim",
@@ -112,6 +190,7 @@ return {
   },
   {
     "sudormrfbin/cheatsheet.nvim",
+    enabled = false,
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/popup.nvim",

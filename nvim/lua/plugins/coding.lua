@@ -11,7 +11,7 @@ return {
 
       luasnip.filetype_extend("twig", {"twig"})
 
-      -- @TODO: custom snippets arent working
+      -- @TODO: custom snippets arent working or are they? didn't i fix this?
       require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_vscode").lazy_load({
         paths = { vim.fn.stdpath("config") .. "/snippets" }
@@ -102,7 +102,7 @@ return {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp"},
+          { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
@@ -130,16 +130,11 @@ return {
     config = function()
       -- Replaces tpope/vim-repeat
       require("mini.ai").setup()
-      require("mini.comment").setup({
-        hooks = {
-          pre = function()
-            require("ts_context_commentstring.internal").update_commentstring({})
-          end,
-        },
-      })
       require("mini.bufremove").setup()
     end,
   },
+
+  "tpope/vim-commentary",
 
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
