@@ -1,18 +1,19 @@
 [user]
-  name = Marc Addeo
-  email = marcaddeo@gmail.com
+	name = Marc Addeo
+	email = marcaddeo@gmail.com
 #  signingkey = 96105359
 [push]
-  default = simple
+	default = simple
+	autoSetupRemote = true
 [core]
-  excludesfile = /Users/marc/.gitignore
-  editor = nvim
+	excludesfile = /Users/marc/.gitignore
+	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	ui = true
-  diff = always
+	diff = always
 [rebase]
-  autosquash = true
+	autosquash = true
 [commit]
 #	gpgsign = true
 	verbose = true
