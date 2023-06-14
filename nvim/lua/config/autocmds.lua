@@ -1,12 +1,20 @@
 -- Auto close nvim-tree on quit.
-vim.api.nvim_create_autocmd("BufEnter", {
-  group = vim.api.nvim_create_augroup("NvimTreeClose", {clear = true}),
-  pattern = "NvimTree_*",
-  callback = function()
-    local layout = vim.api.nvim_call_function("winlayout", {})
-    if layout[1] == "leaf" and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree" and layout[3] == nil then vim.cmd("confirm quit") end
-  end
-})
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   group = vim.api.nvim_create_augroup("NvimTreeClose", {clear = true}),
+--   pattern = "NvimTree_*",
+--   callback = function()
+--     local log = function(message)
+--         local log_file_path = './test.log'
+--         local log_file = io.open(log_file_path, "a")
+--         io.output(log_file)
+--         io.write(message.."\n")
+--         io.close(log_file)
+--     end
+--     local layout = vim.api.nvim_call_function("winlayout", {})
+--     log(vim.inspect(layout))
+--     if layout[1] == "leaf" and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree" and layout[3] == nil then vim.cmd("confirm quit") end
+--   end
+-- })
 
 vim.cmd [[
 augroup vagrant
