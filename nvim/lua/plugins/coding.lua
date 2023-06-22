@@ -145,25 +145,30 @@ return {
 
   {
     "mfussenegger/nvim-dap",
-    config = function()
-      local dap = require("dap")
+  },
+  {
+    "ravenxrz/DAPInstall.nvim",
+    branch = "main",
+    opts = {
+      installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
+    },
+    config = function(_, opts)
+      local dap_install = require("dap-install")
 
-      dap.adapters.php = {
-        type = "executable",
-        command = "node",
-        args = { vim.fn.stdpath("data") .. "/dapinstall/php/vscode-php-debug/out/phpDebug.js" }
-      }
-      dap.configurations.php = {
-        {
-          type = "php",
-          request = "launch",
-          name = "Listen for Xdebug",
-          port = 9003,
-          pathMappings = {
-            ["/app"] = "${workspaceFolder}"
+      dap_install.setup(opts)
+      dap_install.config("php", {
+        configurations = {
+          {
+            type = "php",
+            request = "launch",
+            name = "Listen for Xdebug",
+            port = 9003,
+            pathMappings = {
+              ["/app"] = "${workspaceFolder}"
+            }
           }
         }
-      }
+      })
     end
   },
   {
