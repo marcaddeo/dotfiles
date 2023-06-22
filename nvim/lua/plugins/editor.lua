@@ -191,6 +191,8 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-fzf-native.nvim",
+      "mfussenegger/nvim-dap",
+      "nvim-telescope/telescope-dap.nvim",
     },
     config = function()
       local telescope = require("telescope")
@@ -218,6 +220,7 @@ return {
       telescope.load_extension("fzf")
       telescope.load_extension("notify")
       telescope.load_extension("noice")
+      telescope.load_extension("dap")
     end,
   },
 

@@ -142,4 +142,95 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
   },
+
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      local dap = require("dap")
+
+      dap.adapters.php = {
+        type = "executable",
+        command = "node",
+        args = { vim.fn.stdpath("data") .. "/dapinstall/php/vscode-php-debug/out/phpDebug.js" }
+      }
+      dap.configurations.php = {
+        {
+          type = "php",
+          request = "launch",
+          name = "Listen for Xdebug",
+          port = 9003,
+          pathMappings = {
+            ["/app"] = "${workspaceFolder}"
+          }
+        }
+      }
+    end
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap"
+    },
+    opts = {
+      layouts = {
+        {
+          elements = {
+            {
+              id = "scopes",
+              size = 0.25
+            },
+            {
+              id = "breakpoints",
+              size = 0.25
+            },
+            {
+              id = "stacks",
+              size = 0.25
+            },
+            {
+              id = "watches",
+              size = 0.25
+            }
+          },
+          position = "right",
+          size = 40
+        },
+        {
+          elements = {
+            {
+              id = "repl",
+              size = 0.5
+            },
+            {
+              id = "console",
+              size = 0.5
+            }
+          },
+          position = "bottom",
+          size = 10
+        }
+      },
+    },
+    config = function(_, opts)
+      local dap, dapui = require("dap"), require("dapui")
+      dapui.setup(opts)
+
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+    end
+  },
+  {
+    "folke/neodev.nvim",
+    opts = {
+      library = { plugins = { "nvim-dap-ui" }, types = true }
+    }
+  },
+  { "theHamsta/nvim-dap-virtual-text", config = true },
 }

@@ -112,6 +112,32 @@ nmap("<leader>o", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in
 nmap("<leader>of", "<cmd>Telescope find_files search_dirs={'%:p:h'}<cr>", { desc = "Fuzzy find files at current files path", silent = true })
 nmap("<leader>b", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find buffers", silent = true })
 
+--- DAP
+nmap("<F5>", function() require('dap').continue() end, { desc = "Debugger: Continue"})
+nmap("<F10>", function() require('dap').step_over() end, { desc = "Debugger: Step Over"})
+nmap("<F11>", function() require('dap').step_into() end, { desc = "Debugger: Step Into"})
+nmap("<F12>", function() require('dap').step_out() end, { desc = "Debugger: Step Out"})
+nmap("<leader>bp", function() require('dap').toggle_breakpoint() end, { desc = "Debugger: Toggle Breakpoint"})
+nmap("<leader>bP", function() require('dap').set_breakpoint() end, { desc = "Debugger: Set Breakpoint"})
+nmap("<leader>lp", function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, { desc = "Debugger: Set Log point"})
+nmap("<leader>dr", function() require('dap').repl_open() end, { desc = "Debugger: Open REPL"})
+nmap("<leader>dl", function() require('dap').run_last() end, { desc = "Debugger: Run Last"})
+nmap("<leader>dut", function() require('dapui').toggle() end, { desc = "Debugger: Toggle UI"})
+map({"n", "v"}, "<leader>dh", function() require('dap.ui.widgets').hover() end, { desc = "Debugger: Hover"})
+map({"n", "v"}, "<leader>dp", function() require('dap.ui.widgets').preview() end, { desc = "Debugger: Preview"})
+map({"n", "v"}, "<leader>df", function()
+  local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.frames)
+  end,
+  { desc = "Debugger: Frames"}
+)
+map({"n", "v"}, "<leader>ds", function()
+  local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.scopes)
+  end,
+  { desc = "Debugger: Scopes"}
+)
+
 -- Ranger
 -- nnoremap <leader>ro :RangerWorkingDirectory<cr>
 -- nnoremap <leader>rf :RangerCurrentDirectory<cr>
