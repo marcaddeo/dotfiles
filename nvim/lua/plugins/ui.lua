@@ -2,18 +2,28 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require('indent_blankline').setup({
-        -- char = '┊',
-        char = "│",
-        filetype_exclude = { "help", "alpha", "dashboard", "NvimTree", "Trouble", "lazy" },
-        show_trailing_blankline_indent = false,
-        show_current_context = false,
+      require('ibl').setup({
+        scope = { enabled = false },
+        indent = {
+          char = "│",
+          tab_char = "▸",
+        },
+        exclude = {
+          filetypes = {
+            "help",
+            "alpha",
+            "dashboard",
+            "NvimTree",
+            "Trouble",
+            "lazy",
+          },
+        },
       })
     end
   },
 
   {
-    "mrded/nvim-lsp-notify",
+    "sigma-code/nvim-lsp-notify",
     dependencies = {
       "rcarriga/nvim-notify",
     },

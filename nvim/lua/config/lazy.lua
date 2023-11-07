@@ -19,6 +19,7 @@ require("lazy").setup({
     { import = "plugins.lang.markdown" },
     { import = "plugins.lang.php" },
     { import = "plugins.lang.twig" },
+    { import = "plugins.lang.jinja" },
   },
   defaults = {
     lazy = false,

@@ -10,6 +10,8 @@ return {
       autotag = {
         enable = true,
         filetypes = {
+          "css",
+          "scss",
           "html",
           "javascript",
           "typescript",
@@ -90,8 +92,7 @@ return {
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
 
-      local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
-      ft_to_parser["html.twig"] = "twig"
+      vim.treesitter.language.register("twig", "html.twig");
     end,
   },
 }

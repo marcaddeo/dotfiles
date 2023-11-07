@@ -23,7 +23,7 @@ return {
       "simrat39/rust-tools.nvim",
     },
     config = function()
-      local rt = require("lsp-setup.rust-tools")
+      local rt = require("rust-tools")
 
       require("neodev").setup()
       require("lsp-setup").setup({

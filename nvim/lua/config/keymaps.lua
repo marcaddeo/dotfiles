@@ -141,3 +141,6 @@ map({"n", "v"}, "<leader>ds", function()
 -- Ranger
 -- nnoremap <leader>ro :RangerWorkingDirectory<cr>
 -- nnoremap <leader>rf :RangerCurrentDirectory<cr>
+
+-- nmap("<leader>cf", "cW=system('/Users/marc/dotfiles/nvim/css-filter-genrator.js ' . shellescape(expand('<cWORD>')))<cr>")
+-- nmap("<leader>cf", ":execute !'/Users/marc/dotfiles/nvim/css-filter-genrator.js ' . shellescape(expand('<cWORD>'))<cr>")
