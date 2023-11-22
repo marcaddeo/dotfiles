@@ -68,9 +68,10 @@ return {
     config = function()
       local null_ls = require("null-ls")
       local utils = require("null-ls.utils")
+      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
       null_ls.setup({
-        root_dir = utils.root_pattern("composer.json", "package.json", "Makefile", ".git"), -- Add composer
+        root_dir = utils.root_pattern("composer.json", "package.json", "Makefile", ".git", "Cargo.toml"), -- Add composer
         diagnostics_format = "#{m} (#{c}) [#{s}]",
         sources = {
           -- @TODO spell results show up before actual buffer results for completion, and is super annoying
@@ -88,7 +89,20 @@ return {
           null_ls.builtins.formatting.phpcbf.with({
             prefer_local = "vendor/bin",
           }),
+          null_ls.builtins.formatting.rustfmt,
         },
+        on_attach = function(client, bufnr)
+          if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              group = augroup,
+              buffer = bufnr,
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end,
+            })
+          end
+        end,
       })
     end,
   },
