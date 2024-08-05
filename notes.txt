@@ -1,9 +1,0 @@
-* install socos
-* i patch socos to output current track as json, should make a patch and put it in my install script
-* revamp so install script has options and what-not
-* add drush and acquia aliases (aliases may need to be encrypted)
-* revisit encryption safe-ness
-* adjust the key press frequency to be much faster
-* i guess im going dark mode, dark dock and menu bar and istat icons
-* dark github theme and wide github theme
-* dark google theme

@@ -1,12 +1,6 @@
 [submodule "zsh/.oh-my-zsh"]
 	path = zsh/.oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "tasks"]
-	path = tasks
-	url = git@github.com:marcaddeo/tasks.git
-[submodule "timetrap/sheets"]
-	path = timetrap/sheets
-	url = git@github.com:marcaddeo/sheets.git
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm.git
