@@ -72,7 +72,10 @@ source "$HOME/.console/console.rc" 2>/dev/null
 
 # Load a custom terminfo file to fix backspace in neovim
 [[ -f "~/.$TERM.ti" ]] && tic ~/.$TERM.ti
-source /Users/marc/.cargo/env
+CARGO_ENV="$HOME/.cargo/env"
+if [[ -f "$CARGO_ENV" ]]; then
+	source "$CARGO_ENV"
+fi
 
 export HOMEBREW_GITHUB_TOKEN="7c5cd9ce62c06106acde6bd9187bffc3d83dcabd"
 
@@ -82,4 +85,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-eval "$(pyenv init --path)"
+if [[ "$(command -v pyenv)" ]]; then
+	eval "$(pyenv init --path)"
+fi
