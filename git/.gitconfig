@@ -42,3 +42,7 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
+# Customizations for my work computer.
+[includeIf "gitdir:/Users/maddeo"]
+	path = .gitconfig@brown
