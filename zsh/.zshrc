@@ -1,5 +1,4 @@
 ulimit -n 10000
-eval "$(/opt/homebrew/bin/brew shellenv)"
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/marc/.oh-my-zsh
 
@@ -60,14 +59,13 @@ plugins=(git gpg-agent jira sprunge sudo tmux ssh-agent)
 
 # User configuration
 
-export PATH="$(python3 -m site --user-base)/bin:$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.local/bin:$(python3 -m site --user-base)/bin:$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 source $ZSH/oh-my-zsh.sh
 source "$HOME/.console/console.rc" 2>/dev/null
-
 
 # Load fzf bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -79,16 +77,6 @@ source /Users/marc/.cargo/env
 export HOMEBREW_GITHUB_TOKEN="7c5cd9ce62c06106acde6bd9187bffc3d83dcabd"
 
 eval $(gdircolors $HOME/dotfiles/misc/dircolors.solarized.ansi-dark)
-
-# added by travis gem
-[ -f /Users/marc/.travis/travis.sh ] && source /Users/marc/.travis/travis.sh
-
-export PATH="$HOME/.local/bin:$PATH"
-
-# BEGIN SNIPPET: Platform.sh CLI configuration
-HOME=${HOME:-'/Users/marc'}
-export PATH="$HOME/"'.platformsh/bin':"$PATH"
-if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
