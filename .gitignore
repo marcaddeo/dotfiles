@@ -5,4 +5,3 @@ nvim/plugged/*
 nvim/.netrwhist
 !nvim/plugged/.gitkeep
 terminal/com.apple.Terminal.plist
-timetrap/.timetrap-to-jira.json
