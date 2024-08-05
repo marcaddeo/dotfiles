@@ -39,13 +39,18 @@ function _alter_execute() {
 function _drush_should_redirect() {
     local drush_command="$1"
 
+    # This could conditionally decide if drush commands should redirect to
+    # lando.
+
     true
 }
 
 function _composer_buffer_alter() {
     local buffer="$1"
 
-    if [[ "$(pwd)" = *"bcbs.com"* ]]; then
+    # If the buffer contains "example.com" change composer -> maestro before
+    # redirecting to lando.
+    if [[ "$(pwd)" = *"example.com"* ]]; then
         buffer="${buffer/composer/maestro}"
     fi
 
