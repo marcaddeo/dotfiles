@@ -1,7 +1,6 @@
 ## Helper functions
 function _is_lando_project() {
-    local landos="$(lando list --format=json | jq -rM '.[].src[0]?[:-11]')"
-    #local landos="$(lando list --format=json | jq -rM 'del(._global_) | .[][0].src[0][:-11]')"
+    local landos="$(lando list --format=json 2>/dev/null | jq -rM '.[].src[0]?[:-11]')"
 
     for lando in ${(f)landos}; do
         [[ "$(pwd)" = "$lando"* ]] && return
@@ -40,7 +39,6 @@ function _alter_execute() {
 function _drush_should_redirect() {
     local drush_command="$1"
 
-    # @TODO make this not redirect if there's a site alias involved
     true
 }
 
@@ -65,6 +63,7 @@ function _lando_zsh_buffer_alter() {
         npm
         gulp
         yarn
+        wp
     )
 
     for command in "$lando_commands[@]"; do
@@ -89,6 +88,7 @@ zle -N accept-line _lando_zsh_buffer_alter
 
 ## Open Lando instances database in Querious
 function qq() {
+    local service="${1:-database}"
     if _is_lando_project; then
         open -u "$(lando info --format=json | jq -r '.[] | select(.service == "database") | "querious://connect/new?host=\(.external_connection.host)&port=\(.external_connection.port)&user=\(.creds.user)&password=\(.creds.password)&database=\(.creds.database)"')"
     fi

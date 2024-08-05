@@ -83,6 +83,8 @@ eval $(gdircolors $HOME/dotfiles/misc/dircolors.solarized.ansi-dark)
 # added by travis gem
 [ -f /Users/marc/.travis/travis.sh ] && source /Users/marc/.travis/travis.sh
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # BEGIN SNIPPET: Platform.sh CLI configuration
 HOME=${HOME:-'/Users/marc'}
 export PATH="$HOME/"'.platformsh/bin':"$PATH"
@@ -91,3 +93,5 @@ if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/she
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+eval "$(pyenv init --path)"

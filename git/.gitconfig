@@ -1,7 +1,7 @@
 [user]
 	name = Marc Addeo
 	email = marcaddeo@gmail.com
-#  signingkey = 96105359
+	signingkey = 96105359
 [push]
 	default = simple
 	autoSetupRemote = true
@@ -17,6 +17,7 @@
 [commit]
 #	gpgsign = true
 	verbose = true
+	template = /Users/marc/.stCommitMsg
 [diff]
 	compactionHeuristic = true
 [alias]
@@ -30,3 +31,14 @@
 	cmd = nvim \"+Gdiff\" $MERGED
 [init]
 	defaultBranch = master
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
