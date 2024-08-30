@@ -17,6 +17,7 @@ return {
           "typescript",
           "javascriptreact",
           "typescriptreact",
+          "just",
           "svelte",
           "vue",
           "tsx",
@@ -56,7 +57,6 @@ return {
         "gitignore",
         "go",
         "graphql",
-        "help",
         "html",
         "javascript",
         "json",
@@ -88,9 +88,11 @@ return {
       "windwp/nvim-ts-autotag",
       "RRethy/nvim-treesitter-endwise",
       "JoosepAlviste/nvim-ts-context-commentstring",
+      "IndianBoy42/tree-sitter-just"
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
+      require("tree-sitter-just").setup({})
 
       vim.treesitter.language.register("twig", "html.twig");
     end,

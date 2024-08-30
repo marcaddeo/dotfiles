@@ -177,8 +177,12 @@ return {
   },
 
   {
-    "NvChad/nvim-colorizer.lua",
-    config = true,
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup(nil, {
+        names = false,
+      })
+    end
   },
 
   {
