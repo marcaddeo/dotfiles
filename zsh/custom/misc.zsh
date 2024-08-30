@@ -20,3 +20,5 @@ function phpactor-disable() {
         && lando composer --unset allow-plugins.fenetikm/autoload-drupal \
         && lando composer dump-autoload
 }
+
+alias gust='just -g'
