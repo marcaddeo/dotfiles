@@ -4,6 +4,49 @@ import "common.just"
 @list:
     just --justfile "{{ source_file() }}" --list --unsorted
 
+# (UNTESTED) Bootstrap local environment with common packages and my dotfiles
+@bootstrap:
+    brew install \
+        ansible \
+        colordiff \
+        composer \
+        coreutils \
+        curl \
+        d2 \
+        diff-so-fancy \
+        fzf \
+        git \
+        git-filter-repo \
+        gnupg \
+        httpie \
+        jq \
+        just \
+        mosh \
+        neovim \
+        php \
+        pv \
+        ranger \
+        remake \
+        rename \
+        ripgrep \
+        shellcheck \
+        sqlite \
+        terminus \
+        tig \
+        tmux \
+        tree \
+        wget \
+        yq \
+        zsh
+    brew install --cask \
+        font-fantasque-sans-mono-nerd-font \
+        font-fira-code-nerd-font \
+        font-hasklug-nerd-font \
+        font-inconsolata-nerd-font \
+    just --justfile "{{ source_file() }}" --yes link
+    source ~/.zshrc && nvm install --lts
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q -y
+
 # Open dotfiles directory in editor
 @edit:
     cd "{{ dotfiles }}" && $EDITOR
