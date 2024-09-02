@@ -1,5 +1,8 @@
 import '~/dotfiles/just/common.just'
 
+# dotfiles functionality
+mod dotfiles '~/dotfiles/just/dotfiles.just'
+
 # Visual Regression Testing
 mod vrt '~/dotfiles/just/vrt.just'
 

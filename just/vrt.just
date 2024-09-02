@@ -1,4 +1,4 @@
-import '~/dotfiles/just/common.just'
+import 'common.just'
 
 vrt_home := home_dir() + "/.vrt"
 vrt_screenshot := vrt_home / "screenshot"
