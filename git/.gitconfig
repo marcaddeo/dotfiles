@@ -30,7 +30,7 @@
 [mergetool "nvim"]
 	cmd = nvim \"+Gdiff\" $MERGED
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
