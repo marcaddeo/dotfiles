@@ -1,4 +1,4 @@
-import 'common.just'
+import "common.just"
 
 vrt_home := home_dir() + "/.vrt"
 vrt_screenshot := vrt_home / "screenshot"
@@ -57,6 +57,7 @@ vrt_report := vrt_home / "report.html"
         && mv -f "{{ vrt_urls }}.tmp" "{{ vrt_urls }}"
 
 export NODE_PATH := `npm root -g`
+
 @_capture host destination width="1150" height="1200": _ensure_dependencies
     #!/usr/bin/env node
     const fs = require("fs")

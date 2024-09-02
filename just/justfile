@@ -1,10 +1,7 @@
-import '~/dotfiles/just/common.just'
+import "~/dotfiles/just/common.just"
 
-# dotfiles functionality
-mod dotfiles '~/dotfiles/just/dotfiles.just'
-
-# Visual Regression Testing
-mod vrt '~/dotfiles/just/vrt.just'
+mod dotfiles "~/dotfiles/just/dotfiles.just"
+mod vrt "~/dotfiles/just/vrt.just"
 
 # Display this list of available commands
 @list:
@@ -14,5 +11,4 @@ mod vrt '~/dotfiles/just/vrt.just'
 @edit:
     $EDITOR "{{ justfile() }}"
 
-# Conditionally import the work.just file if we're on my work computer
-import? '/Users/maddeo/dotfiles/just/work.just'
+import? "/Users/maddeo/dotfiles/just/work.just"
