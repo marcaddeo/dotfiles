@@ -55,7 +55,7 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gpg-agent jira sprunge sudo tmux ssh-agent zsh-nvm)
+plugins=(git gpg-agent sudo tmux ssh-agent zsh-nvm alias-finder colored-man-pages extract fzf genpass httpielando)
 
 # User configuration
 
@@ -66,9 +66,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 source $ZSH/oh-my-zsh.sh
 source "$HOME/.console/console.rc" 2>/dev/null
-
-# Load fzf bindings
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load a custom terminfo file to fix backspace in neovim
 [[ -f "~/.$TERM.ti" ]] && tic ~/.$TERM.ti
