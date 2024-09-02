@@ -4,6 +4,10 @@ import "common.just"
 @list:
     just --justfile "{{ source_file() }}" --list --unsorted
 
+# Open dotfiles directory in editor
+@edit:
+    cd "{{ dotfiles }}" && $EDITOR
+
 # Symlink all dotfiles into place
 [confirm("This will symlink all dotfiles into place, overwriting existing files. Are you sure? [y/N]")]
 link: (_just "true") (_zsh "true") (_tmux "true") (_git "true") (_nvim "true") (_ranger "true")
