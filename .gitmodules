@@ -10,3 +10,6 @@
 [submodule "wiki"]
 	path = wiki
 	url = git@github.com:marcaddeo/wiki.git
+[submodule "zsh/custom/plugins/zsh-nvm"]
+	path = zsh/custom/plugins/zsh-nvm
+	url = https://github.com/lukechilds/zsh-nvm.git

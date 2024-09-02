@@ -55,7 +55,7 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gpg-agent jira sprunge sudo tmux ssh-agent)
+plugins=(git gpg-agent jira sprunge sudo tmux ssh-agent zsh-nvm)
 
 # User configuration
 
@@ -80,10 +80,6 @@ fi
 export HOMEBREW_GITHUB_TOKEN="7c5cd9ce62c06106acde6bd9187bffc3d83dcabd"
 
 eval $(gdircolors $HOME/dotfiles/misc/dircolors.solarized.ansi-dark)
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 if [[ "$(command -v pyenv)" ]]; then
 	eval "$(pyenv init --path)"
