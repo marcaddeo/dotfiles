@@ -5,7 +5,7 @@ mod vrt "~/dotfiles/just/vrt.just"
 
 # Display this list of available commands
 @list:
-    just -g --list
+    just --justfile "{{ source_file() }}" --list
 
 # Edit the global justfile
 @edit:
