@@ -1,5 +1,5 @@
 return {
-	"JoosepAlviste/nvim-ts-context-commentstring",
+	{ "JoosepAlviste/nvim-ts-context-commentstring", config = true },
 
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -41,7 +41,6 @@ return {
 				disable = { "twig" },
 			},
 			indent = { enable = true },
-			context_commentstring = { enable = true },
 			ensure_installed = {
 				"awk",
 				"bash",
@@ -89,10 +88,8 @@ return {
 			"windwp/nvim-ts-autotag",
 			"RRethy/nvim-treesitter-endwise",
 			"JoosepAlviste/nvim-ts-context-commentstring",
-			"IndianBoy42/tree-sitter-just",
 		},
 		config = function(_, opts)
-			require("tree-sitter-just").setup({})
 			require("nvim-treesitter.configs").setup(opts)
 
 			vim.treesitter.language.register("twig", "html.twig")
