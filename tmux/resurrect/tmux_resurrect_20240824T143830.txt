@@ -1,0 +1,5 @@
+pane	home	0	1	:*	0	Marcs-MacBook-Pro.local	:/Users/marc	1	zsh	:
+pane	home	1	0	:##-	0	Marcs-MacBook-Pro.local	:/Users/marc/dev/infrastructure	1	zsh	:
+window	home	0	:main	1	:*	cd9e,267x76,0,0,1	off
+window	home	1	:infrastructure	0	:##-	cd9f,267x76,0,0,2	off
+state	home	
