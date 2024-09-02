@@ -3,6 +3,12 @@ import "~/dotfiles/just/common.just"
 mod dotfiles "~/dotfiles/just/dotfiles.just"
 mod vrt "~/dotfiles/just/vrt.just"
 
+init_justfile := """
+# Display this list of available commands
+@list:
+    just --justfile "{{ source_file() }}" --list
+"""
+
 # Display this list of available commands
 @list:
     just --justfile "{{ source_file() }}" --list
@@ -10,5 +16,9 @@ mod vrt "~/dotfiles/just/vrt.just"
 # Edit the global justfile
 @edit:
     $EDITOR "{{ justfile() }}"
+
+# Initialize a justfile with my custom default template
+@init:
+    echo '{{ init_justfile }}' >> justfile
 
 import? "/Users/maddeo/dotfiles/just/work.just"
