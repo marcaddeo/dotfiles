@@ -54,7 +54,7 @@ import "common.just"
 
 # Symlink all dotfiles into place
 [confirm("This will symlink all dotfiles into place, overwriting existing files. Are you sure? [y/N]")]
-link: (_just "true") (_zsh "true") (_tmux "true") (_git "true") (_nvim "true") (_ranger "true")
+link: (_just "true") (_zsh "true") (_tmux "true") (_git "true") (_nvim "true") (_ranger "true") (_ssh "true")
 
 # Link just related files
 [group("just")]
@@ -133,6 +133,12 @@ _nvim force="false": (_link "nvim" ".config/nvim" force)
 link-ranger force="false": (_ranger force)
 
 _ranger force="false": (_link "ranger" ".config/ranger" force)
+
+# Link SSH related files
+[group("ssh")]
+link-ssh force="false": (_ssh_config force)
+
+_ssh_config force="false": (_link "ssh/config" ".ssh/config" force)
 
 @_link source destination force="false":
     mkdir -p "$(dirname "{{ home_dir() / destination }}")"
