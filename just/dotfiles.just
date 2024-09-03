@@ -33,7 +33,6 @@ wget \
 yq \
 zsh \
 "
-
 brew_cask_packages := "\
 font-fantasque-sans-mono-nerd-font \
 font-fira-code-nerd-font \
@@ -63,8 +62,10 @@ link: (_just "true") (_zsh "true") (_tmux "true") (_git "true") (_nvim "true") (
 
 _brew_install *packages:
     brew install {{ packages }}
+
 _brew_cask_isntall *packages:
     brew install --cask {{ packages }}
+
 _install_rust:
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q -y
 
