@@ -2,6 +2,7 @@ import "common.just"
 
 brew_packages := "\
 ansible \
+cmake \
 colordiff \
 composer \
 coreutils \
