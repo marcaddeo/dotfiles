@@ -1,52 +1,55 @@
 import "common.just"
 
+brew_packages := "\
+ansible \
+colordiff \
+composer \
+coreutils \
+curl \
+d2 \
+diff-so-fancy \
+fzf \
+git \
+git-filter-repo \
+gnupg \
+httpie \
+jq \
+just \
+mosh \
+neovim \
+php \
+pv \
+ranger \
+remake \
+rename \
+ripgrep \
+shellcheck \
+sqlite \
+terminus \
+tig \
+tmux \
+tree \
+wget \
+yq \
+zsh \
+"
+
+brew_cask_packages := "\
+font-fantasque-sans-mono-nerd-font \
+font-fira-code-nerd-font \
+font-hasklug-nerd-font \
+font-inconsolata-nerd-font \
+"
+
 # Display this list of available commands
 @list:
     just --justfile "{{ source_file() }}" --list --unsorted
 
 # (UNTESTED) Bootstrap local environment with common packages and my dotfiles
-@bootstrap:
-    brew install \
-        ansible \
-        colordiff \
-        composer \
-        coreutils \
-        curl \
-        d2 \
-        diff-so-fancy \
-        fzf \
-        git \
-        git-filter-repo \
-        gnupg \
-        httpie \
-        jq \
-        just \
-        mosh \
-        neovim \
-        php \
-        pv \
-        ranger \
-        remake \
-        rename \
-        ripgrep \
-        shellcheck \
-        sqlite \
-        terminus \
-        tig \
-        tmux \
-        tree \
-        wget \
-        yq \
-        zsh
-    brew install --cask \
-        font-fantasque-sans-mono-nerd-font \
-        font-fira-code-nerd-font \
-        font-hasklug-nerd-font \
-        font-inconsolata-nerd-font \
+@bootstrap: (_brew_install brew_packages) (_brew_cask_isntall brew_cask_packages) _install_rust
     just --justfile "{{ source_file() }}" --yes link
     cp "{{ dotfiles }}/fonts/InInconsolataForPowerlinePlusNerdFileTypesMonoPlusFontAwesomePlusOcticonsPlusPomicons.otf" "$HOME/Library/Fonts"
     source ~/.zshrc && nvm install --lts
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q -y
 
 # Open dotfiles directory in editor
 @edit:
@@ -55,6 +58,24 @@ import "common.just"
 # Symlink all dotfiles into place
 [confirm("This will symlink all dotfiles into place, overwriting existing files. Are you sure? [y/N]")]
 link: (_just "true") (_zsh "true") (_tmux "true") (_git "true") (_nvim "true") (_ranger "true") (_ssh "true")
+
+### Helpers
+
+_brew_install *packages:
+    brew install {{ packages }}
+_brew_cask_isntall *packages:
+    brew install --cask {{ packages }}
+_install_rust:
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q -y
+
+@_link source destination force="false":
+    mkdir -p "$(dirname "{{ home_dir() / destination }}")"
+    -echo ln {{ if force == "true" { "-sf" } else { "-s" } }} \
+        "{{ dotfiles / source }}" \
+        "{{ home_dir() / destination }}" \
+        2>/dev/null
+
+### Link Implementations
 
 # Link just related files
 [group("just")]
@@ -136,13 +157,12 @@ _ranger force="false": (_link "ranger" ".config/ranger" force)
 
 # Link SSH related files
 [group("ssh")]
-link-ssh force="false": (_ssh_config force)
+link-ssh force="false": (_ssh force)
+
+_ssh force="false": (_ssh_config force)
+
+# Link SSH config file
+[group("ssh")]
+link-ssh-config force="false": (_ssh_config force)
 
 _ssh_config force="false": (_link "ssh/config" ".ssh/config" force)
-
-@_link source destination force="false":
-    mkdir -p "$(dirname "{{ home_dir() / destination }}")"
-    -echo ln {{ if force == "true" { "-sf" } else { "-s" } }} \
-        "{{ dotfiles / source }}" \
-        "{{ home_dir() / destination }}" \
-        2>/dev/null
