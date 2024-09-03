@@ -38,6 +38,7 @@ font-fantasque-sans-mono-nerd-font \
 font-fira-code-nerd-font \
 font-hasklug-nerd-font \
 font-inconsolata-nerd-font \
+font-symbols-only-nerd-font \
 "
 
 # Display this list of available commands
