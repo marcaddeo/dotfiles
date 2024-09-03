@@ -58,11 +58,11 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh/custom
 plugins=(git gpg-agent sudo tmux ssh-agent zsh-nvm alias-finder colored-man-pages extract fzf genpass httpie lando)
 
 # User configuration
-
 export PATH="$HOME/.local/bin:$(python3 -m site --user-base)/bin:$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 
 source $ZSH/oh-my-zsh.sh
 source "$HOME/.console/console.rc" 2>/dev/null
