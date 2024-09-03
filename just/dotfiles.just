@@ -19,6 +19,7 @@ just \
 mosh \
 neovim \
 php \
+pkg-config \
 pv \
 ranger \
 remake \
