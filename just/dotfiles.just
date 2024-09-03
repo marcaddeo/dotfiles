@@ -44,6 +44,7 @@ import "common.just"
         font-hasklug-nerd-font \
         font-inconsolata-nerd-font \
     just --justfile "{{ source_file() }}" --yes link
+    cp "{{ dotfiles }}/fonts/InInconsolataForPowerlinePlusNerdFileTypesMonoPlusFontAwesomePlusOcticonsPlusPomicons.otf" "$HOME/Library/Fonts"
     source ~/.zshrc && nvm install --lts
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q -y
 
