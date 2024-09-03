@@ -19,8 +19,8 @@ init_justfile := """
     $EDITOR "{{ justfile() }}"
 
 # Initialize a justfile with my custom default template
-@init justfile="justfile":
-    [[ -e "{{ justfile }}" ]] || echo '{{ init_justfile }}' > "{{ justfile }}"
+@init name="justfile":
+    [[ -e "{{ name }}" ]] || echo '{{ init_justfile }}' > "{{ name }}"
 
 # Format just files in ~/dotfiles/just/
 @format:
