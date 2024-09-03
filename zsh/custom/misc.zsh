@@ -21,4 +21,4 @@ function phpactor-disable() {
         && lando composer dump-autoload
 }
 
-alias gust='just -g'
+alias gust="just -g --chooser 'just -g --evaluate chooser'"

@@ -5,14 +5,28 @@ mod dotfiles "~/dotfiles/just/dotfiles.just"
 mod vrt "~/dotfiles/just/vrt.just"
 
 init_justfile := """
+chooser := "grep -v choose | fzf --tmux"
+
 # Display this list of available commands
 @list:
     just --justfile "{{ source_file() }}" --list
+
+alias c := choose
+
+[no-exit-message]
+@choose:
+    just --justfile "{{ source_file() }}" --chooser "{{ chooser }}" --choose 2>/dev/null
 """
 
 # Display this list of available commands
 @list:
     just --justfile "{{ source_file() }}" --list
+
+alias c := choose
+
+[no-exit-message]
+@choose:
+    just --justfile "{{ source_file() }}" --chooser "{{ chooser }}" --choose 2>/dev/null
 
 # Edit the global justfile
 @edit:
