@@ -18,7 +18,7 @@ init_justfile := """
     $EDITOR "{{ justfile() }}"
 
 # Initialize a justfile with my custom default template
-@init:
-    [[ -e justfile ]] || echo '{{ init_justfile }}' > justfile
+@init justfile="justfile":
+    [[ -e "{{ justfile }}" ]] || echo '{{ init_justfile }}' > "{{ justfile }}"
 
 import? "/Users/maddeo/dotfiles/just/work.just"
