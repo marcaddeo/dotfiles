@@ -81,3 +81,6 @@ eval $(gdircolors $HOME/dotfiles/misc/dircolors.solarized.ansi-dark)
 if [[ "$(command -v pyenv)" ]]; then
 	eval "$(pyenv init --path)"
 fi
+
+# Lando
+export PATH="$HOME/.lando/bin${PATH+:$PATH}"; #landopath
