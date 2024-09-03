@@ -1,4 +1,5 @@
 import "~/dotfiles/just/common.just"
+import? "/Users/maddeo/dotfiles/just/work.just"
 
 mod dotfiles "~/dotfiles/just/dotfiles.just"
 mod vrt "~/dotfiles/just/vrt.just"
@@ -26,5 +27,3 @@ init_justfile := """
     for file in $(find '{{ dotfiles / "just" }}' -type f); do \
         just --unstable --fmt --justfile=$file; \
     done
-
-import? "/Users/maddeo/dotfiles/just/work.just"
