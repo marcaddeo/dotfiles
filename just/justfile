@@ -21,4 +21,10 @@ init_justfile := """
 @init justfile="justfile":
     [[ -e "{{ justfile }}" ]] || echo '{{ init_justfile }}' > "{{ justfile }}"
 
+# Format just files in ~/dotfiles/just/
+@format:
+    for file in $(find '{{ dotfiles / "just" }}' -type f); do \
+        just --unstable --fmt --justfile=$file; \
+    done
+
 import? "/Users/maddeo/dotfiles/just/work.just"
