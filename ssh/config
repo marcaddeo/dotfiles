@@ -19,3 +19,9 @@ Host lf.marc.cx
 
 Host git.drupal.org
     IdentityFile ~/.ssh/id_rsa.drupal
+
+Host *.drush.in
+    IdentityFile ~/.ssh/id_rsa.pantheon
+
+Host *.services.brown.edu
+    HostKeyAlgorithms=+ssh-dss
