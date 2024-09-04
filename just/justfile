@@ -30,7 +30,7 @@ alias c := choose
 
 # Edit the global justfile
 @edit:
-    $EDITOR "{{ justfile() }}"
+    cd "{{ dotfiles }}/just" && $EDITOR "{{ justfile() }}"
 
 # Initialize a justfile with my custom default template
 @init name="justfile":

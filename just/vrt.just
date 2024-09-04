@@ -15,8 +15,7 @@ vrt_report := vrt_home / "report.html"
 
 # Capture and compare screenshots against the original screenshots captured in this session
 @compare host: _ensure_locked _ensure_dependencies (_capture host "actual")
-    npx reg-cli "{{ vrt_screenshot }}/actual" "{{ vrt_screenshot }}/expected" "{{ vrt_screenshot }}/diff" --report "{{ vrt_report }}" \
-        || open "{{ vrt_report }}"
+    npx reg-cli "{{ vrt_screenshot }}/actual" "{{ vrt_screenshot }}/expected" "{{ vrt_screenshot }}/diff" -A -M 0.4 --report "{{ vrt_report }}" --json /dev/null; open "{{ vrt_report }}"
 
 # Complete and clean up a VRT session
 @complete:
@@ -29,13 +28,14 @@ vrt_report := vrt_home / "report.html"
     if ! npm list -g --depth 1 puppeteer > /dev/null; then npm install -g puppeteer; fi
     if ! npm list -g --depth 1 mkdirp > /dev/null; then npm install -g mkdirp; fi
     if ! npm list -g --depth 1 slug > /dev/null; then npm install -g slug; fi
+    if ! npm list -g --depth 1 reg-cli > /dev/null; then npm install -g reg-cli; fi
     mkdir -p "{{ vrt_home }}/screenshot/"{actual,diff,expected}
 
 [no-exit-message]
 @_ensure_unlocked:
     if [[ -f "{{ vrt_lock }}" ]]; then \
         echo "{{ error }} A visual regression testing session is already in progress."; \
-        echo "Use 'gust vrt-complete' to end the existing session."; \
+        echo "Use 'gust vrt::complete' to end the existing session."; \
         exit 1; \
     fi
 
@@ -43,7 +43,7 @@ vrt_report := vrt_home / "report.html"
 @_ensure_locked:
     if [[ ! -f "{{ vrt_lock }}" ]]; then \
         echo "{{ error }} A visual regression testing session has not been started yet."; \
-        echo "Use 'gust vrt-capture' to start a session."; \
+        echo "Use 'gust vrt::capture' to start a session."; \
         exit 1; \
     fi
 
@@ -58,7 +58,7 @@ vrt_report := vrt_home / "report.html"
 
 export NODE_PATH := `npm root -g`
 
-@_capture host destination width="1150" height="1200": _ensure_dependencies
+_capture host destination width="1150" height="1200": _ensure_dependencies
     #!/usr/bin/env node
     const fs = require("fs")
     const puppeteer = require("puppeteer");
@@ -75,9 +75,12 @@ export NODE_PATH := `npm root -g`
 
       await page.setViewport({ width: {{ width }}, height: {{ height }} });
         for (const path of pages) {
+            if (!path) continue;
             const slug = path === "/" ? "index" : slugger(path);
-            await page.goto(`${host}${path}`);
-            await new Promise(res => setTimeout(() => res(), 300));
+            const url = `${host}${path}`;
+            // console.log(`Capturing ${url} -> ${slug}.png`);
+            await page.goto(url);
+            await new Promise(res => setTimeout(() => res(), 500));
             await page.screenshot({ path: `{{ vrt_home }}/screenshot/${destination}/${slug}.png` });
         }
 
