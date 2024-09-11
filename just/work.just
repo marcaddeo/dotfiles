@@ -79,6 +79,7 @@ _parallel command args:
     if ! npm list -g --depth 1 "{{ package }}" > /dev/null; then npm install -g "{{ package }}"; fi
 
 export NODE_PATH := `npm root -g`
+[no-exit-message]
 [positional-arguments]
 _build-taggable-command recipe *args: (_ensure-npm-dependency "minimist")
     #!/usr/bin/env node
@@ -86,21 +87,23 @@ _build-taggable-command recipe *args: (_ensure-npm-dependency "minimist")
         alias: { seq: "s", tag: "t", env: "e" },
         boolean: ["s", "seq"],
     });
+
     let command = "";
-
     if (argv.seq) {
-        command += "JOB_COUNT=1 "
+        command += "JOB_COUNT=1 ";
     }
-    command += "{{ self }} "
+    command += "{{ self }} {{ recipe }}";
 
-    if (argv.tag) {
-        if (!argv.env) {
-            console.error("{{ error }} You must use --env|-e when using --tag|-t")
-        } else {
-            command += `{{ recipe }}-by-tag ${argv.tag} ${argv.env} ${argv._.join(" ")}`;
-        }
-    } else {
-        command += `{{ recipe }} ${argv._.join(" ")}`;
+    if (argv.tag && argv.env) {
+        command += `-by-tag ${argv.tag} ${argv.env}`;
+    } else if (argv.tag && !argv.env) {
+        console.error("{{ error }} You must use --env|-e when using --tag|-t");
+        process.exit(1);
+    } else if (!argv.tag && argv.env) {
+        console.error("{{ error }} --env|-e is only applicable when using --tag|-t");
+        process.exit(2);
     }
+
+    command += ` ${argv._.join(" ")}`;
 
     console.log(command);
