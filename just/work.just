@@ -1,6 +1,7 @@
 self := "just --justfile '" + justfile() + "'"
 parallel := "parallel --shebang --tag --linebuffer --jobs " + env('JOB_COUNT', num_cpus()) + " -r"
 pantheon_org := "brown-university-web-services"
+get_backup_command := 'backup:list {} --filter="file*=database&&file*=' + `gdate -d "yesterday" +"%F"` + '" --format=string --fields=file'
 
 alias t := terminus
 # Run Terminus in parallel on site envs, e.g. `just terminus -t canary -d dev upstream:updates:apply`. Use `-s` to run sequentially. [options: --tag|-t, --env|-e, --seq|-s]
@@ -52,23 +53,20 @@ upgrade-sites-to-d10 sites: (_parallel (self + " -n upgrade-site-to-d10") sites)
     sites="$({{ self }} site-envs-with-tag "{{ tag }}" "{{ env }}")"; \
     {{ self }} upgrade-sites-to-d10 "$sites"
 
-# Get the site name and it's current HEAD revision hash for sites in `tag` on their `env` environment
-@get-current-head-hash tag env:
-    #!/usr/bin/env bash
-    sites="$({{ self }} site-envs-with-tag "{{ tag }}" "{{ env }}")"
-    for site in $sites; do
-        hash="$(terminus env:code-log "$site" --field=hash | head -1)"
-        echo "Site: $site Hash: $hash"
-    done
+# Get the latest commit hash on site environment `env` in `tag`.
+@latest-commit-by-tag tag env="dev": (_terminus-by-tag tag env "env:code-log {} --field=hash | head -n1")
+
+# Get the latest db backup on site environment `env` in `tag`.
+@latest-db-backup-by-tag tag env="live": (_terminus-by-tag tag env get_backup_command)
 
 _parallel command args:
-    #!/usr/bin/env -S {{ parallel }} {{ command }}
+    #!/usr/bin/env -S {{ parallel }} '{{ command }}'
     {{ args }}
 
-@_terminus sites +args: (_parallel ("terminus -- " + args) sites)
+@_terminus sites +args: (_parallel ("terminus " + args) sites)
 @_terminus-by-tag tag env +args:
     sites="$({{ self }} site-envs-with-tag "{{ tag }}" "{{ env }}")"; \
-    {{ self }} _terminus "$sites" {{ args }}
+    {{ self }} _terminus "$sites" {{ quote(args) }}
 
 @_drush sites +args: (_terminus sites "drush {}" args)
 @_drush-by-tag tag env +args:
