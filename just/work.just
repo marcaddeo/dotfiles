@@ -13,11 +13,11 @@ alias d := drush
 # Run Drush in parallel on site envs, e.g. `just drush -t canary -d dev status`. Use `-s` to run sequentially. [options: --tag|-t, --env|-e, --seq|-s]
 [positional-arguments]
 @drush *args:
-    eval "$({{ self }} _build-taggable-command _drush {{ args }})"
+    eval "$({{ self }} _build-taggable-command _drush $(printf ' "%q"' "$@" | cut -b2-))"
 
 # Get a list of sites tagged with `tag`
 @sites-with-tag tag:
-    echo "$(terminus org:sites "{{ pantheon_org }}" --tag="{{ tag }}" --format=list --field=name)"
+    echo "$(terminus org:sites "{{ pantheon_org }}" --filter="framework=drupal8" {{ if tag == "all" { "" } else { "--tag=" + tag } }} --format=list --field=name)"
 
 # Get a list of sites tagged with `tag` with .env appended, e.g. brownu-dcloud.dev
 @site-envs-with-tag tag env="dev":
@@ -33,14 +33,15 @@ prep-site-for-d10 site-env:
     terminus drush "{{ site-env }}" pm:uninstall ckeditor_codemirror ckeditor_config ckeditor_responsive_plugin ckeditor
 
 # Run normal post deploy steps on a D10 upgrade testing site
-run-post-deploy-d10-steps site-env:
+run-post-deploy-steps site-env:
     yes | terminus drush "{{ site-env }}" updb
     yes | terminus drush "{{ site-env }}" config:import
     yes | terminus drush "{{ site-env }}" config:import
     yes | terminus drush "{{ site-env }}" cache:rebuild
 
 # Upgrade a single `site-env` to D10, e.g. `just upgrade-site-to-d10 brownu-dcloud.dev`
-upgrade-site-to-d10 site-env: (prep-site-for-d10 site-env) && (run-post-deploy-d10-steps site-env)
+#upgrade-site-to-d10 site-env: (prep-site-for-d10 site-env) && (run-post-deploy-d10-steps site-env)
+upgrade-site-to-d10 site-env: && (run-post-deploy-steps site-env)
     terminus upstream:updates:apply --accept-upstream "{{ site-env }}"
 
 # Upgrade a list of `sites` to D10 in parallel. `sites` is a list of site names with an environment, e.g. brownu-dcloud.dev
@@ -59,11 +60,17 @@ upgrade-sites-to-d10 sites: (_parallel (self + " -n upgrade-site-to-d10") sites)
 # Get the latest db backup on site environment `env` in `tag`.
 @latest-db-backup-by-tag tag env="live": (_terminus-by-tag tag env get_backup_command)
 
+cmd := quote('sql:query "SHOW TABLES LIKE \"%ACQUIA%\"" 2>/dev/null | awk NF')
+@find-acquia-tables-by-tag tag env="live": (_drush-by-tag tag env cmd)
+
+cmd2 := quote('sql:query "select COUNT(*) from menu_link_content_data where menu_name = \"alternative-sidebar\";" 2>/dev/null | awk NF | cat')
+@find-alternative-sidebar-usage tag env="live": (_drush-by-tag tag env cmd2)
+
 _parallel command args:
     #!/usr/bin/env -S {{ parallel }} '{{ command }}'
     {{ args }}
 
-@_terminus sites +args: (_parallel ("terminus " + args) sites)
+@_terminus sites +args: (_parallel ("terminus " + args + " -- ") sites)
 @_terminus-by-tag tag env +args:
     sites="$({{ self }} site-envs-with-tag "{{ tag }}" "{{ env }}")"; \
     {{ self }} _terminus "$sites" {{ quote(args) }}
@@ -79,11 +86,14 @@ _parallel command args:
 export NODE_PATH := `npm root -g`
 [no-exit-message]
 [positional-arguments]
-_build-taggable-command recipe *args: (_ensure-npm-dependency "minimist")
+_build-taggable-command recipe *args: (_ensure-npm-dependency "minimist") (_ensure-npm-dependency "shell-quote")
     #!/usr/bin/env node
+    const quote = require("shell-quote/quote");
     const argv = require("minimist")(process.argv.slice(3), {
         alias: { seq: "s", tag: "t", env: "e" },
+        default: { env: "dev" },
         boolean: ["s", "seq"],
+        stopEarly: true,
     });
 
     let command = "";
@@ -94,12 +104,6 @@ _build-taggable-command recipe *args: (_ensure-npm-dependency "minimist")
 
     if (argv.tag && argv.env) {
         command += `-by-tag ${argv.tag} ${argv.env}`;
-    } else if (argv.tag && !argv.env) {
-        console.error("{{ error }} You must use --env|-e when using --tag|-t");
-        process.exit(1);
-    } else if (!argv.tag && argv.env) {
-        console.error("{{ error }} --env|-e is only applicable when using --tag|-t");
-        process.exit(2);
     }
 
     command += ` ${argv._.join(" ")}`;
