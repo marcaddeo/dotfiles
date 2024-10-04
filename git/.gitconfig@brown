@@ -1,2 +1,6 @@
 [user]
-	email = marc_addeo@brown.edu
+    email = marc_addeo@brown.edu
+    signingkey = 366FA500D9BFF459
+
+[commit]
+    gpgsign = true
