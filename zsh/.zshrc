@@ -74,8 +74,6 @@ if [[ -f "$CARGO_ENV" ]]; then
 	source "$CARGO_ENV"
 fi
 
-export HOMEBREW_GITHUB_TOKEN="7c5cd9ce62c06106acde6bd9187bffc3d83dcabd"
-
 eval $(gdircolors $HOME/dotfiles/misc/dircolors.solarized.ansi-dark)
 
 if [[ "$(command -v pyenv)" ]]; then
