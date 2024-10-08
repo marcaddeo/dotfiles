@@ -109,3 +109,18 @@ _build-taggable-command recipe *args: (_ensure-npm-dependency "minimist") (_ensu
     command += ` ${argv._.join(" ")}`;
 
     console.log(command);
+
+alias bssh := brown-ssh
+
+[no-exit-message]
+@brown-ssh server="pbscit1" cwd="~":
+    passh -P "[Pp]assword.*: \{0,1\}$" -p "$(op read "op://Employee/Brown SSO/password")" \
+        ssh -t {{ server }}.services.brown.edu "sudo bash -c 'cd {{ cwd }}; clear; exec bash'"
+
+@bs-maint:
+    #/usr/bin/env bash
+    tmux new-window -n "bs-maint" -c ~/dev/brownsites-mgmt-tools \
+        "zsh -ic 'vim -c "'"set filetype=apache"'" redirects-$(date +%F)'"
+    tmux split-window -v "zsh -ic 'gust bssh pbscit1 "'"~/mgmt-tools"'"'"
+    tmux split-window -v "zsh -ic 'gust bssh pbscit2 "'"~/mgmt-tools"'"'"
+    tmux split-window -h "zsh -ic 'gust bssh pwebcit "'"~/mgmt-tools"'"'"
