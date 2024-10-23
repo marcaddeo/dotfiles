@@ -55,7 +55,7 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gpg-agent sudo tmux ssh-agent zsh-nvm alias-finder colored-man-pages extract fzf genpass httpie lando)
+plugins=(git gpg-agent sudo tmux ssh-agent zsh-nvm alias-finder colored-man-pages extract fzf genpass httpie)
 
 # User configuration
 export PATH="$HOME/.local/bin:$(python3 -m site --user-base)/bin:$HOME/dotfiles/bin:$HOME/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"

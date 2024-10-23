@@ -58,38 +58,38 @@ function _composer_buffer_alter() {
 }
 
 ## The core redirection logic
-# function _lando_zsh_buffer_alter() {
-#     local lando_commands=(
-#         drush
-#         composer
-#         phpunit
-#         behat
-#         phpcs
-#         npm
-#         gulp
-#         yarn
-#         wp
-#     )
+function _lando_zsh_buffer_alter() {
+    local lando_commands=(
+        drush
+        composer
+        phpunit
+        behat
+        phpcs
+        npm
+        gulp
+        yarn
+        wp
+    )
 
-#     for command in "$lando_commands[@]"; do
-#         if [[ "$BUFFER" == "$command"* ]]; then
-#             if ! _hook_execute "_${command}_should_redirect" "$BUFFER"; then
-#                 break
-#             fi
+    for command in "$lando_commands[@]"; do
+        if [[ "$BUFFER" == "$command"* ]]; then
+            if ! _hook_execute "_${command}_should_redirect" "$BUFFER"; then
+                break
+            fi
 
-#             if _is_lando_project; then
-#                 BUFFER="lando $BUFFER"
-#             else
-#                 break
-#             fi
+            if _is_lando_project; then
+                BUFFER="lando $BUFFER"
+            else
+                break
+            fi
 
-#             BUFFER=$(_alter_execute "_${command}_buffer_alter" "$BUFFER")
-#         fi
-#     done
+            BUFFER=$(_alter_execute "_${command}_buffer_alter" "$BUFFER")
+        fi
+    done
 
-#     zle .accept-line
-# }
-# zle -N accept-line _lando_zsh_buffer_alter
+    zle .accept-line
+}
+zle -N accept-line _lando_zsh_buffer_alter
 
 ## Open Lando instances database in Querious
 function qq() {
