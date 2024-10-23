@@ -12,10 +12,15 @@ chooser := "grep -v choose | fzf --tmux"
     just --justfile "{{ source_file() }}" --list
 
 alias c := choose
-
+# Open an interactive chooser of available commands
 [no-exit-message]
 @choose:
     just --justfile "{{ source_file() }}" --chooser "{{ chooser }}" --choose 2>/dev/null
+
+alias e := edit
+# Edit the justfile
+@edit:
+    $EDITOR "{{ justfile() }}"
 """
 
 # Display this list of available commands
@@ -23,13 +28,12 @@ alias c := choose
     just --justfile "{{ source_file() }}" --list
 
 alias c := choose
-
+# Open an interactive chooser of available commands
 [no-exit-message]
 @choose:
     just --justfile "{{ source_file() }}" --chooser "{{ chooser }}" --choose 2>/dev/null
 
 alias e := edit
-
 # Edit the global justfile
 @edit:
     cd "{{ dotfiles }}/just" && $EDITOR "{{ justfile() }}"

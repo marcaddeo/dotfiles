@@ -16,7 +16,7 @@
 --   end
 -- })
 
-vim.cmd [[
+vim.cmd([[
 augroup vagrant
   autocmd!
   autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
@@ -41,6 +41,9 @@ autocmd BufNewFile,BufRead * if match(getline(1), "^---$") >= 0 && expand("%:e")
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal tw=79
 
+" Rust
+autocmd BufRead,BufNewFile *.rs setlocal colorcolumn=100
+
 " Spell check git commits
 autocmd FileType gitcommit setlocal spell
 
@@ -53,5 +56,5 @@ augroup PHP
   " @TODO: not sure if this should be preserved from previous configs
   " autocmd FileType php setlocal iskeyword-=$
 augroup END
-]]
+]])
 --
