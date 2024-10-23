@@ -1,5 +1,5 @@
 self := "just --justfile '" + justfile() + "'"
-parallel := "parallel --shebang --tag --linebuffer --jobs " + env('JOB_COUNT', num_cpus()) + " -r"
+parallel := "parallel --shebang --tag --linebuffer --jobs " + env('JOB_COUNT', num_cpus()) + " -q -r"
 pantheon_org := "brown-university-web-services"
 get_backup_command := 'backup:list {} --filter="file*=database&&file*=' + `gdate -d "yesterday" +"%F"` + '" --format=string --fields=file'
 
@@ -13,7 +13,7 @@ alias d := drush
 # Run Drush in parallel on site envs, e.g. `just drush -t canary -d dev status`. Use `-s` to run sequentially. [options: --tag|-t, --env|-e, --seq|-s]
 [positional-arguments]
 @drush *args:
-    eval "$({{ self }} _build-taggable-command _drush $(printf ' "%q"' "$@" | cut -b2-))"
+    eval "$({{ self }} _build-taggable-command _drush "$@")"
 
 # Get a list of sites tagged with `tag`
 @sites-with-tag tag:
@@ -66,8 +66,8 @@ cmd := quote('sql:query "SHOW TABLES LIKE \"%ACQUIA%\"" 2>/dev/null | awk NF')
 cmd2 := quote('sql:query "select COUNT(*) from menu_link_content_data where menu_name = \"alternative-sidebar\";" 2>/dev/null | awk NF | cat')
 @find-alternative-sidebar-usage tag env="live": (_drush-by-tag tag env cmd2)
 
-_parallel command args:
-    #!/usr/bin/env -S {{ parallel }} '{{ command }}'
+@_parallel command args:
+    #!/usr/bin/env -S {{ parallel }} {{ command }}
     {{ args }}
 
 @_terminus sites +args: (_parallel ("terminus " + args + " -- ") sites)
@@ -76,9 +76,10 @@ _parallel command args:
     {{ self }} _terminus "$sites" {{ quote(args) }}
 
 @_drush sites +args: (_terminus sites "drush {}" args)
-@_drush-by-tag tag env +args:
+[positional-arguments]
+_drush-by-tag tag env +args:
     sites="$({{ self }} site-envs-with-tag "{{ tag }}" "{{ env }}")"; \
-    {{ self }} _drush "$sites" {{ args }}
+    {{ self }} _drush "$sites" "${@:3}"
 
 @_ensure-npm-dependency package:
     if ! npm list -g --depth 1 "{{ package }}" > /dev/null; then npm install -g "{{ package }}"; fi

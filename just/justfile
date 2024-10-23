@@ -28,6 +28,8 @@ alias c := choose
 @choose:
     just --justfile "{{ source_file() }}" --chooser "{{ chooser }}" --choose 2>/dev/null
 
+alias e := edit
+
 # Edit the global justfile
 @edit:
     cd "{{ dotfiles }}/just" && $EDITOR "{{ justfile() }}"
