@@ -15,6 +15,7 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
     { import = "plugins.lang.ansible" },
+    { import = "plugins.lang.d2" },
     { import = "plugins.lang.html" },
     { import = "plugins.lang.markdown" },
     { import = "plugins.lang.php" },
