@@ -30,8 +30,11 @@ nmap("<C-l>", "<cmd>lua require'tmux'.move_right()<cr>", { desc = "Go to right w
 nmap("qq", ":b#<cr>", { desc = "Go to the last used buffer", silent = true })
 
 -- Quickly cycle through buffers
-nmap("<tab>", ":bnext<cr>", { desc = "Go to the next buffer", silent = true })
-nmap("<s-tab>", ":bprevious<cr>", { desc = "Go to the previous buffer", silent = true })
+-- @TODO these are actually slow for some reason when compared to <s-h> and
+-- <s-l> which use BufferlinePrevious/Next command_params
+-- @TODO disabling and trying to get used to <s-h> and <s-l>
+-- nmap("<tab>", ":bnext<cr>", { desc = "Go to the next buffer", silent = true })
+-- nmap("<s-tab>", ":bprevious<cr>", { desc = "Go to the previous buffer", silent = true })
 
 -- Visually select the last pasted text
 nmap("gb", function()
