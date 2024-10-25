@@ -15,3 +15,6 @@ opt.listchars = {
 }
 
 opt.colorcolumn = "80" -- Enable color column so we visually see max line length
+
+-- Load local vim config files for project-level configuration overrides.
+opt.exrc = true
