@@ -25,3 +25,6 @@ nmap("<C-h>", "<cmd>lua require'tmux'.move_left()<cr>", { desc = "Go to left win
 nmap("<C-j>", "<cmd>lua require'tmux'.move_bottom()<cr>", { desc = "Go to lower window" })
 nmap("<C-k>", "<cmd>lua require'tmux'.move_top()<cr>", { desc = "Go to upper window" })
 nmap("<C-l>", "<cmd>lua require'tmux'.move_right()<cr>", { desc = "Go to right window" })
+
+-- Toggle the last used buffer
+nmap("qq", ":b#<cr>", { desc = "Go to the last used buffer", silent = true })
