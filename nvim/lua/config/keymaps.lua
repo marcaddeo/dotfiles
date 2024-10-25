@@ -37,3 +37,6 @@ nmap("<s-tab>", ":bprevious<cr>", { desc = "Go to the previous buffer", silent =
 nmap("gb", function()
   vim.api.nvim_feedkeys("`[" .. vim.fn.getregtype():sub(1, 1) .. "`]", "n", false)
 end, { desc = "Visually select the last pasted text", silent = true })
+
+-- Close a buffer without closing the window
+nmap("<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Close a buffer (without closing the window)" })
