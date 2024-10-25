@@ -47,4 +47,5 @@ return {
   },
 
   -- Custom additions.
+  { "aserowy/tmux.nvim", config = true, event = "BufReadPre" },
 }
