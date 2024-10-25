@@ -1,4 +1,7 @@
 return {
+  -- LazyVim overrides.
+
+  -- Configure LuaSnip to laod custom vscode-style snippets.
   {
     "L3MON4D3/LuaSnip",
     dependencies = {
@@ -11,4 +14,6 @@ return {
       end,
     },
   },
+
+  -- Custom additions.
 }

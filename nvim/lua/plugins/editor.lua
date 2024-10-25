@@ -1,5 +1,8 @@
 return {
   -- LazyVim overrides.
+
+  -- Prefix keywords with @, add custom keywords, allow uppercase or lowercase
+  -- keywords
   {
     "folke/todo-comments.nvim",
     config = function()
