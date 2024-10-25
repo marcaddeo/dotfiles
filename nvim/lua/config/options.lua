@@ -13,3 +13,5 @@ opt.listchars = {
   tab = "⍿·",
   eol = "¬",
 }
+
+opt.colorcolumn = "80" -- Enable color column so we visually see max line length
