@@ -32,3 +32,8 @@ nmap("qq", ":b#<cr>", { desc = "Go to the last used buffer", silent = true })
 -- Quickly cycle through buffers
 nmap("<tab>", ":bnext<cr>", { desc = "Go to the next buffer", silent = true })
 nmap("<s-tab>", ":bprevious<cr>", { desc = "Go to the previous buffer", silent = true })
+
+-- Visually select the last pasted text
+nmap("gb", function()
+  vim.api.nvim_feedkeys("`[" .. vim.fn.getregtype():sub(1, 1) .. "`]", "n", false)
+end, { desc = "Visually select the last pasted text", silent = true })
