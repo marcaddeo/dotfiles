@@ -39,4 +39,7 @@ nmap("gb", function()
 end, { desc = "Visually select the last pasted text", silent = true })
 
 -- Close a buffer without closing the window
-nmap("<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Close a buffer (without closing the window)" })
+-- @TODO disabling for now, since it conflicts with the `<leader>q` namespace
+-- that lazyvim adds.
+-- @note Use <leader>bd instead.
+-- nmap("<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Close a buffer (without closing the window)" })
