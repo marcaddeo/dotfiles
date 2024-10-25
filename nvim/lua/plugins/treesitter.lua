@@ -8,4 +8,6 @@ return {
       },
     },
   },
+
+  -- Custom additions.
 }
