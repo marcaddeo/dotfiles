@@ -3,9 +3,12 @@
 -- Add any additional options here
 local opt = vim.opt
 
-opt.wrap = true -- Enable line wrap @TODO consider removing <leader>uw
+-- Enable line wrap.
+-- @TODO consider removing <leader>uw
+opt.wrap = true
 
-opt.list = true -- Enable list chars to make incorrect characters stand out
+-- Enable list chars to make incorrect characters stand out.
+opt.list = true
 -- Trying out a new tab character than i normally use, usually use:
 --   tab = "▸ ",
 -- @see https://vi.stackexchange.com/questions/422/how-can-i-display-tabs-as-characters
@@ -14,7 +17,8 @@ opt.listchars = {
   eol = "¬",
 }
 
-opt.colorcolumn = "80" -- Enable color column so we visually see max line length
+-- Enable color column so we visually see max line length.
+opt.colorcolumn = "80"
 
 -- Load local vim config files for project-level configuration overrides.
 opt.exrc = true
