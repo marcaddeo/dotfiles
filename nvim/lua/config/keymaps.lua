@@ -28,3 +28,7 @@ nmap("<C-l>", "<cmd>lua require'tmux'.move_right()<cr>", { desc = "Go to right w
 
 -- Toggle the last used buffer
 nmap("qq", ":b#<cr>", { desc = "Go to the last used buffer", silent = true })
+
+-- Quickly cycle through buffers
+nmap("<tab>", ":bnext<cr>", { desc = "Go to the next buffer", silent = true })
+nmap("<s-tab>", ":bprevious<cr>", { desc = "Go to the previous buffer", silent = true })
