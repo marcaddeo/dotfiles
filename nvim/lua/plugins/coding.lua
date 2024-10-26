@@ -59,4 +59,10 @@ return {
   },
 
   -- Custom additions.
+
+  -- I prefer this to mini.surround.
+  {
+    "kylechui/nvim-surround",
+    config = true,
+  },
 }
