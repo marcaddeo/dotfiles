@@ -8,7 +8,7 @@ vim.g.updatetime = 100
 vim.opt.termguicolors = true
 
 vim.diagnostic.config({
-  float = { border = "rounded" },
+	float = { border = "rounded" },
 })
 
 -------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ vim.diagnostic.config({
 vim.g.mapleader = " "
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menuone,noselect" -- menu,menuone,noselect = lazyvim
 
 -- Ensure the gutter is always open and 2 columns wide
 vim.opt.signcolumn = "yes"
@@ -32,20 +32,20 @@ vim.opt.splitright = true
 -- Sane Searching
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.gdefault = true
+vim.opt.gdefault = true -- not on
 vim.opt.incsearch = true
-vim.opt.showmatch = true
+vim.opt.showmatch = true -- not on
 vim.opt.hlsearch = true
 
 -- Show invisible characters with pretty symbols
-vim.opt.list = true
-vim.opt.listchars = {
-  tab = "▸ ",
-  eol = "¬",
+vim.opt.list = true -- added to new setup
+vim.opt.listchars = { -- added to new setup
+	tab = "▸ ",
+	eol = "¬",
 }
 -- Hide end of buffer characters
 vim.opt.fillchars = {
-  eob = " ",
+	eob = " ",
 }
 
 -- Indentation Settings
@@ -56,9 +56,9 @@ vim.opt.expandtab = false
 
 -- Persistent undo
 -- @TODO: port to lua
-vim.cmd [[
+vim.cmd([[
 silent execute "!mkdir ~/.config/nvim/undo > /dev/null 2>&1"
-]]
+]])
 vim.opt.undodir = vim.fn.stdpath("config") .. "/undo//"
 vim.opt.undofile = true
 vim.opt.undolevels = 1000
@@ -66,10 +66,10 @@ vim.opt.undoreload = 10000
 
 -- Move swap and backup files into their own directory
 -- @TODO: port to lua
-vim.cmd [[
+vim.cmd([[
 silent execute "!mkdir ~/.config/nvim/backup > /dev/null 2>&1"
 silent execute "!mkdir ~/.config/nvim/swap > /dev/null 2>&1"
-]]
+]])
 vim.opt.backupdir = vim.fn.stdpath("config") .. "/backup//"
 vim.opt.directory = vim.fn.stdpath("config") .. "/swap//"
 
@@ -80,7 +80,7 @@ vim.opt.scrolloff = 3
 vim.opt.hidden = true
 vim.opt.visualbell = true
 vim.opt.cursorline = true
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "80" -- added to new setup
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
