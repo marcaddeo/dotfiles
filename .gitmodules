@@ -4,12 +4,6 @@
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm.git
-[submodule "vpn"]
-	path = vpn
-	url = git@github.com:marcaddeo/vpn.git
-[submodule "wiki"]
-	path = wiki
-	url = git@github.com:marcaddeo/wiki.git
 [submodule "zsh/custom/plugins/zsh-nvm"]
 	path = zsh/custom/plugins/zsh-nvm
 	url = https://github.com/lukechilds/zsh-nvm.git
