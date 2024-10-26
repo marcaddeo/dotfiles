@@ -74,7 +74,7 @@ _install_rust:
 
 @_link source destination force="false":
     mkdir -p "$(dirname "{{ home_dir() / destination }}")"
-    -echo ln {{ if force == "true" { "-sf" } else { "-s" } }} \
+    ln {{ if force == "true" { "-sf" } else { "-s" } }} \
         "{{ dotfiles / source }}" \
         "{{ home_dir() / destination }}" \
         2>/dev/null
@@ -151,7 +151,7 @@ _gitignore force="false": (_link "git/.gitignore" ".gitignore" force)
 [group("nvim")]
 link-nvim force="false": (_nvim force)
 
-_nvim force="false": (_link "nvim" ".config/nvim" force)
+_nvim force="false": (_link "nvim" ".config/" force)
 
 # Link ranger related files
 [group("ranger")]
