@@ -20,6 +20,14 @@ return {
       return dashboard
     end,
   },
+  {
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        always_show_bufferline = true,
+      },
+    },
+  },
 
   -- Custom additions.
 }
