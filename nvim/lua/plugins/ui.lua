@@ -47,4 +47,11 @@ return {
       vim.cmd.colorscheme("solarized")
     end,
   },
+  {
+    "winston0410/range-highlight.nvim",
+    dependencies = {
+      "winston0410/cmd-parser.nvim",
+    },
+    config = true,
+  },
 }
