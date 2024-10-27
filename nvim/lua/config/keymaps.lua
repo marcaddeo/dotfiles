@@ -21,6 +21,7 @@ local function vmap(lhs, rhs, opts)
   map("v", lhs, rhs, opts)
 end
 
+-- Tmux Navigation.
 nmap("<C-h>", "<cmd>lua require'tmux'.move_left()<cr>", { desc = "Go to left window" })
 nmap("<C-j>", "<cmd>lua require'tmux'.move_bottom()<cr>", { desc = "Go to lower window" })
 nmap("<C-k>", "<cmd>lua require'tmux'.move_top()<cr>", { desc = "Go to upper window" })
