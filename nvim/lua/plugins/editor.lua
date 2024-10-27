@@ -59,4 +59,16 @@ return {
       })
     end,
   },
+
+  -- @note using a patched version to fix duplicate icons.
+  -- @see https://github.com/topaxi/gh-actions.nvim/pull/13
+  {
+    "marcaddeo/gh-actions.nvim",
+    branch = "patch-1",
+    keys = {
+      { "<leader>ga", "<cmd>GhActions<cr>", desc = "Open Github Actions" },
+    },
+    ---@type GhActionsConfig
+    opts = {},
+  },
 }

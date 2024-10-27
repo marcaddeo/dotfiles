@@ -28,6 +28,14 @@ return {
       },
     },
   },
+  -- Replace the lualine clock with gh-actions status.
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function(_, opts)
+      table.remove(opts.sections.lualine_z)
+      table.insert(opts.sections.lualine_z, { "gh-actions", icon = "" })
+    end,
+  },
 
   -- Custom additions.
 
