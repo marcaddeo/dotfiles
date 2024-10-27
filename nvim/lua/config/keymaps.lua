@@ -46,3 +46,12 @@ end, { desc = "Visually select the last pasted text", silent = true })
 -- that lazyvim adds.
 -- @note Use <leader>bd instead.
 -- nmap("<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Close a buffer (without closing the window)" })
+
+-- Delete LazyGit mappings.
+vim.keymap.del("n", "<leader>gg")
+vim.keymap.del("n", "<leader>gG")
+vim.keymap.del("n", "<leader>gb")
+vim.keymap.del("n", "<leader>gB")
+vim.keymap.del("n", "<leader>gf")
+vim.keymap.del("n", "<leader>gl")
+vim.keymap.del("n", "<leader>gL")
