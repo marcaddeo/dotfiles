@@ -1,0 +1,49 @@
+pane	hank	0	1	:*	0	Marcs-MacBook-Pro-3.local	:/Users/maddeo	1	zsh	:
+pane	hank	1	0	:	0	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	nvim	:nvim
+pane	hank	1	0	:	1	Marcs-MacBook-Pro-3.local	:/Users/maddeo	1	zsh	:
+pane	hank	2	0	:##	0	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	nvim	:nvim
+pane	hank	2	0	:##	1	Marcs-MacBook-Pro-3.local	:/Users/maddeo	1	zsh	:
+pane	hank	2	0	:##	2	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	nvim	:nvim
+pane	hank	2	0	:##	3	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	nvim	:nvim
+pane	hank	2	0	:##	4	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	hank	2	0	:##	5	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	hank	3	0	:##	0	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	nvim	:nvim
+pane	hank	3	0	:##	1	Marcs-MacBook-Pro-3.local	:/Users/maddeo	1	nvim	:nvim
+pane	hank	3	0	:##	2	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	hank	3	0	:##	3	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	hank	4	0	:##-	0	Marcs-MacBook-Pro-3.local	:/Users/maddeo	1	nvim	:nvim
+pane	hank	4	0	:##-	1	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	nvim	:nvim
+pane	hank	4	0	:##-	2	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	hank	4	0	:##-	3	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	hank	5	0	:##	0	Marcs-MacBook-Pro-3.local	:/Users/maddeo	1	nvim	:nvim
+pane	hank	5	0	:##	1	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	hank	6	0	:##	0	Marcs-MacBook-Pro-3.local	:/Users/maddeo	1	nvim	:nvim
+pane	hank	6	0	:##	1	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	home	0	0	:##	0	Marcs-MacBook-Pro.local	:/Users/maddeo	1	zsh	:
+pane	home	1	0	:##	0	Marcs-MacBook-Pro.local	:/Users/maddeo	1	zsh	:
+pane	home	2	0	:##-	0	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	home	2	0	:##-	1	Marcs-MacBook-Pro-3.local	:/Users/maddeo	1	zsh	:
+pane	home	3	1	:##*	0	Marcs-MacBook-Pro-3.local	:/Users/maddeo	1	nvim	:nvim
+pane	home	3	1	:##*	1	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	home	3	1	:##*	2	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	home	3	1	:##*	3	Marcs-MacBook-Pro-3.local	:/Users/maddeo	0	zsh	:
+pane	work	0	0	:-	0	OIT2W7H99V	:/Users/maddeo	1	zsh	:
+pane	work	1	0	:	0	OIT2W7H99V	:/Users/maddeo/dev/webservices-documentation	0	nvim	:nvim
+pane	work	1	0	:	1	OIT2W7H99V	:/Users/maddeo/dev/webservices-documentation	1	zsh	:
+pane	work	2	1	:*	0	OIT2W7H99V	:/Users/maddeo/dev/pantheon-upstream-brownu	0	nvim	:nvim
+pane	work	2	1	:*	1	OIT2W7H99V	:/Users/maddeo/dev/pantheon-upstream-brownu	1	zsh	:
+window	hank	0	:ws	1	:*	b2be,133x70,0,0,1	off
+window	hank	1	:hank	0	:	fba2,133x70,0,0[133x57,0,0,2,133x12,0,58,3]	off
+window	hank	2	:protos	0	:##	e078,133x70,0,0[133x38,0,0,4,133x8,0,39,5,133x16,0,48{66x16,0,48,6,66x16,67,48,7},133x5,0,65{66x5,0,65,8,66x5,67,65,9}]	off
+window	hank	3	:pdk	0	:##	f264,133x70,0,0[133x59,0,0{66x59,0,0,10,66x59,67,0,11},133x10,0,60{66x10,0,60,12,66x10,67,60,13}]	off
+window	hank	4	:templates	0	:##-	f327,133x70,0,0[133x59,0,0{66x59,0,0,14,66x59,67,0,15},133x10,0,60{66x10,0,60,16,66x10,67,60,17}]	off
+window	hank	5	:core-plugins	0	:##	88ae,133x70,0,0[133x60,0,0,18,133x9,0,61,19]	off
+window	hank	6	:plugins	0	:##	b994,133x70,0,0[133x59,0,0,20,133x10,0,60,21]	off
+window	home	0	:main	0	:##	d991,133x70,0,0,22	off
+window	home	1	:infrastructure	0	:##	d992,133x70,0,0,23	off
+window	home	2	:just	0	:##-	fa1a,133x70,0,0[133x35,0,0,24,133x34,0,36,25]	off
+window	home	3	:hank	1	:##*	b672,133x70,0,0[133x54,0,0,26,133x15,0,55{52x15,0,55,27,78x15,53,55,28,1x15,132,55,29}]	off
+window	work	0	:main	0	:-	5990,133x70,0,0,30	off
+window	work	1	:docs	0	:	f996,133x70,0,0[133x59,0,0,31,133x10,0,60,32]	off
+window	work	2	:upstream	1	:*	6e9a,133x70,0,0[133x57,0,0,33,133x12,0,58,34]	off
+state	work	

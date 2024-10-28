@@ -1,0 +1,19 @@
+pane	home	0	1	:*	0	Marcs-MacBook-Pro.local	:/Users/maddeo	1	zsh	:
+pane	home	1	0	:-	0	Marcs-MacBook-Pro.local	:/Users/maddeo	1	zsh	:
+pane	work	0	0	:	0	OIT2W7H99V	:/Users/maddeo	1	zsh	:
+pane	work	0	0	:	1	OIT2W7H99V	:/Users/maddeo	0	zsh	:
+pane	work	1	0	:	0	OIT2W7H99V	:/Users/maddeo/dev/webservices-documentation	0	zsh	:
+pane	work	1	0	:	1	OIT2W7H99V	:/Users/maddeo/dev/webservices-documentation	1	zsh	:
+pane	work	2	0	:	0	OIT2W7H99V	:/Users/maddeo/dev/brown.edu	1	zsh	:
+pane	work	2	0	:	1	OIT2W7H99V	:/Users/maddeo/dev/pantheon-upstream-brownu	0	zsh	:
+pane	work	3	1	:*	0	OIT2W7H99V	:/Users/maddeo/dev/brownsites-mgmt-tools	0	zsh	:
+pane	work	3	1	:*	1	OIT2W7H99V	:/Users/maddeo/dev/brownsites-mgmt-tools	1	zsh	:
+pane	work	4	0	:-	0	OIT2W7H99V	:/Users/maddeo	1	zsh	:
+window	home	0	:main	1	:*	cc3e,155x76,0,0,1	off
+window	home	1	:infrastructure	0	:-	cc3f,155x76,0,0,2	off
+window	work	0	:main	0	:	ef8a,155x76,0,0[155x49,0,0,3,155x26,0,50,4]	off
+window	work	1	:docs	0	:	2c10,155x76,0,0[155x62,0,0,5,155x13,0,63,6]	off
+window	work	2	:upstream	0	:	f895,155x76,0,0[155x48,0,0,7,155x27,0,49,8]	off
+window	work	3	:brownsites	1	:*	247e,155x76,0,0[155x64,0,0,114,155x11,0,65,136]	off
+window	work	4	:zsh	0	:-	335e,155x76,0,0,135	:
+state	work	home
