@@ -27,6 +27,9 @@ nmap("<C-j>", "<cmd>lua require'tmux'.move_bottom()<cr>", { desc = "Go to lower 
 nmap("<C-k>", "<cmd>lua require'tmux'.move_top()<cr>", { desc = "Go to upper window" })
 nmap("<C-l>", "<cmd>lua require'tmux'.move_right()<cr>", { desc = "Go to right window" })
 
+-- Yank to the system clipboard.
+vmap("<leader>y", '"+y', { desc = "Yank to the system clipboard" })
+
 -- Toggle the last used buffer
 nmap("qq", ":b#<cr>", { desc = "Go to the last used buffer", silent = true })
 

@@ -24,3 +24,6 @@ opt.colorcolumn = "80"
 
 -- Load local vim config files for project-level configuration overrides.
 opt.exrc = true
+
+-- Don't use the system clipboard
+opt.clipboard = ""
