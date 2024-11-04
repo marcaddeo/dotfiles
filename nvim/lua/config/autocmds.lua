@@ -28,5 +28,8 @@ autocmd BufRead,BufNewFile *.rs setlocal colorcolumn=100
 
 " Spell check git commits
 autocmd FileType gitcommit setlocal spell
+
+" Jinja Files.
+autocmd BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
 ]])
 --
