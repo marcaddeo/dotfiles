@@ -82,3 +82,5 @@ fi
 
 # Lando
 export PATH="$HOME/.lando/bin${PATH+:$PATH}"; #landopath
+
+export HOMEBREW_NO_AUTO_UPDATE=1
