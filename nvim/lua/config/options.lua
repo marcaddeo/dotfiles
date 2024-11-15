@@ -27,3 +27,6 @@ opt.exrc = true
 
 -- Don't use the system clipboard
 opt.clipboard = ""
+
+-- Enable /g on substitution commands by default.
+opt.gdefault = true
