@@ -153,6 +153,18 @@ link-nvim force="false": (_nvim force)
 
 _nvim force="false": (_link "nvim" ".config/" force)
 
+# Link aerospace related files
+[group("window-management")]
+link-aerospace force="false": (_aerospace force)
+
+_aerospace force="false": (_link "aerospace" ".config/" force)
+
+# Link autoraise related files
+[group("window-management")]
+link-autoraise force="false": (_autoraise force)
+
+_autoraise force="false": (_link "AutoRaise" ".config/" force)
+
 # Link ranger related files
 [group("ranger")]
 link-ranger force="false": (_ranger force)
