@@ -59,13 +59,13 @@ alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
-alt-p = 'focus --boundaries-action wrap-around-all-monitors left'
-alt-n = 'focus --boundaries-action wrap-around-all-monitors right'
+alt-p = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+alt-n = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
 
 # Focus monitor
-alt-ctrl-1 = 'focus-monitor --wrap-around Thunderbolt'
-alt-ctrl-2 = 'focus-monitor --wrap-around Built-in'
-alt-ctrl-3 = 'focus-monitor --wrap-around DELL'
+alt-ctrl-1 = 'focus-monitor Thunderbolt'
+alt-ctrl-2 = 'focus-monitor Built-in'
+alt-ctrl-3 = 'focus-monitor DELL'
 alt-ctrl-p = 'focus-monitor --wrap-around prev'
 alt-ctrl-n = 'focus-monitor --wrap-around next'
 
