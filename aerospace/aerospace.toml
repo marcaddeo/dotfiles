@@ -34,23 +34,21 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-ctrl-left = 'workspace prev'
-ctrl-right = 'workspace next'
+alt-left = 'workspace prev'
+alt-right = 'workspace next'
 
 # Focus window
 alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
-alt-p = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
-alt-n = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
 
 # Focus monitor
 alt-ctrl-1 = 'focus-monitor Thunderbolt'
 alt-ctrl-2 = 'focus-monitor Built-in'
 alt-ctrl-3 = 'focus-monitor DELL'
-alt-ctrl-p = 'focus-monitor --wrap-around prev'
-alt-ctrl-n = 'focus-monitor --wrap-around next'
+ctrl-left = 'focus-monitor --wrap-around prev'
+ctrl-right = 'focus-monitor --wrap-around next'
 
 # Move window
 alt-shift-h = 'move left'
@@ -68,15 +66,15 @@ alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
-alt-shift-p = 'move-node-to-workspace prev'
-alt-shift-n = 'move-node-to-workspace next'
+alt-shift-left = 'move-node-to-workspace prev'
+alt-shift-right = 'move-node-to-workspace next'
 
 # Move window to monitor
 cmd-ctrl-1 = 'move-node-to-monitor --focus-follows-window Thunderbolt'
 cmd-ctrl-2 = 'move-node-to-monitor --focus-follows-window Built-in'
 cmd-ctrl-3 = 'move-node-to-monitor --focus-follows-window DELL'
-cmd-ctrl-p = 'move-node-to-monitor --focus-follows-window prev'
-cmd-ctrl-n = 'move-node-to-monitor --focus-follows-window next'
+cmd-ctrl-left = 'move-node-to-monitor --focus-follows-window prev'
+cmd-ctrl-right = 'move-node-to-monitor --focus-follows-window next'
 
 # Fullscreen window
 alt-f = 'fullscreen'
