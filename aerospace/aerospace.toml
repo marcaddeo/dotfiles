@@ -93,8 +93,8 @@ alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
 # Cycle through layouts
-alt-slash = 'layout tiles horizontal vertical'
-alt-period = 'layout accordion horizontal vertical'
+alt-period = 'layout tiles horizontal vertical'
+alt-slash = 'layout accordion horizontal vertical'
 
 # Rebalance windows
 alt-comma = 'balance-sizes'
