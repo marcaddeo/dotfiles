@@ -1,0 +1,54 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+    theme-id: 301
+  }
+}
+
+grid-rows: 6
+
+Workspace {
+  keys: ||md
+    - `alt-1 - 9` **Focus workspace 1 - 9**
+    - `ctrl-[left|right]` **Focus previous/next workspace**
+    - `alt-shift-1 - 9` **Move window to workspace 1 - 9**
+    - `alt-shift-[left|right]` **Move window to previous/next workspace**
+    - `alt-[h|j|k|l]` **Focus window left/down/up/right**
+    - `alt-shift-[h|j|k|l]` **Move window left/down/up/right**
+    - `alt-ctrl-[h|j|k|l]` **Join-with window left/down/up/right**
+  ||
+}
+Layout {
+  keys: ||md
+    - `alt-period` **Cycle through tiling layouts in workspace**
+    - `alt-slash` **Cycle through accordion layouts in workspace**
+    - `alt-shift-[minus|equal]` - **Decrease/Increase size of window by 50**
+    - `alt-shift-backslash` - **Balance size of windows in workspace**
+  ||
+}
+Monitor {
+  keys: ||md
+    - `alt-ctrl-[1|2|3]` **Focus monitor 1/2/3**
+    - `alt-[left|right]` **Focus previous/next monitor (wraps)**
+    - `cmd-ctrl-[1|2|3]` **Move window to monitor 1/2/3**
+    - `cmd-ctrl-[left|right]` **Move window to previous/next monitor**
+  ||
+}
+Misc {
+  keys: ||md
+    - `alt-f` **Fullscreen window**
+    - `alt-t` **Toggle float on window**
+    - `alt-q` **Toggle focus back-and-forth between last focused window**
+    - `alt-shift-backtick` **Enter service mode**
+  ||
+}
+Service Mode {
+  keys: ||md
+    - `esc` **Reload AeroSpace config**
+    - `r` **Reset layout in workspace**
+    - `backspace` **Close all windows except focused in the current workspace**
+    - `a` **Toggle AeroSpace**
+
+    *Note: All commands exit service mode*
+  ||
+}

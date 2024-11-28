@@ -71,7 +71,7 @@ run = 'move-node-to-workspace 8'
 9 = 'DELL'
 
 [mode.main.binding]
-# Switch workspace
+# Focus workspace
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -81,8 +81,8 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-left = 'workspace prev'
-alt-right = 'workspace next'
+ctrl-left = 'workspace prev'
+ctrl-right = 'workspace next'
 
 # Focus window
 alt-h = 'focus left'
@@ -94,8 +94,8 @@ alt-l = 'focus right'
 alt-ctrl-1 = 'focus-monitor Thunderbolt'
 alt-ctrl-2 = 'focus-monitor Built-in'
 alt-ctrl-3 = 'focus-monitor DELL'
-ctrl-left = 'focus-monitor --wrap-around prev'
-ctrl-right = 'focus-monitor --wrap-around next'
+alt-left = 'focus-monitor --wrap-around prev'
+alt-right = 'focus-monitor --wrap-around next'
 
 # Move window
 alt-shift-h = 'move left'
