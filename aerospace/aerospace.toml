@@ -1,4 +1,3 @@
-# Start AeroSpace at login
 start-at-login = true
 
 after-startup-command = [
@@ -6,7 +5,6 @@ after-startup-command = [
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
 ]
 
-accordion-padding = 30
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 [gaps]
@@ -16,6 +14,55 @@ outer.left = 12
 outer.bottom = 12
 outer.top = 12
 outer.right = 12
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace 1'
+
+# @TODO if setting window dimensions and layout is ever supported, these are 
+# the dimensions for the windows on workspace 2
+#
+# HomeCam = {1416, 1238}
+# Discord = {1416, 846}
+# Messages = {702, 427}
+# Spotify MiniPlayer = {702, 427}
+[[on-window-detected]]
+if.app-id = 'com.aaronpearce.Homecam'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+if.window-title-regex-substring = 'MiniPlayer'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Messages'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+if.window-title-regex-substring = '^Spotify$'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.googlecode.iterm2'
+run = 'move-node-to-workspace 8'
 
 [workspace-to-monitor-force-assignment]
 1 = 'Thunderbolt'
@@ -56,6 +103,12 @@ alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
+# Join window
+alt-ctrl-h = 'join-with left'
+alt-ctrl-j = 'join-with down'
+alt-ctrl-k = 'join-with up'
+alt-ctrl-l = 'join-with right'
+
 # Move window to workspace
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
@@ -79,9 +132,6 @@ cmd-ctrl-right = 'move-node-to-monitor --focus-follows-window next'
 # Fullscreen window
 alt-f = 'fullscreen'
 
-# Toggle AeroSpace
-alt-o = 'enable toggle'
-
 # Toggle window float
 alt-t = 'layout floating tiling'
 
@@ -91,13 +141,11 @@ alt-q = 'focus-back-and-forth'
 # Resize windows
 alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
+alt-shift-backslash = 'balance-sizes'
 
 # Cycle through layouts
 alt-period = 'layout tiles horizontal vertical'
 alt-slash = 'layout accordion horizontal vertical'
-
-# Rebalance windows
-alt-comma = 'balance-sizes'
 
 # Toggle focus back-and-forth between last focused workspace
 alt-tab = 'workspace-back-and-forth'
@@ -109,11 +157,14 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-shift-backtick = 'mode service'
 
 [mode.service.binding]
+# Reload config
 esc = ['reload-config', 'mode main']
+
+# Reset layout in workspace
 r = ['flatten-workspace-tree', 'mode main']
+
+# Close all windows but current in current workspace
 backspace = ['close-all-windows-but-current', 'mode main']
 
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
+# Toggle AeroSpace
+a = 'enable toggle'
