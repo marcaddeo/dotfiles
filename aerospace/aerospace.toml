@@ -16,12 +16,16 @@ outer.top = 12
 outer.right = 12
 
 [[on-window-detected]]
-if.app-id = 'com.apple.iCal'
+if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 1'
+if.app-id = 'company.thebrowser.Browser'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.googlecode.iterm2'
+run = 'move-node-to-workspace 3'
 
 # @TODO if setting window dimensions and layout is ever supported, these are 
 # the dimensions for the windows on workspace 2
@@ -32,27 +36,19 @@ run = 'move-node-to-workspace 1'
 # Spotify MiniPlayer = {702, 427}
 [[on-window-detected]]
 if.app-id = 'com.aaronpearce.Homecam'
-run = 'move-node-to-workspace 2'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace 2'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 if.window-title-regex-substring = 'MiniPlayer'
-run = 'move-node-to-workspace 2'
+run = ['layout tiling', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Messages'
-run = 'move-node-to-workspace 2'
-
-[[on-window-detected]]
-if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
@@ -61,23 +57,26 @@ if.window-title-regex-substring = '^Spotify$'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'com.googlecode.iterm2'
-run = 'move-node-to-workspace 8'
+if.app-id = 'com.apple.iCal'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace 6'
 
 [workspace-to-monitor-force-assignment]
-1 = 'Thunderbolt'
-2 = 'Thunderbolt'
-8 = 'DELL'
-9 = 'DELL'
+4 = 'Thunderbolt'
+6 = 'Thunderbolt'
+3 = 'DELL'
 
 [mode.main.binding]
 # Focus workspace
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
+alt-1 = 'workspace 1'         # Notes
+alt-2 = 'workspace 2'         # Browser
+alt-3 = 'workspace 3'         # Terminal
+alt-4 = 'workspace 4'         # Chats + [Security Cameras + Mini Music]
+alt-5 = 'workspace 5'         # Music
+alt-6 = 'workspace 6'         # Mail + Calendar
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
