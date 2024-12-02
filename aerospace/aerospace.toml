@@ -52,22 +52,27 @@ if.app-id = 'com.apple.Messages'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
-if.window-title-regex-substring = '^Spotify$'
+if.app-id = 'com.apple.iCal'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.iCal'
-run = 'move-node-to-workspace 6'
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace 5'
+#
+# Work computer
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.mail'
+if.app-id = 'com.spotify.client'
+if.window-title-regex-substring = '^Spotify$'
 run = 'move-node-to-workspace 6'
 
 [workspace-to-monitor-force-assignment]
-4 = 'Thunderbolt'
-6 = 'Thunderbolt'
-3 = 'DELL'
+4 = ['Thunderbolt', 'secondary']
+5 = ['Thunderbolt', 'secondary']
+3 = ['DELL', 'main']
 
 [mode.main.binding]
 # Focus workspace
@@ -75,8 +80,8 @@ alt-1 = 'workspace 1'         # Notes
 alt-2 = 'workspace 2'         # Browser
 alt-3 = 'workspace 3'         # Terminal
 alt-4 = 'workspace 4'         # Chats + [Security Cameras + Mini Music]
-alt-5 = 'workspace 5'         # Music
-alt-6 = 'workspace 6'         # Mail + Calendar
+alt-5 = 'workspace 5'         # Mail + Calendar + [Slack @ Work]
+alt-6 = 'workspace 6'         # Music
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
