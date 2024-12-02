@@ -50,7 +50,16 @@ return {
   },
 
   -- Custom additions.
-  { "aserowy/tmux.nvim", config = true, event = "BufReadPre" },
+  {
+    "aserowy/tmux.nvim",
+    config = true,
+    event = "BufReadPre",
+    opt = {
+      copy_sync = {
+        enable = false,
+      },
+    },
+  },
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
