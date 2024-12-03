@@ -69,6 +69,11 @@ if.app-id = 'com.spotify.client'
 if.window-title-regex-substring = '^Spotify$'
 run = 'move-node-to-workspace 6'
 
+# Work computer
+[[on-window-detected]]
+if.app-id = 'com.f5networks.EdgeClient'
+run = 'layout floating'
+
 [workspace-to-monitor-force-assignment]
 4 = ['Thunderbolt', 'secondary']
 5 = ['Thunderbolt', 'secondary']
