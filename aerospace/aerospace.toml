@@ -74,6 +74,22 @@ run = 'move-node-to-workspace 6'
 if.app-id = 'com.f5networks.EdgeClient'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
 [workspace-to-monitor-force-assignment]
 4 = ['Thunderbolt', 'secondary']
 5 = ['Thunderbolt', 'secondary']
