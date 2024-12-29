@@ -1,12 +1,18 @@
-bold-is-bright = true
+theme = Builtin Solarized Dark
 
 font-family = ""
 font-family = TX-02
 font-family = Symbols Nerd Font Mono
+window-title-font-family = TX-02
+
 font-size = 11
-font-synthetic-style = false
 font-thicken = true
+font-synthetic-style = false
 
-theme = Builtin Solarized Dark
+bold-is-bright = true
 
-keybind = global:alt+cmd+grave_accent=toggle_quick_terminal
+window-padding-balance = true
+window-padding-x = 3
+window-padding-y = 2
+
+mouse-hide-while-typing = true
