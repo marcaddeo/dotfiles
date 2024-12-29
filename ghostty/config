@@ -7,8 +7,6 @@ window-title-font-family = TX-02
 
 font-size = 11
 font-thicken = true
-font-synthetic-style = false
-
 bold-is-bright = true
 
 window-padding-balance = true
