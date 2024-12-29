@@ -10,6 +10,7 @@ curl \
 d2 \
 diff-so-fancy \
 fzf \
+ghostty \
 git \
 git-delta \
 git-filter-repo \
@@ -183,3 +184,9 @@ _ssh force="false": (_ssh_config force)
 link-ssh-config force="false": (_ssh_config force)
 
 _ssh_config force="false": (_link "ssh/config" ".ssh/config" force)
+
+# Link ghostty related files
+[group("terminal")]
+link-ghostty force="false": (_ghostty force)
+
+_ghostty force="false": (_link "ghostty" ".config/" force)
