@@ -8,7 +8,7 @@
 [core]
 	excludesfile = /Users/marc/.gitignore
 	editor = nvim
-	pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta
 [color]
 	ui = true
 	diff = always
@@ -19,6 +19,7 @@
 	verbose = true
 	template = /Users/marc/.stCommitMsg
 [diff]
+  colorMoved = default
 	compactionHeuristic = true
 [alias]
 	stash-rename = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git stash store -m \"$2\" $rev; }; _"
@@ -27,21 +28,50 @@
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 [merge]
 	tool = nvim
-[mergetool "nvim"]
-	cmd = nvim \"+Gdiff\" $MERGED
+  conflictstyle = zdiff3
 [init]
 	defaultBranch = main
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
+[interactive]
+  diffFilter = delta --color-only
+
+[include]
+  path = PATH/TO/delta/themes.gitconfig
+
+[delta "mellow-solarized"]
+    # based on mellow-barbet
+    dark = true
+    syntax-theme = Solarized (dark)
+    line-numbers = true
+    file-style = brightwhite
+    file-decoration-style = brightwhite underline
+    file-added-label = [A]
+    file-copied-label = [C]
+    file-modified-label = [M]
+    file-removed-label = [D]
+    file-renamed-label = [R]
+    hunk-header-decoration-style = "#3e3e43" box ul
+    line-numbers-left-style = "#3e3e43"
+    line-numbers-right-style = "#3e3e43"
+    blame-palette = "#161617" "#1b1b1d" "#2a2a2d" "#3e3e43"
+    ; merge-conflict-begin-symbol = ~
+    ; merge-conflict-end-symbol = ~
+    ; merge-conflict-ours-diff-header-style = yellow bold
+    ; merge-conflict-ours-diff-header-decoration-style = "#3e3e43" box
+    ; merge-conflict-theirs-diff-header-style = yellow bold
+    ; merge-conflict-theirs-diff-header-decoration-style = "#3e3e43" box
+
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  line-numbers = true
+  hyperlinks = true
+  true-color = always
+  features = mellow-solarized
 
 # Customizations for my work computer.
 [includeIf "gitdir:/Users/maddeo/"]

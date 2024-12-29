@@ -11,6 +11,7 @@ d2 \
 diff-so-fancy \
 fzf \
 git \
+git-delta \
 git-filter-repo \
 gnupg \
 httpie \
