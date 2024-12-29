@@ -24,7 +24,7 @@ if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'com.googlecode.iterm2'
+if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 3'
 
 # @TODO if setting window dimensions and layout is ever supported, these are 
