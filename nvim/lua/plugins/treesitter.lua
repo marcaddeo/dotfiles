@@ -24,6 +24,12 @@ return {
         "svelte",
         "twig",
       },
+      indent = {
+        enable = true,
+        disable = {
+          "markdown",
+        },
+      },
     },
   },
 

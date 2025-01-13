@@ -19,9 +19,7 @@ autocmd BufRead,BufNewFile *.{info,make,build} set filetype=drini
 autocmd BufNewFile,BufRead * if match(getline(1), "^---$") >= 0 && expand("%:e") != "md" | set filetype=yaml | endif
 
 " Markdown
-" @TODO testing without for now
-" autocmd BufRead,BufNewFile *.md setlocal spell
-" autocmd BufRead,BufNewFile *.md setlocal tw=79
+autocmd BufRead,BufNewFile *.md setlocal tw=79
 
 " Rust
 autocmd BufRead,BufNewFile *.rs setlocal colorcolumn=100
