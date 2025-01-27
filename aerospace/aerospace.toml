@@ -10,10 +10,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 [gaps]
 inner.horizontal = 12
 inner.vertical = 12
-outer.left = 12
+outer.left = [{ monitor.DELL = 76 }, 12]
 outer.bottom = 12
 outer.top = 12
-outer.right = 12
+outer.right = [{ monitor.DELL = 76 }, 12]
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
@@ -27,16 +27,9 @@ run = 'move-node-to-workspace 2'
 if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 3'
 
-# @TODO if setting window dimensions and layout is ever supported, these are 
-# the dimensions for the windows on workspace 2
-#
-# HomeCam = {1416, 1238}
-# Discord = {1416, 846}
-# Messages = {702, 427}
-# Spotify MiniPlayer = {702, 427}
-[[on-window-detected]]
-if.app-id = 'com.aaronpearce.Homecam'
-run = 'move-node-to-workspace 4'
+# [[on-window-detected]]
+# if.app-id = 'com.aaronpearce.Homecam'
+# run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
@@ -91,9 +84,9 @@ if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
-4 = ['Thunderbolt', 'secondary']
-5 = ['Thunderbolt', 'secondary']
-3 = ['DELL', 'main']
+1 = ['Built-in']
+3 = ['Thunderbolt', 'DELL']
+5 = ['DELL', 'Built-in']
 
 [mode.main.binding]
 # Focus workspace
