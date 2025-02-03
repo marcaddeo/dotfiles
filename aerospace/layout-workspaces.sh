@@ -45,7 +45,7 @@ workspace4() {
 }
 
 workspace5() {
-  local window_list="$(aerospace list-windows --workspace 5 --json)"
+  local window_list="$(aerospace list-windows --all --json)"
   local calendar="$(echo "$window_list" | jq '.[] | select(."app-name" == "Calendar") | ."window-id"')"
   local mail="$(echo "$window_list" | jq '.[] | select(."app-name" == "Mail") | ."window-id"')"
 
