@@ -180,6 +180,12 @@ alt-shift-backtick = 'mode service'
 # Reload config
 esc = ['reload-config', 'mode main']
 
+# Apply default workspace layouts
+l = [
+  'exec-and-forget /Users/marc/dotfiles/aerospace/layout-workspaces.sh',
+  'mode main',
+]
+
 # Reset layout in workspace
 r = ['flatten-workspace-tree', 'mode main']
 
