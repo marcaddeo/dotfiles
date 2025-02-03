@@ -21,23 +21,24 @@ run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
+check-further-callbacks = true
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 3'
 
-# [[on-window-detected]]
-# if.app-id = 'com.aaronpearce.Homecam'
-# run = 'move-node-to-workspace 4'
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+if.window-title-regex-substring = 'Dashboard | Cloud Key'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
-if.window-title-regex-substring = 'MiniPlayer'
+if.window-title-regex-substring = '^Spotify MiniPlayer$'
 run = ['layout tiling', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
@@ -58,8 +59,8 @@ if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
-if.window-title-regex-substring = '^Spotify$'
+if.app-name-regex-substring = '^Spotify$'
+check-further-callbacks = true
 run = 'move-node-to-workspace 6'
 
 # Work computer
@@ -85,6 +86,7 @@ run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
 1 = ['Built-in']
+2 = ['Thunderbolt', 'DELL']
 3 = ['Thunderbolt', 'DELL']
 5 = ['DELL', 'Built-in']
 
