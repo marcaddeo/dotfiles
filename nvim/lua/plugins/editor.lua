@@ -49,6 +49,20 @@ return {
     end,
   },
 
+  -- Configure flash.nvim to use default FfTt behavior.
+  {
+    "folke/flash.nvim",
+    opts = {
+      modes = {
+        char = {
+          char_actions = function()
+            return { [";"] = "next", [","] = "prev" }
+          end,
+        },
+      },
+    },
+  },
+
   -- Custom additions.
   {
     "aserowy/tmux.nvim",
