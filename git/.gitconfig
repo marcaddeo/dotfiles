@@ -12,20 +12,29 @@
 [color]
 	ui = true
 	diff = always
+[column]
+  ui = auto
 [rebase]
 	autosquash = true
+  autostash = true
 [commit]
 #	gpgsign = true
 	verbose = true
 	template = /Users/marc/.stCommitMsg
 [diff]
+  algorithm = histogram
   colorMoved = default
 	compactionHeuristic = true
+  mnemonicPrefix = true
+  renames = true
 [alias]
 	stash-rename = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git stash store -m \"$2\" $rev; }; _"
-	tags = "tag --sort=\"version:refname\""
 	cleans = !git ls-files --others --exclude-from=.git/info/exclude -z | xargs -0 rm -v
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
 [merge]
 	tool = nvim
   conflictstyle = zdiff3
@@ -39,9 +48,6 @@
 
 [interactive]
   diffFilter = delta --color-only
-
-[include]
-  path = PATH/TO/delta/themes.gitconfig
 
 [delta "mellow-solarized"]
     # based on mellow-barbet
