@@ -166,6 +166,7 @@ alt-shift-backslash = 'balance-sizes'
 # Cycle through layouts
 alt-period = 'layout tiles horizontal vertical'
 alt-slash = 'layout accordion horizontal vertical'
+alt-z = 'layout accordion tiles'
 
 # Toggle focus back-and-forth between last focused workspace
 alt-tab = 'workspace-back-and-forth'
