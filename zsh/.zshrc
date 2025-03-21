@@ -86,3 +86,5 @@ export PATH="$HOME/.lando/bin${PATH+:$PATH}"; #landopath
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 export PATH="$PATH:/Applications/Ghostty.app/Contents/MacOS"
+
+eval "$(zoxide init zsh --cmd cd)"

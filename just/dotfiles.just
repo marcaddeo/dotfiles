@@ -35,6 +35,7 @@ tmux \
 tree \
 wget \
 yq \
+zoxide \
 zsh \
 "
 brew_cask_packages := "\
