@@ -181,4 +181,17 @@ return {
       { "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", { desc = "Open File Exporer at current file", silent = true } },
     },
   },
+
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      -- Close fugitive windows with q instead of gq
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "fugitiveblame", "fugitive" },
+        callback = function()
+          vim.api.nvim_buf_set_keymap(0, "n", "q", "gq", { silent = true })
+        end,
+      })
+    end,
+  },
 }
