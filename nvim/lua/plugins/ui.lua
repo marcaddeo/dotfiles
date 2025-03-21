@@ -33,7 +33,7 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
       table.remove(opts.sections.lualine_z)
-      table.insert(opts.sections.lualine_z, { "gh-actions", icon = "" })
+      table.insert(opts.sections.lualine_z, { "pipeline", icon = "" })
     end,
   },
 

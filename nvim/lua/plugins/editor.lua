@@ -91,15 +91,12 @@ return {
     end,
   },
 
-  -- @note using a patched version to fix duplicate icons.
-  -- @see https://github.com/topaxi/gh-actions.nvim/pull/13
   {
-    "marcaddeo/gh-actions.nvim",
-    branch = "patch-1",
+    "topaxi/pipeline.nvim",
     keys = {
-      { "<leader>ga", "<cmd>GhActions<cr>", desc = "Open Github Actions" },
+      { "<leader>ci", "<cmd>Pipeline<cr>", desc = "Open pipeline.nvim" },
     },
-    ---@type GhActionsConfig
+    ---@type pipeline.Config
     opts = {},
   },
 }
