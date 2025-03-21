@@ -49,6 +49,14 @@ return {
     end,
   },
 
+  -- Set preset back to modern instead of the new helix default.
+  {
+    "folke/which-key.nvim",
+    opts = {
+      preset = "modern",
+    },
+  },
+
   -- Configure flash.nvim to use default FfTt behavior.
   {
     "folke/flash.nvim",
