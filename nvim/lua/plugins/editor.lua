@@ -113,6 +113,11 @@ return {
 
         api.config.mappings.default_on_attach(bufnr)
 
+        -- Open files after creating them using nvim-tree
+        api.events.subscribe(api.events.Event.FileCreated, function(file)
+          vim.cmd("edit " .. vim.fn.fnameescape(file.fname))
+        end)
+
         local function copy_file_to()
           local node = api.tree.get_node_under_cursor()
           local file_src = node["absolute_path"]
