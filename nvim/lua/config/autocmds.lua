@@ -29,5 +29,9 @@ autocmd FileType gitcommit setlocal spell
 
 " Jinja Files.
 autocmd BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
+
+" Ansible Files.
+au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile .ansible-lint set filetype=yaml
 ]])
 --

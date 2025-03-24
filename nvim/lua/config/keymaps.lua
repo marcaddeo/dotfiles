@@ -54,3 +54,7 @@ end, { desc = "Visually select the last pasted text", silent = true })
 -- that lazyvim adds.
 -- @note Use <leader>bd instead.
 -- nmap("<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Close a buffer (without closing the window)" })
+
+-- Ansible-Vault
+nmap("<leader>av", ":AnsibleVault<cr>", { desc = "Encrypt value under cursor with ansible-vault", silent = true })
+nmap("<leader>au", ":AnsibleUnvault<cr>", { desc = "Decrypt value under cursor with ansible-vault", silent = true })

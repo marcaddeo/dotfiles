@@ -30,3 +30,7 @@ opt.clipboard = ""
 
 -- Enable /g on substitution commands by default.
 opt.gdefault = true
+
+-- Ansible Configuration
+vim.g.ansible_vault_password_file = ".vault-id"
+vim.g.ansible_vault_no_unquote = false
