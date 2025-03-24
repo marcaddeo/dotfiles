@@ -26,6 +26,7 @@ run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
+check-further-callbacks = true
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
@@ -62,6 +63,11 @@ run = 'move-node-to-workspace 5'
 if.app-name-regex-substring = '^Spotify$'
 check-further-callbacks = true
 run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+if.window-title-regex-substring = '^spotify_player$'
+run = ['layout tiling', 'move-node-to-workspace 7']
 
 # Work computer
 [[on-window-detected]]
