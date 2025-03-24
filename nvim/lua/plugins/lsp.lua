@@ -23,7 +23,7 @@ return {
       lsp.just_lsp.setup({})
 
       table.insert(opts.servers.tailwindcss.filetypes_include, "jinja")
-      table.insert(opts.servers.yamlls.settings.yaml.customTags, "!vault")
+      opts.servers.yamlls.settings.yaml.customTags = { "!vault" }
     end,
   },
   -- Custom additions.
