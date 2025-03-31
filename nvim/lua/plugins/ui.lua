@@ -25,23 +25,6 @@ return {
     opts = {
       options = {
         always_show_bufferline = true,
-      },
-    },
-  },
-  -- Replace the lualine clock with gh-actions status.
-  {
-    "nvim-lualine/lualine.nvim",
-    opts = function(_, opts)
-      table.remove(opts.sections.lualine_z)
-      table.insert(opts.sections.lualine_z, { "pipeline", icon = "" })
-      table.insert(opts.extensions, "nvim-tree")
-    end,
-  },
-
-  {
-    "akinsho/bufferline.nvim",
-    opts = {
-      options = {
         offsets = {
           {
             filetype = "NvimTree",
@@ -53,6 +36,15 @@ return {
         },
       },
     },
+  },
+  -- Replace the lualine clock with gh-actions status.
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function(_, opts)
+      table.remove(opts.sections.lualine_z)
+      table.insert(opts.sections.lualine_z, { "pipeline", icon = "" })
+      table.insert(opts.extensions, "nvim-tree")
+    end,
   },
 
   -- Custom additions.
